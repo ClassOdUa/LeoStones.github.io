@@ -4,11 +4,95 @@
   
     
     <entry>
-      <title><![CDATA[Java网络编程<一>]]></title>
-      <url>http://llstones.github.io/blog/2016/05/Java%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B.html</url>
-      <content type="html"><![CDATA[<h1 id="&#x901A;&#x8BAF;&#x534F;&#x8BAE;&#x4E4B;TCP&#x548C;UDP"><a href="#&#x901A;&#x8BAF;&#x534F;&#x8BAE;&#x4E4B;TCP&#x548C;UDP" class="headerlink" title="&#x901A;&#x8BAF;&#x534F;&#x8BAE;&#x4E4B;TCP&#x548C;UDP"></a><blockquote class="blockquote-center">&#x901A;&#x8BAF;&#x534F;&#x8BAE;&#x4E4B;TCP&#x548C;UDP</blockquote></h1><p><img src="http://o7dscdnip.bkt.clouddn.com/JAVA1.png"></p>
-<h1 id="&#x8BA1;&#x7B97;&#x673A;&#x7F51;&#x7EDC;"><a href="#&#x8BA1;&#x7B97;&#x673A;&#x7F51;&#x7EDC;" class="headerlink" title="&#x8BA1;&#x7B97;&#x673A;&#x7F51;&#x7EDC;"></a>&#x8BA1;&#x7B97;&#x673A;&#x7F51;&#x7EDC;</h1><p>&#x6307;&#x5206;&#x5E03;&#x5728;&#x4E0D;&#x540C;&#x5730;&#x57DF;&#x7684;&#x8BA1;&#x7B97;&#x673A;&#xFF0C;&#x901A;&#x8FC7;&#x5916;&#x90E8;&#x8BBE;&#x5907;&#x8FDE;&#x63A5;&#x8D77;&#x6765;&#xFF0C;&#x5B9E;&#x73B0;&#x4E86;&#x8D44;&#x6E90;&#x5171;&#x4EAB;&#x4E0E;&#x6570;&#x636E;&#x4F20;&#x8F93;&#x7684;&#x8BA1;&#x7B97;&#x673A;&#x7CFB;&#x7EDF;&#x3002;</p>
+      <title><![CDATA[Java网络编程（二）]]></title>
+      <url>http://llstones.github.io/blog/2016/05/Java%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B(%E4%BA%8C).html</url>
+      <content type="html"><![CDATA[<h1 id="Socket&#x7F16;&#x7A0B;&#xFF08;&#x7F51;&#x7EDC;&#x7F16;&#x7A0B;&#xFF09;"><a href="#Socket&#x7F16;&#x7A0B;&#xFF08;&#x7F51;&#x7EDC;&#x7F16;&#x7A0B;&#xFF09;" class="headerlink" title="Socket&#x7F16;&#x7A0B;&#xFF08;&#x7F51;&#x7EDC;&#x7F16;&#x7A0B;&#xFF09;"></a><blockquote class="blockquote-center">Socket&#x7F16;&#x7A0B;&#xFF08;&#x7F51;&#x7EDC;&#x7F16;&#x7A0B;&#xFF09;</blockquote></h1><p><img src="http://o7dscdnip.bkt.clouddn.com/JAVA2.jpg"></p>
 <a id="more"></a>
+<h1 id="Socket&#x7F16;&#x7A0B;&#xFF08;&#x7F51;&#x7EDC;&#x7F16;&#x7A0B;&#xFF09;-1"><a href="#Socket&#x7F16;&#x7A0B;&#xFF08;&#x7F51;&#x7EDC;&#x7F16;&#x7A0B;&#xFF09;-1" class="headerlink" title="Socket&#x7F16;&#x7A0B;&#xFF08;&#x7F51;&#x7EDC;&#x7F16;&#x7A0B;&#xFF09;"></a>Socket&#x7F16;&#x7A0B;&#xFF08;&#x7F51;&#x7EDC;&#x7F16;&#x7A0B;&#xFF09;</h1><ul>
+<li>Socket<ul>
+<li>socket&#x7684;&#x82F1;&#x6587;&#x539F;&#x4E49;&#x662F;&#x201C;&#x5B54;&#x201D;&#x6216;&#x201C;&#x63D2;&#x5EA7;&#x201D;&#x3002;&#x4F5C;&#x4E3A;4BDS UNIX&#x7684;&#x8FDB;&#x7A0B;&#x901A;&#x4FE1;&#x673A;&#x5236;&#xFF0C;&#x53D6;&#x540E;&#x4E00;&#x79CD;&#x610F;&#x601D;&#x3002;&#x901A;&#x5E38;&#x4E5F;&#x79F0;&#x4F5C;&#x201C;&#x5957;&#x63A5;&#x5B57;&#x201D;&#xFF0C;&#x7528;&#x4E8E;&#x63CF;&#x8FF0;IP&#x5730;&#x5740;&#x548C;&#x7AEF;&#x53E3;&#xFF0C;&#x662F;&#x4E00;&#x4E2A;&#x901A;&#x4FE1;&#x94FE;&#x7684;&#x53E5;&#x67C4;(&#x5F15;&#x7528;)&#x3002;</li>
+<li>&#x6BCF;&#x4E2A;&#x63D2;&#x5EA7;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x3002;</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>&#x7EC6;&#x8282;<ul>
+<li>&#x4E0D;&#x540C;&#x7684;&#x901A;&#x4FE1;&#x89C4;&#x5219;&#x9700;&#x8981;&#x5B9A;&#x4E49;&#x4E0D;&#x540C;&#x7684;&#x63D2;&#x5EA7;&#x3002;</li>
+<li>UDP&#xFF1A;DatagramSocket  &#x3001;DatagramPacket</li>
+<li>TCP&#xFF1A;ServerSocket  &#x3001;Socket</li>
+</ul>
+</li>
+</ul>
+<p><img src="http://o7dscdnip.bkt.clouddn.com/ServerSocket.png"></p>
+<h1 id="UDP&#x6570;&#x636E;&#x4F20;&#x8F93;"><a href="#UDP&#x6570;&#x636E;&#x4F20;&#x8F93;" class="headerlink" title="UDP&#x6570;&#x636E;&#x4F20;&#x8F93;"></a>UDP&#x6570;&#x636E;&#x4F20;&#x8F93;</h1><ul>
+<li>UDP&#x6570;&#x636E;&#x4F20;&#x8F93;<ul>
+<li>DatagramSocket&#x4E0E;DatagramPacket</li>
+<li>&#x5EFA;&#x7ACB;&#x53D1;&#x9001;&#x7AEF;&#xFF0C;&#x63A5;&#x6536;&#x7AEF;</li>
+<li>&#x5EFA;&#x7ACB;&#x6570;&#x636E;&#x5305;</li>
+<li>&#x8C03;&#x7528;Socket&#x7684;&#x53D1;&#x9001;&#x63A5;&#x6536;&#x65B9;&#x6CD5;</li>
+<li>&#x5173;&#x95ED;Socket</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>&#x6CE8;&#x610F;<ul>
+<li>&#x53D1;&#x9001;&#x7AEF;&#x4E0E;&#x63A5;&#x6536;&#x7AEF;&#x662F;&#x4E24;&#x4E2A;&#x72EC;&#x7ACB;&#x7684;&#x8FD0;&#x884C;&#x7A0B;&#x5E8F;</li>
+<li>&#x53D1;&#x9001;&#x7AEF;&#x53D1;&#x9001;&#x6570;&#x636E;&#x7684;&#x7AEF;&#x53E3;&#x662F;&#x968F;&#x673A;&#x7684;</li>
+<li>IDE&#x4E2D;&#x7684;&#x63A7;&#x5236;&#x53F0;&#x5207;&#x6362;</li>
+</ul>
+</li>
+</ul>
+<p><img src="http://o7dscdnip.bkt.clouddn.com/udp.png"></p>
+<h2 id="UDP&#x53D1;&#x9001;&#x7AEF;"><a href="#UDP&#x53D1;&#x9001;&#x7AEF;" class="headerlink" title="UDP&#x53D1;&#x9001;&#x7AEF;"></a>UDP&#x53D1;&#x9001;&#x7AEF;</h2><ul>
+<li>&#x5728;&#x53D1;&#x9001;&#x7AEF;&#xFF0C;&#x8981;&#x5728;&#x6570;&#x636E;&#x5305;&#x5BF9;&#x8C61;&#x4E2D;&#x660E;&#x786E;&#x76EE;&#x7684;&#x5730;IP&#x53CA;&#x7AEF;&#x53E3;&#x3002;</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">DatagramSocket socket = new DatagramSocket();	</span><br><span class="line">	  byte [] bs = &quot;hello World&quot;.getBytes();	  </span><br><span class="line">	  InetAddress adress = InetAddress.getByName(&quot;127.0.0.1&quot;);	  </span><br><span class="line">	  int port = 5800;	  </span><br><span class="line">DatagramPacket  pack = new DatagramPacket(bs,bs.length,adress,port);</span><br><span class="line">        socket.send(pack);      </span><br><span class="line">        socket.close();</span><br></pre></td></tr></table></figure>
+<h2 id="UDP&#x63A5;&#x6536;&#x7AEF;"><a href="#UDP&#x63A5;&#x6536;&#x7AEF;" class="headerlink" title="UDP&#x63A5;&#x6536;&#x7AEF;"></a>UDP&#x63A5;&#x6536;&#x7AEF;</h2><ul>
+<li>&#x5728;&#x63A5;&#x53D7;&#x7AEF;&#xFF0C;&#x8981;&#x6307;&#x5B9A;&#x76D1;&#x542C;&#x7684;&#x7AEF;&#x53E3;&#x3002;</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">DatagramSocket socket = new DatagramSocket(5800);	 </span><br><span class="line">           byte [] bs = new byte[1024];</span><br><span class="line">	     DatagramPacket  pack = new DatagramPacket(bs,bs.length);</span><br><span class="line">	     socket.receive(pack);</span><br><span class="line">	     InetAddress adress = pack.getAddress();</span><br><span class="line">	     byte [] b = pack.getData();</span><br><span class="line">	     int port = pack.getPort();</span><br><span class="line">	     System.out.println(adress);</span><br><span class="line">	     System.out.println(port);</span><br><span class="line">	     System.out.println(new String(b,0,b.length));</span><br><span class="line">	     socket.close();</span><br></pre></td></tr></table></figure>
+<h2 id="&#x952E;&#x76D8;&#x63A5;&#x6536;&#x6570;&#x636E;&#x7684;&#x53D1;&#x9001;&#x7AEF;"><a href="#&#x952E;&#x76D8;&#x63A5;&#x6536;&#x6570;&#x636E;&#x7684;&#x53D1;&#x9001;&#x7AEF;" class="headerlink" title="&#x952E;&#x76D8;&#x63A5;&#x6536;&#x6570;&#x636E;&#x7684;&#x53D1;&#x9001;&#x7AEF;"></a>&#x952E;&#x76D8;&#x63A5;&#x6536;&#x6570;&#x636E;&#x7684;&#x53D1;&#x9001;&#x7AEF;</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) throws Exception {</span><br><span class="line">BufferedReader  br  = new BufferedReader(new InputStreamReader(System.in));</span><br><span class="line">		String str = null;</span><br><span class="line">		DatagramSocket socket = new DatagramSocket();</span><br><span class="line">		DatagramPacket  pack = null;</span><br><span class="line">		byte [] bs = null;</span><br><span class="line">		while((str = br.readLine())!=null){</span><br><span class="line">		     if(str.equals(&quot;finish&quot;))</span><br><span class="line">		      break;</span><br><span class="line">		      bs = str.getBytes();</span><br><span class="line">			pack=new DatagramPacket(bs,bs.length,InetAddress.getByName(&quot;127.0.0.1&quot;),10001);</span><br><span class="line">		      socket.send(pack);</span><br><span class="line">		}		</span><br><span class="line">		socket.close();		</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<h1 id="TCP&#x6570;&#x636E;&#x4F20;&#x8F93;"><a href="#TCP&#x6570;&#x636E;&#x4F20;&#x8F93;" class="headerlink" title="TCP&#x6570;&#x636E;&#x4F20;&#x8F93;"></a>TCP&#x6570;&#x636E;&#x4F20;&#x8F93;</h1><ul>
+<li>TCP&#x6570;&#x636E;&#x4F20;&#x8F93;<ul>
+<li>ServerSocket&#x548C;Socket</li>
+<li>&#x5EFA;&#x7ACB;&#x5BA2;&#x6237;&#x7AEF;&#x548C;&#x670D;&#x52A1;&#x5668;&#x7AEF;</li>
+<li>&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;&#x540E;&#xFF0C;&#x901A;&#x8FC7;Socket&#x4E2D;&#x7684;IO&#x6D41;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x7684;&#x4F20;&#x8F93;</li>
+<li>&#x5173;&#x95ED;socket</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>&#x6CE8;&#x610F;<ul>
+<li>&#x540C;&#x6837;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x4E0E;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x662F;&#x4E24;&#x4E2A;&#x72EC;&#x7ACB;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;</li>
+</ul>
+</li>
+</ul>
+<h2 id="TCP&#x5BA2;&#x6237;&#x7AEF;"><a href="#TCP&#x5BA2;&#x6237;&#x7AEF;" class="headerlink" title="TCP&#x5BA2;&#x6237;&#x7AEF;"></a>TCP&#x5BA2;&#x6237;&#x7AEF;</h2><ul>
+<li>&#x901A;&#x8FC7;Socket&#x5EFA;&#x7ACB;&#x5BF9;&#x8C61;&#x5E76;&#x6307;&#x5B9A;&#x8981;&#x8FDE;&#x63A5;&#x7684;&#x670D;&#x52A1;&#x5668;&#x4E3B;&#x673A;&#x53CA;&#x7AEF;&#x53E3;</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) throws Exception {</span><br><span class="line">		Socket socket = new Socket(&quot;127.0.0.1&quot;,10000);</span><br><span class="line">		OutputStream  out = socket.getOutputStream();</span><br><span class="line">		</span><br><span class="line">		out.write(&quot;&#x4F60;&#x597D;&quot;.getBytes());</span><br><span class="line">		socket.close();</span><br><span class="line"></span><br><span class="line">	}</span><br></pre></td></tr></table></figure>
+<ul>
+<li>&#x5EFA;&#x7ACB;&#x670D;&#x52A1;&#x5668;&#x9700;&#x8981;&#x76D1;&#x542C;&#x7684;&#x4E00;&#x4E2A;&#x7AEF;&#x53E3;</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) throws Exception {</span><br><span class="line">		ServerSocket server = new ServerSocket(10000);</span><br><span class="line">		Socket  socket = server.accept();</span><br><span class="line">		InputStream  in = socket.getInputStream();</span><br><span class="line">		byte [] b = new byte[1024];</span><br><span class="line">		int len = 0;</span><br><span class="line">		while((len = in.read(b)) != -1){</span><br><span class="line"> System.out.println(socket.getInetAddress().getHostAddress()+&quot;: &#x201C;</span><br><span class="line">                                 +new String(b,0,len));</span><br><span class="line">		}</span><br><span class="line">		server.close();</span><br><span class="line">	}</span><br></pre></td></tr></table></figure>
+<ul>
+<li>&#x5728;&#x4E0A;&#x9762;&#x7684;&#x7A0B;&#x5E8F;&#x4E0A;&#x5B9E;&#x73B0;&#x76F8;&#x4E92;&#x7684;&#x8F93;&#x5165;&#x8F93;&#x51FA;</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) throws Exception {</span><br><span class="line">		Socket socket = new Socket(&quot;127.0.0.1&quot;,10000);</span><br><span class="line">		OutputStream  out = socket.getOutputStream();</span><br><span class="line">		out.write(&quot;&#x4F60;&#x597D;&quot;.getBytes());	</span><br><span class="line">		InputStream  in = socket.getInputStream();</span><br><span class="line">		byte [] b = new byte[1024];</span><br><span class="line">		int len = 0;</span><br><span class="line">		len = in.read(b);</span><br><span class="line">		System.out.println(new String(b,0,len));</span><br><span class="line">		socket.close();</span><br><span class="line">	}</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) throws Exception {	</span><br><span class="line">		ServerSocket server = new ServerSocket(10000);</span><br><span class="line">		Socket  socket = server.accept();</span><br><span class="line">		InputStream  in = socket.getInputStream();	</span><br><span class="line">		byte [] b = new byte[1024];</span><br><span class="line">		int len = 0;</span><br><span class="line">		len = in.read(b);</span><br><span class="line">		System.out.println(socket.getInetAddress().getHostAddress()+&quot;:&quot;</span><br><span class="line">                    +new String(b,0,len));</span><br><span class="line">		OutputStream  out = socket.getOutputStream();</span><br><span class="line">		out.write(&quot;&#x6211;&#x6536;&#x5230;&#x4E86;....&quot;.getBytes());</span><br><span class="line">		server.close();</span><br><span class="line">	}</span><br></pre></td></tr></table></figure>
+<h1 id="BS&#x5F00;&#x53D1;"><a href="#BS&#x5F00;&#x53D1;" class="headerlink" title="BS&#x5F00;&#x53D1;"></a>BS&#x5F00;&#x53D1;</h1><ul>
+<li>&#x6D4F;&#x89C8;&#x5668;&#x548C;&#x670D;&#x52A1;&#x5668;&#x4E4B;&#x95F4;&#x901A;&#x8FC7;telnet&#x8FDB;&#x884C;&#x901A;&#x4FE1;</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) throws Exception {		</span><br><span class="line">	ServerSocket  server = new ServerSocket(11000);</span><br><span class="line">	Socket socket = server.accept();		</span><br><span class="line">	OutputStream out = socket.getOutputStream();		</span><br><span class="line">	out.write(&quot;&lt;font color=&apos;red&apos;&gt;&lt;h1&gt;&#x5BA2;&#x6237;&#x7AEF;&#x4F60;&#x597D;!!&lt;/h1&gt;&lt;/font&gt;&quot;.getBytes());</span><br><span class="line">	out.close();</span><br><span class="line">	System.out.println(socket.getInetAddress().getHostAddress());</span><br><span class="line">	server.close();</span><br><span class="line">	}</span><br></pre></td></tr></table></figure>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Java网络编程（一）]]></title>
+      <url>http://llstones.github.io/blog/2016/05/Java%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B(%E4%B8%80).html</url>
+      <content type="html"><![CDATA[<h1 id="&#x901A;&#x8BAF;&#x534F;&#x8BAE;&#x4E4B;TCP&#x548C;UDP"><a href="#&#x901A;&#x8BAF;&#x534F;&#x8BAE;&#x4E4B;TCP&#x548C;UDP" class="headerlink" title="&#x901A;&#x8BAF;&#x534F;&#x8BAE;&#x4E4B;TCP&#x548C;UDP"></a><blockquote class="blockquote-center">&#x901A;&#x8BAF;&#x534F;&#x8BAE;&#x4E4B;TCP&#x548C;UDP</blockquote></h1><p><img src="http://o7dscdnip.bkt.clouddn.com/JAVA1.png"></p>
+<a id="more"></a>
+<h1 id="&#x8BA1;&#x7B97;&#x673A;&#x7F51;&#x7EDC;"><a href="#&#x8BA1;&#x7B97;&#x673A;&#x7F51;&#x7EDC;" class="headerlink" title="&#x8BA1;&#x7B97;&#x673A;&#x7F51;&#x7EDC;"></a>&#x8BA1;&#x7B97;&#x673A;&#x7F51;&#x7EDC;</h1><p>&#x6307;&#x5206;&#x5E03;&#x5728;&#x4E0D;&#x540C;&#x5730;&#x57DF;&#x7684;&#x8BA1;&#x7B97;&#x673A;&#xFF0C;&#x901A;&#x8FC7;&#x5916;&#x90E8;&#x8BBE;&#x5907;&#x8FDE;&#x63A5;&#x8D77;&#x6765;&#xFF0C;&#x5B9E;&#x73B0;&#x4E86;&#x8D44;&#x6E90;&#x5171;&#x4EAB;&#x4E0E;&#x6570;&#x636E;&#x4F20;&#x8F93;&#x7684;&#x8BA1;&#x7B97;&#x673A;&#x7CFB;&#x7EDF;&#x3002;</p>
 <p><img src="http://o7dscdnip.bkt.clouddn.com/NET.png"></p>
 <h1 id="Extends-IP"><a href="#Extends-IP" class="headerlink" title="Extends: IP"></a>Extends: IP</h1><ul>
 <li><p>IP&#x5730;&#x5740;</p>
