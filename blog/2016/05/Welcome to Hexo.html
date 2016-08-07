@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion">
+<html class="theme-next muse use-motion">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -86,6 +86,8 @@
 
 
 
+  <link rel="alternate" href="/atom.xml" title="LeoStones's Blog" type="application/atom+xml" />
+
 
 
 
@@ -99,7 +101,7 @@
 <meta name="description" content="&amp;#x6B22;&amp;#x8FCE;&amp;#x4F7F;&amp;#x7528; Hexo&amp;#xFF0C;&amp;#x8FD9;&amp;#x662F;&amp;#x7CFB;&amp;#x7EDF;&amp;#x81EA;&amp;#x52A8;&amp;#x751F;&amp;#x6210;&amp;#x7684;&amp;#x6F14;&amp;#x793A;&amp;#x6587;&amp;#x7AE0;&amp;#xFF0C;&amp;#x7F16;&amp;#x8F91;&amp;#x6216;&amp;#x8005;&amp;#x5220;&amp;#x">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Welcome to Hexo">
-<meta property="og:url" content="http://leostones.github.io/blog/2016/05/Welcome to Hexo.html">
+<meta property="og:url" content="http://leostones.cn/Blog/blog/2016/05/Welcome to Hexo.html">
 <meta property="og:site_name" content="LeoStones's Blog">
 <meta property="og:description" content="&amp;#x6B22;&amp;#x8FCE;&amp;#x4F7F;&amp;#x7528; Hexo&amp;#xFF0C;&amp;#x8FD9;&amp;#x662F;&amp;#x7CFB;&amp;#x7EDF;&amp;#x81EA;&amp;#x52A8;&amp;#x751F;&amp;#x6210;&amp;#x7684;&amp;#x6F14;&amp;#x793A;&amp;#x6587;&amp;#x7AE0;&amp;#xFF0C;&amp;#x7F16;&amp;#x8F91;&amp;#x6216;&amp;#x8005;&amp;#x5220;&amp;#x">
 <meta property="og:updated_time" content="2016-05-19T14:29:08.393Z">
@@ -112,7 +114,7 @@
 <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Mist',
+    scheme: 'Muse',
     sidebar: {"position":"left","display":"always"},
     fancybox: true,
     motion: true,
@@ -177,7 +179,7 @@
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
-  <p class="site-subtitle">LeoStones</p>
+  <p class="site-subtitle">我本来就不是为了输赢，我就是因为任性啊</p>
 </div>
 
 <div class="site-nav-toggle">
@@ -201,16 +203,6 @@
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
           </a>
         </li>
       
@@ -258,7 +250,7 @@
       
         <li class="menu-item menu-item-search">
           
-            <a href="#" class="st-search-show-outputs">
+            <a href="#" class="popup-trigger">
           
             
               <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
@@ -423,19 +415,12 @@
   
     <div class="site-search">
       
-  <form class="site-search-form">
-  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
-</form>
-
-<script type="text/javascript">
-  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
-    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
-    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
-  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
-
-  _st('install', 'Qz15ncp5n6qV7mKMgNcw','2.0.0');
-</script>
-
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
 
 
     </div>
@@ -643,7 +628,7 @@
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="/blog/2016/05/Welcome to Hexo.html"
-           data-title="Welcome to Hexo" data-url="http://leostones.github.io/blog/2016/05/Welcome to Hexo.html">
+           data-title="Welcome to Hexo" data-url="http://leostones.cn/Blog/blog/2016/05/Welcome to Hexo.html">
       </div>
     
   </div>
@@ -695,10 +680,10 @@
 
           
             <div class="site-state-item site-state-categories">
-              <a href="/categories">
+              
                 <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">分类</span>
-              </a>
+              
             </div>
           
 
@@ -714,18 +699,16 @@
         </nav>
 
         
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
 
         <div class="links-of-author motion-element">
           
-            
-              <span class="links-of-author-item">
-                <a href="Link" target="_blank" title="LinkLabel">
-                  
-                    <i class="fa fa-fw fa-globe"></i>
-                  
-                  LinkLabel
-                </a>
-              </span>
             
               <span class="links-of-author-item">
                 <a href="https://github.com/leostones" target="_blank" title="GitHub">
@@ -737,27 +720,18 @@
               </span>
             
               <span class="links-of-author-item">
-                <a href="https://twitter.com/your-user-name" target="_blank" title="Twitter">
-                  
-                    <i class="fa fa-fw fa-twitter"></i>
-                  
-                  Twitter
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
                 <a href="http://weibo.com/your-user-name" target="_blank" title="微博">
                   
-                    <i class="fa fa-fw fa-globe"></i>
+                    <i class="fa fa-fw fa-weibo"></i>
                   
                   微博
                 </a>
               </span>
             
               <span class="links-of-author-item">
-                <a href="https://www.zhihu.com/people/llstones" target="_blank" title="知乎">
+                <a href="https://www.zhihu.com/people/leostones" target="_blank" title="知乎">
                   
-                    <i class="fa fa-fw fa-globe"></i>
+                    <i class="fa fa-fw fa-twitter"></i>
                   
                   知乎
                 </a>
@@ -771,16 +745,12 @@
 
         
         
-          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
             <div class="links-of-blogroll-title">
               <i class="fa  fa-fw fa-globe"></i>
               友情链接
             </div>
             <ul class="links-of-blogroll-list">
-              
-                <li class="links-of-blogroll-item">
-                  <a href="https://www.baidu.com/" title="百度" target="_blank">百度</a>
-                </li>
               
                 <li class="links-of-blogroll-item">
                   <a href="https://www.google.com/" title="Google" target="_blank">Google</a>
@@ -836,7 +806,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Muse
   </a>
 </div>
 
