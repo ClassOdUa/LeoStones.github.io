@@ -1,0 +1,434 @@
+
+
+
+
+
+
+
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="author" content="LeoStones">
+  
+  
+  
+  
+    <meta name="description" content="">
+  
+  <title>Android控件学习-实现进度条 [ LeoStones's Blog ]</title>
+  
+    <link rel="alternate" href="/atom.xml" title="LeoStones's Blog">
+  
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+  <link rel="stylesheet" href="/css/random.css">
+<link rel="stylesheet" href="/css/vegas.min.css">
+<link rel="stylesheet" href="/css/highlight-railscasts.css">
+<link rel="stylesheet" href="/css/jquery.fancybox.css">
+<link rel="stylesheet" href="/css/iconfont/iconfont.css">
+<link rel="stylesheet" href="/css/jquery.fancybox-thumbs.css">
+<link rel="stylesheet" href="/css/plyr.css">
+  
+</head>
+
+<body>
+<div class="side-navigate hide-area">
+  
+  
+    <div class="item next">
+      <a href="/blog/2016/08/Android控件学习-实现进度条.html">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        Android控件学习-实现进度条
+      </div>
+    </div>
+  
+</div>
+<div id="outer-container" class="hide-area">
+<div id="container">
+  <div id="menu-outer" class="slide-down">
+    <div id="menu-inner">
+      <div id="brand">
+        
+        <a onClick="openUserCard()">
+          <img id="avatar" src="http://7te9fe.com1.z0.glb.clouddn.com/default_avatar.jpg"/>
+          <div id="homelink">LeoStones's Blog</div>
+        </a>
+      </div>
+      <div id="menu-list">
+        <ul>
+        
+        
+          
+            <li>
+          
+            <a href="/index.html">Home</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/archives">Archives</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/tags">Tags</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/categories">Categories</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/about">About</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/guestbook">Guestbook</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="https://github.com/stiekel/hexo-theme-random">Github</a>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div id="show-menu">
+        <button>Menu</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="content-outer">
+    <div id="content-inner">
+      
+      
+  <article id="post">
+    <h1>Android控件学习-实现进度条</h1>
+    <p class="page-title-sub">
+      <span id = "post-title-date">Created at 2016-08-18</span>
+      
+        <span id = "post-title-updated">Updated at 2016-08-19</span>
+      
+      
+      <span id = "post-title-categories">Category
+      
+      
+        
+        
+        <a href="/categories/Android学习之路/">Android学习之路</a>
+      
+      </span>
+      
+      
+      <span id = "post-title-tags">
+      Tag
+      
+      
+        
+        
+        <a href="/tags/Android/">Android</a>
+      
+      </span>
+      
+    </p>
+    
+    <p><img src="http://o7dscdnip.bkt.clouddn.com/Android-webview-%E4%BD%BF%E7%94%A8Webview%E6%98%BE%E7%A4%BA%E7%BD%91%E9%A1%B5.png"></p>
+<a id="more"></a>
+<h1 id="WebView&#x7684;&#x7528;&#x9014;"><a href="#WebView&#x7684;&#x7528;&#x9014;" class="headerlink" title="WebView&#x7684;&#x7528;&#x9014;"></a>WebView&#x7684;&#x7528;&#x9014;</h1><p><img src="http://o7dscdnip.bkt.clouddn.com/Android-webview-WebView%E7%94%A8%E9%80%94.png"></p>
+<h1 id="&#x901A;&#x8FC7;Intent&#x8C03;&#x7528;&#x7CFB;&#x7EDF;&#x6D4F;&#x89C8;&#x5668;&#x663E;&#x793A;&#x7F51;&#x9875;"><a href="#&#x901A;&#x8FC7;Intent&#x8C03;&#x7528;&#x7CFB;&#x7EDF;&#x6D4F;&#x89C8;&#x5668;&#x663E;&#x793A;&#x7F51;&#x9875;" class="headerlink" title="&#x901A;&#x8FC7;Intent&#x8C03;&#x7528;&#x7CFB;&#x7EDF;&#x6D4F;&#x89C8;&#x5668;&#x663E;&#x793A;&#x7F51;&#x9875;"></a>&#x901A;&#x8FC7;Intent&#x8C03;&#x7528;&#x7CFB;&#x7EDF;&#x6D4F;&#x89C8;&#x5668;&#x663E;&#x793A;&#x7F51;&#x9875;</h1><p><img src="http://o7dscdnip.bkt.clouddn.com/Android-webview-%E9%80%9A%E8%BF%87Intent%E8%B0%83%E7%94%A8%E6%B5%8F%E8%A7%88%E5%99%A8.png"></p>
+<h1 id="&#x5B66;&#x4E60;&#x5185;&#x5BB9;"><a href="#&#x5B66;&#x4E60;&#x5185;&#x5BB9;" class="headerlink" title="&#x5B66;&#x4E60;&#x5185;&#x5BB9;"></a>&#x5B66;&#x4E60;&#x5185;&#x5BB9;</h1><p><img src="http://o7dscdnip.bkt.clouddn.com/Android-webview-%E9%80%9A%E8%BF%87WebView%E5%81%9A%E4%B8%80%E4%B8%AA%E7%BD%91%E9%A1%B5%E6%B5%8F%E8%A7%88%E5%99%A8.png"></p>
+<p><img src="http://o7dscdnip.bkt.clouddn.com/Android-webview-%E5%AD%A6%E4%B9%A0%E5%86%85%E5%AE%B9.png"></p>
+<h1 id="&#x81EA;&#x5236;&#x7B80;&#x6613;&#x6D4F;&#x89C8;&#x5668;"><a href="#&#x81EA;&#x5236;&#x7B80;&#x6613;&#x6D4F;&#x89C8;&#x5668;" class="headerlink" title="&#x81EA;&#x5236;&#x7B80;&#x6613;&#x6D4F;&#x89C8;&#x5668;"></a>&#x81EA;&#x5236;&#x7B80;&#x6613;&#x6D4F;&#x89C8;&#x5668;</h1><h2 id="&#x4F7F;&#x7528;WebView&#x52A0;&#x8F7D;&#x9875;&#x9762;"><a href="#&#x4F7F;&#x7528;WebView&#x52A0;&#x8F7D;&#x9875;&#x9762;" class="headerlink" title="&#x4F7F;&#x7528;WebView&#x52A0;&#x8F7D;&#x9875;&#x9762;"></a>&#x4F7F;&#x7528;WebView&#x52A0;&#x8F7D;&#x9875;&#x9762;</h2><p><img src="http://o7dscdnip.bkt.clouddn.com/Android-webview-%E4%BD%BF%E7%94%A8WebView%E5%8A%A0%E8%BD%BD%E9%A1%B5%E9%9D%A2.png"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>{</span><br><span class="line">        mWebView= (WebView) findViewById(R.id.webview);</span><br><span class="line">        <span class="comment">//WebView&#x672C;&#x5730;&#x52A0;&#x8F7D;&#x8D44;&#x6E90;</span></span><br><span class="line">        <span class="comment">//mWebView.loadUrl(&quot;file:///&quot;);</span></span><br><span class="line">        <span class="comment">//WebView&#x52A0;&#x8F7D;&#x5916;&#x90E8;&#x8D44;&#x6E90;</span></span><br><span class="line">        mWebView.loadUrl(<span class="string">&quot;http://www.leostones.cn&quot;</span>);</span><br><span class="line">});</span><br></pre></td></tr></table></figure>
+<h2 id="&#x83B7;&#x53D6;&#x7F51;&#x7EDC;&#x8BBF;&#x95EE;&#x6743;&#x9650;"><a href="#&#x83B7;&#x53D6;&#x7F51;&#x7EDC;&#x8BBF;&#x95EE;&#x6743;&#x9650;" class="headerlink" title="&#x83B7;&#x53D6;&#x7F51;&#x7EDC;&#x8BBF;&#x95EE;&#x6743;&#x9650;"></a>&#x83B7;&#x53D6;&#x7F51;&#x7EDC;&#x8BBF;&#x95EE;&#x6743;&#x9650;</h2><p><img src="http://o7dscdnip.bkt.clouddn.com/Android-webview-%E8%8E%B7%E5%8F%96%E6%9D%83%E9%99%90.png"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;uses-permission android:name=<span class="string">&quot;android.permission.INTERNET&quot;</span>/&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="&#x5728;WebView&#x4E2D;&#x4F7F;&#x7528;Javascript"><a href="#&#x5728;WebView&#x4E2D;&#x4F7F;&#x7528;Javascript" class="headerlink" title="&#x5728;WebView&#x4E2D;&#x4F7F;&#x7528;Javascript"></a>&#x5728;WebView&#x4E2D;&#x4F7F;&#x7528;Javascript</h2><p><img src="http://o7dscdnip.bkt.clouddn.com/Android-webview-javascri.png"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//&#x542F;&#x7528;WebView&#x652F;&#x6301;javascript</span></span><br><span class="line">WebSettings webSetings = mWebView.getSettings();</span><br><span class="line">webSetings.setJavaScriptEnabled(<span class="keyword">true</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="&#x5904;&#x7406;&#x9875;&#x9762;&#x5BFC;&#x822A;"><a href="#&#x5904;&#x7406;&#x9875;&#x9762;&#x5BFC;&#x822A;" class="headerlink" title="&#x5904;&#x7406;&#x9875;&#x9762;&#x5BFC;&#x822A;"></a>&#x5904;&#x7406;&#x9875;&#x9762;&#x5BFC;&#x822A;</h2><p><img src="http://o7dscdnip.bkt.clouddn.com/Android-webview-%E8%A6%86%E7%9B%96%E9%A1%B5%E9%9D%A2%E5%AF%BC%E8%88%AA.png"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//&#x8986;&#x76D6;WebView&#x9ED8;&#x8BA4;&#x901A;&#x8FC7;&#x7B2C;&#x4E09;&#x65B9;&#x6216;&#x8005;&#x7CFB;&#x7EDF;&#x81EA;&#x5E26;&#x6D4F;&#x89C8;&#x5668;&#x6253;&#x5F00;&#x7F51;&#x9875;&#x7684;&#x884C;&#x4E3A;&#xFF0C;&#x4F7F;&#x5F97;&#x7F51;&#x9875;&#x53EF;&#x4EE5;&#x5728;WebView&#x4E2D;&#x6253;&#x5F00;</span></span><br><span class="line">mWebView.setWebViewClient(<span class="keyword">new</span> WebViewClient(){</span><br><span class="line"><span class="comment">/**</span><br><span class="line">*WebViewClient()&#x5E2E;&#x52A9;WebView&#x53BB;&#x5904;&#x7406;&#x4E00;&#x4E9B;&#x9875;&#x9762;&#x63A7;&#x5236;&#x548C;&#x8BF7;&#x6C42;&#x901A;&#x77E5;</span><br><span class="line">*/</span></span><br><span class="line"> <span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">shouldOverrideUrlLoading</span><span class="params">(WebView view, WebResourceRequest request)</span> </span>{</span><br><span class="line">	<span class="comment">//&#x8FD4;&#x56DE;&#x503C;&#x4E3A;true&#x65F6;&#xFF0C;&#x63A7;&#x5236;&#x7F51;&#x9875;&#x5728;WebView&#x4E2D;&#x6253;&#x5F00;</span></span><br><span class="line">	mWebView.loadUrl(<span class="string">&quot;http://www.leostones.cn&quot;</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<h2 id="&#x540E;&#x9000;&#x4E0E;&#x524D;&#x8FDB;"><a href="#&#x540E;&#x9000;&#x4E0E;&#x524D;&#x8FDB;" class="headerlink" title="&#x540E;&#x9000;&#x4E0E;&#x524D;&#x8FDB;"></a>&#x540E;&#x9000;&#x4E0E;&#x524D;&#x8FDB;</h2><p><img src="http://o7dscdnip.bkt.clouddn.com/Android-webview-%E5%90%8E%E9%80%80%E4%B8%8E%E5%89%8D%E8%BF%9B.png"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">/&#x6539;&#x5199;&#x7269;&#x7406;&#x6309;&#x952E;--&#x8FD4;&#x56DE;&#x903B;&#x8F91;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onKeyDown</span><span class="params">(<span class="keyword">int</span> keyCode, KeyEvent event)</span> </span>{</span><br><span class="line">        <span class="keyword">if</span> (keyCode == KeyEvent.KEYCODE_BACK) {</span><br><span class="line">            Toast.makeText(<span class="keyword">this</span>,mWebView.getUrl(),Toast.LENGTH_SHORT).show();</span><br><span class="line">            <span class="keyword">if</span> (mWebView.canGoBack()) {</span><br><span class="line">                mWebView.goBack(); <span class="comment">//&#x8FD4;&#x56DE;&#x4E0A;&#x4E00;&#x754C;&#x9762;</span></span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">else</span>{</span><br><span class="line">                System.exit(<span class="number">0</span>); <span class="comment">//&#x9000;&#x51FA;&#x7A0B;&#x5E8F;</span></span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">super</span>.onKeyDown(keyCode, event);</span><br><span class="line">    }</span><br></pre></td></tr></table></figure>
+<h2 id="&#x5224;&#x65AD;&#x9875;&#x9762;&#x52A0;&#x8F7D;&#x8FC7;&#x7A0B;"><a href="#&#x5224;&#x65AD;&#x9875;&#x9762;&#x52A0;&#x8F7D;&#x8FC7;&#x7A0B;" class="headerlink" title="&#x5224;&#x65AD;&#x9875;&#x9762;&#x52A0;&#x8F7D;&#x8FC7;&#x7A0B;"></a>&#x5224;&#x65AD;&#x9875;&#x9762;&#x52A0;&#x8F7D;&#x8FC7;&#x7A0B;</h2><p><img src="http://o7dscdnip.bkt.clouddn.com/Android-webview-%E5%88%A4%E6%96%AD%E9%A1%B5%E9%9D%A2%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B.png"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//&#x52A0;&#x8F7D;&#x7F51;&#x9875;&#x65F6;&#xFF0C;&#x663E;&#x793A;&#x8FDB;&#x5EA6;&#x6761;</span></span><br><span class="line">        mWebView.setWebChromeClient(<span class="keyword">new</span> WebChromeClient(){</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onProgressChanged</span><span class="params">(WebView view, <span class="keyword">int</span> newProgress)</span> </span>{</span><br><span class="line">                <span class="keyword">if</span> (newProgress == <span class="number">100</span>) {</span><br><span class="line">                    <span class="comment">//&#x7F51;&#x9875;&#x52A0;&#x8F7D;&#x5B8C;&#x6BD5; &#x5173;&#x95ED;PressDialog</span></span><br><span class="line">                    closeDiagle();</span><br><span class="line">                }</span><br><span class="line">                <span class="keyword">else</span> {</span><br><span class="line">                    <span class="comment">//&#x7F51;&#x9875;&#x52A0;&#x8F7D; &#x6253;&#x5F00;PressDialog</span></span><br><span class="line">                    openDialog(newProgress);</span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line"></span><br><span class="line">            <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">closeDiagle</span><span class="params">()</span> </span>{</span><br><span class="line">                <span class="keyword">if</span> (mProgressDialog != <span class="keyword">null</span> &amp;&amp; mProgressDialog.isShowing()) {</span><br><span class="line">                    mProgressDialog.dismiss();</span><br><span class="line">                    mProgressDialog = <span class="keyword">null</span>;</span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line"></span><br><span class="line">            <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">openDialog</span><span class="params">(<span class="keyword">int</span> newProgress)</span> </span>{</span><br><span class="line">                <span class="keyword">if</span> (mProgressDialog == <span class="keyword">null</span>) {</span><br><span class="line">                    mProgressDialog = <span class="keyword">new</span> ProgressDialog(MainActivity.<span class="keyword">this</span>);</span><br><span class="line">                    mProgressDialog.setTitle(<span class="string">&quot;&#x4F5C;&#x8005;&#x611F;&#x8C22;&#x4F60;&#x7684;&#x5173;&#x6CE8;&quot;</span>);</span><br><span class="line">                    mProgressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);</span><br><span class="line">                    mProgressDialog.setProgress(newProgress);</span><br><span class="line">                    mProgressDialog.show();</span><br><span class="line">                }</span><br><span class="line">                <span class="keyword">else</span> {</span><br><span class="line">                    mProgressDialog.setProgress(newProgress);</span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line">        });</span><br></pre></td></tr></table></figure>
+<h2 id="WebView&#x7F13;&#x5B58;&#x7684;&#x8FD0;&#x7528;"><a href="#WebView&#x7F13;&#x5B58;&#x7684;&#x8FD0;&#x7528;" class="headerlink" title="WebView&#x7F13;&#x5B58;&#x7684;&#x8FD0;&#x7528;"></a>WebView&#x7F13;&#x5B58;&#x7684;&#x8FD0;&#x7528;</h2><p><img src="http://o7dscdnip.bkt.clouddn.com/Android-webview-WebView%E7%BC%93%E5%AD%98%E7%9A%84%E8%BF%90%E7%94%A8.png"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//WieView&#x52A0;&#x8F7D;&#x9875;&#x9762;&#x4F18;&#x5148;&#x4F7F;&#x7528;&#x7F13;&#x5B58;&#x52A0;&#x8F7D;</span></span><br><span class="line">webSetings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);</span><br></pre></td></tr></table></figure>
+<h1 id="&#x6548;&#x679C;&#x6F14;&#x793A;"><a href="#&#x6548;&#x679C;&#x6F14;&#x793A;" class="headerlink" title="&#x6548;&#x679C;&#x6F14;&#x793A;"></a>&#x6548;&#x679C;&#x6F14;&#x793A;</h1><p><img src="http://o7dscdnip.bkt.clouddn.com/Android-webview-webview%E6%BC%94%E7%A4%BA.gif"></p>
+
+  </article>
+  <div class="random-toc-area">
+  <button class="btn-hide-toc btn-hide-toc-show" style="display: none" onclick="TOCToggle()">Show TOC</button>
+  <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">Hide TOC</button>
+  <div class="random-toc">
+    <h2>Table of Content</h2>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#WebView的用途"><span class="toc-text">WebView的用途</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#通过Intent调用系统浏览器显示网页"><span class="toc-text">通过Intent调用系统浏览器显示网页</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#学习内容"><span class="toc-text">学习内容</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#自制简易浏览器"><span class="toc-text">自制简易浏览器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用WebView加载页面"><span class="toc-text">使用WebView加载页面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取网络访问权限"><span class="toc-text">获取网络访问权限</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在WebView中使用Javascript"><span class="toc-text">在WebView中使用Javascript</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#处理页面导航"><span class="toc-text">处理页面导航</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#后退与前进"><span class="toc-text">后退与前进</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#判断页面加载过程"><span class="toc-text">判断页面加载过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WebView缓存的运用"><span class="toc-text">WebView缓存的运用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#效果演示"><span class="toc-text">效果演示</span></a></li></ol>
+  </div>
+</div>
+
+  
+<nav id="pagination">
+  
+
+  
+
+  
+    <a href="/blog/2016/08/Android控件学习-实现进度条.html" class="next">Next post Android控件学习-实现进度条 &rarr;</a>
+  
+</nav>
+
+  <!-- JiaThis Button BEGIN -->
+
+<!-- JiaThis Button END -->
+
+
+      
+      <div class="ds-thread" data-thread-key="/blog/2016/08/Android控件学习-.显示网页.html" data-title="Android控件学习-实现进度条" data-url="http://leostones.cn/Blog/blog/2016/08/Android控件学习-.显示网页.html"></div>
+      
+      
+      
+    </div>
+  </div>
+
+  <div id="bottom-outer">
+    <div id="bottom-inner">
+      Site by LeoStones using
+      <a href="http://hexo.io">Hexo</a> & <a href="https://github.com/stiekel/hexo-theme-random">Random</a>
+      <br>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  <script type="text/javascript">
+var duoshuoQuery = {short_name:"LeoStones"};
+(function() {
+  var ds = document.createElement('script');
+  ds.type = 'text/javascript';ds.async = true;
+  ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+  ds.charset = 'UTF-8';
+  (document.getElementsByTagName('head')[0] 
+   || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script>
+
+
+
+<div id="user-card">
+  <div class="center-field">
+    <img class="avatar" src="http://7te9fe.com1.z0.glb.clouddn.com/default_avatar.jpg">
+    <p id="description">我本来就不是为了输赢，我就是因为任性啊</p>
+    <ul class="social-icon">
+  
+  
+    <li>
+      <a href="https://github.com/leostones">
+        
+          <i class="icon iconfont github">&#xe606;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="https://twitter.com/SidCN">
+        
+          <i class="icon iconfont twitter">&#xe600;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="http://weibo.com/sidcn">
+        
+          <i class="icon iconfont weibo">&#xe602;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="https://www.zhihu.com/people/leostones">
+        
+          <i class="icon iconfont zhihu">&#xe60b;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="http://www.douban.com/people/Stiekel/">
+        
+          <i class="icon iconfont douban">&#xe609;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="http://chensd.com/feed">
+        
+          <i class="icon iconfont rss">&#xe60e;</i>
+        
+      </a>
+    </li>
+  
+</ul>
+  </div>
+</div>
+
+
+<div id="btn-view">Hide</div>
+
+<script>
+// is trigger analytics / tongji script
+var isIgnoreHost = false;
+
+if(window && window.location && window.location.host) {
+  isIgnoreHost = ["localhost","127.0.0.1"].some(function(address){
+    return 0 === window.location.host.indexOf(address);
+  });
+}
+
+var isTriggerAnalytics = !( true && isIgnoreHost );
+
+</script>
+
+  <script>
+if(isTriggerAnalytics) {
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?5b4afc2e848e734d81a9211aed583590";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+  })();
+}
+</script>
+
+
+
+  <script>
+if(isTriggerAnalytics) {
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-LeoStones', 'auto');
+  ga('send', 'pageview');
+}
+
+</script>
+
+
+
+  
+  
+    <script src="/js/jquery-2.2.3.min.js"></script>
+  
+    <script src="/js/vegas.min.js"></script>
+  
+    <script src="/js/random.js"></script>
+  
+    <script src="/js/highlight.pack.js"></script>
+  
+    <script src="/js/jquery.mousewheel.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox-thumbs.js"></script>
+  
+    <script src="/js/plyr.js"></script>
+  
+
+<script>
+
+  // fancybox
+  var backgroundImages = [];
+  
+  $('#post').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox') || $(this).parent().hasClass('fancybox-thumb')) return;
+      var alt = this.alt || this.title;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'post' + i);
+    });
+  });
+  $(".fancybox").fancybox();
+
+var vegasConfig = {"preload­Image":true,"transition":["slideLeft2","slideRight2","flash2"],"timer":true,"delay":10000,"shuffle":true,"count":10};
+var unsplashConfig = {"gravity":"north"};
+// is show background images
+var turnoffBackgroundImage = false;
+
+
+
+  turnoffBackgroundImage = true;
+
+
+var backgroundColor = 123456;
+
+$(".fancybox-thumb").fancybox({
+  prevEffect: 'none',
+  nextEffect: 'none',
+  helpers: {
+    title: {
+      type: 'outside'
+    },
+    thumbs: {
+      width: 50,
+      height: 50
+    }
+  }
+});
+
+// show video with plyr
+$(".video-container iframe").each(function(i){
+  var url = $(this).attr('src');
+  var id = url.split('/').pop();
+  var plyrContainer = document.createElement('div');
+  plyrContainer.className = 'plyr';
+  var plyrElement = document.createElement('div');
+  plyrElement.dataset.videoId = id;
+  switch(true) {
+    case url.search('youtube.com') >= 0:
+      plyrElement.dataset.type = 'youtube';
+      break;
+    case url.search('vimeo.com') >= 0:
+      plyrElement.dataset.type = 'vimeo';
+      break;
+    default:
+      return;
+  };
+  plyrContainer.appendChild(plyrElement);
+  $(this).parent().html(plyrContainer);
+});
+plyr.setup('.plyr', {iconUrl: '/css/sprite.svg'});
+</script>
+</body>
+</html>
+

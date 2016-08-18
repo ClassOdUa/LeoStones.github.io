@@ -1,0 +1,449 @@
+
+
+
+
+
+
+
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="author" content="LeoStones">
+  
+  
+  
+  
+    <meta name="description" content="">
+  
+  <title>Android控件学习-实现进度条 [ LeoStones's Blog ]</title>
+  
+    <link rel="alternate" href="/atom.xml" title="LeoStones's Blog">
+  
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+  <link rel="stylesheet" href="/css/random.css">
+<link rel="stylesheet" href="/css/vegas.min.css">
+<link rel="stylesheet" href="/css/highlight-railscasts.css">
+<link rel="stylesheet" href="/css/jquery.fancybox.css">
+<link rel="stylesheet" href="/css/iconfont/iconfont.css">
+<link rel="stylesheet" href="/css/jquery.fancybox-thumbs.css">
+<link rel="stylesheet" href="/css/plyr.css">
+  
+</head>
+
+<body>
+<div class="side-navigate hide-area">
+  
+    <div class="item prev">
+      <a href="/blog/2016/08/Android控件学习-.显示网页.html">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        Android控件学习-实现进度条
+      </div>
+    </div>
+  
+  
+    <div class="item next">
+      <a href="/blog/2016/08/Android控件学习-实现下拉列表.html">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        Android控件学习-实现下拉列表
+      </div>
+    </div>
+  
+</div>
+<div id="outer-container" class="hide-area">
+<div id="container">
+  <div id="menu-outer" class="slide-down">
+    <div id="menu-inner">
+      <div id="brand">
+        
+        <a onClick="openUserCard()">
+          <img id="avatar" src="http://7te9fe.com1.z0.glb.clouddn.com/default_avatar.jpg"/>
+          <div id="homelink">LeoStones's Blog</div>
+        </a>
+      </div>
+      <div id="menu-list">
+        <ul>
+        
+        
+          
+            <li>
+          
+            <a href="/index.html">Home</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/archives">Archives</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/tags">Tags</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/categories">Categories</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/about">About</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/guestbook">Guestbook</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="https://github.com/stiekel/hexo-theme-random">Github</a>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div id="show-menu">
+        <button>Menu</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="content-outer">
+    <div id="content-inner">
+      
+      
+  <article id="post">
+    <h1>Android控件学习-实现进度条</h1>
+    <p class="page-title-sub">
+      <span id = "post-title-date">Created at 2016-08-18</span>
+      
+        <span id = "post-title-updated">Updated at 2016-08-19</span>
+      
+      
+      <span id = "post-title-categories">Category
+      
+      
+        
+        
+        <a href="/categories/Android学习之路/">Android学习之路</a>
+      
+      </span>
+      
+      
+      <span id = "post-title-tags">
+      Tag
+      
+      
+        
+        
+        <a href="/tags/Android/">Android</a>
+      
+      </span>
+      
+    </p>
+    
+    <p><img src="http://o7dscdnip.bkt.clouddn.com/Android-progressbar-%E4%BD%BF%E7%94%A8ProgressBar.png"></p>
+<a id="more"></a>
+<h1 id="ProgressBar&#x7B80;&#x4ECB;"><a href="#ProgressBar&#x7B80;&#x4ECB;" class="headerlink" title="ProgressBar&#x7B80;&#x4ECB;"></a>ProgressBar&#x7B80;&#x4ECB;</h1><p><img src="http://o7dscdnip.bkt.clouddn.com/Android-progressbar-%E4%BB%80%E4%B9%88%E6%98%AFProgressBar.png"></p>
+<h2 id="ProgressBar&#x5206;&#x7C7B;"><a href="#ProgressBar&#x5206;&#x7C7B;" class="headerlink" title="ProgressBar&#x5206;&#x7C7B;"></a>ProgressBar&#x5206;&#x7C7B;</h2><p><img src="http://o7dscdnip.bkt.clouddn.com/Android-progressbar-ProgressBar%E7%9A%84%E5%88%86%E7%B1%BB.png"></p>
+<h1 id="&#x5B66;&#x4E60;&#x5185;&#x5BB9;"><a href="#&#x5B66;&#x4E60;&#x5185;&#x5BB9;" class="headerlink" title="&#x5B66;&#x4E60;&#x5185;&#x5BB9;"></a>&#x5B66;&#x4E60;&#x5185;&#x5BB9;</h1><p><img src="http://o7dscdnip.bkt.clouddn.com/Android-progressbar-%E5%AD%A6%E4%B9%A0%E7%9B%AE%E6%A0%87,png.png"></p>
+<h1 id="&#x8BBE;&#x7F6E;ProgressBar&#x7684;&#x73B0;&#x5B9E;&#x98CE;&#x683C;"><a href="#&#x8BBE;&#x7F6E;ProgressBar&#x7684;&#x73B0;&#x5B9E;&#x98CE;&#x683C;" class="headerlink" title="&#x8BBE;&#x7F6E;ProgressBar&#x7684;&#x73B0;&#x5B9E;&#x98CE;&#x683C;"></a>&#x8BBE;&#x7F6E;ProgressBar&#x7684;&#x73B0;&#x5B9E;&#x98CE;&#x683C;</h1><p><img src="http://o7dscdnip.bkt.clouddn.com/Android-progressbar-%E5%88%B6%E5%AE%9AProgressBar%E7%9A%84%E6%98%BE%E7%A4%BA%E9%A3%8E%E6%A0%BC.png"></p>
+<h1 id="&#x5173;&#x952E;&#x5C5E;&#x6027;&#x548C;&#x65B9;&#x6CD5;"><a href="#&#x5173;&#x952E;&#x5C5E;&#x6027;&#x548C;&#x65B9;&#x6CD5;" class="headerlink" title="&#x5173;&#x952E;&#x5C5E;&#x6027;&#x548C;&#x65B9;&#x6CD5;"></a>&#x5173;&#x952E;&#x5C5E;&#x6027;&#x548C;&#x65B9;&#x6CD5;</h1><h2 id="&#x5173;&#x952E;&#x5C5E;&#x6027;"><a href="#&#x5173;&#x952E;&#x5C5E;&#x6027;" class="headerlink" title="&#x5173;&#x952E;&#x5C5E;&#x6027;"></a>&#x5173;&#x952E;&#x5C5E;&#x6027;</h2><p><img src="http://o7dscdnip.bkt.clouddn.com/Android-progressbar-%E4%BD%BF%E7%94%A8ProgressBar.png"></p>
+<p><img src="http://o7dscdnip.bkt.clouddn.com/Android-progressbar-%E5%85%B3%E9%94%AE%E5%B1%9E%E6%80%A72.png"></p>
+<h2 id="&#x5173;&#x952E;&#x65B9;&#x6CD5;"><a href="#&#x5173;&#x952E;&#x65B9;&#x6CD5;" class="headerlink" title="&#x5173;&#x952E;&#x65B9;&#x6CD5;"></a>&#x5173;&#x952E;&#x65B9;&#x6CD5;</h2><p><img src="http://o7dscdnip.bkt.clouddn.com/Android-progressbar-%E5%85%B3%E9%94%AE%E6%96%B9%E6%B3%95.png"></p>
+<h1 id="&#x6807;&#x9898;&#x680F;&#x4E0A;&#x8BBE;&#x7F6E;PressBar"><a href="#&#x6807;&#x9898;&#x680F;&#x4E0A;&#x8BBE;&#x7F6E;PressBar" class="headerlink" title="&#x6807;&#x9898;&#x680F;&#x4E0A;&#x8BBE;&#x7F6E;PressBar"></a>&#x6807;&#x9898;&#x680F;&#x4E0A;&#x8BBE;&#x7F6E;PressBar</h1><p><img src="http://o7dscdnip.bkt.clouddn.com/Android-progressbar-%E6%A0%87%E9%A2%98%E6%A0%8F%E4%B8%8A%E7%9A%84ProgreBar%E8%AE%BE%E7%BD%AE.png"></p>
+<h1 id="&#x4F7F;&#x7528;ProgressBar&#x5B9E;&#x73B0;&#x8FDB;&#x5EA6;&#x6761;"><a href="#&#x4F7F;&#x7528;ProgressBar&#x5B9E;&#x73B0;&#x8FDB;&#x5EA6;&#x6761;" class="headerlink" title="&#x4F7F;&#x7528;ProgressBar&#x5B9E;&#x73B0;&#x8FDB;&#x5EA6;&#x6761;"></a>&#x4F7F;&#x7528;ProgressBar&#x5B9E;&#x73B0;&#x8FDB;&#x5EA6;&#x6761;</h1><h2 id="&#x5E03;&#x5C40;&#x6587;&#x4EF6;"><a href="#&#x5E03;&#x5C40;&#x6587;&#x4EF6;" class="headerlink" title="&#x5E03;&#x5C40;&#x6587;&#x4EF6;"></a>&#x5E03;&#x5C40;&#x6587;&#x4EF6;</h2><blockquote>
+<p><strong>&#x56DB;&#x79CD;ProgressBar</strong></p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&lt;ProgressBar</span><br><span class="line">      style=<span class="string">&quot;?android:attr/progressBarStyleLarge&quot;</span></span><br><span class="line">      android:layout_width=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">      android:layout_height=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">      android:id=<span class="string">&quot;@+id/progressBar&quot;</span></span><br><span class="line">      android:layout_alignParentTop=<span class="string">&quot;true&quot;</span></span><br><span class="line">      android:layout_alignParentStart=<span class="string">&quot;true&quot;</span>/&gt;</span><br><span class="line"></span><br><span class="line">  &lt;ProgressBar</span><br><span class="line">      android:layout_width=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">      android:layout_height=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">      android:id=<span class="string">&quot;@+id/progressBar2&quot;</span></span><br><span class="line">      android:layout_below=<span class="string">&quot;@+id/progressBar&quot;</span></span><br><span class="line">      android:layout_alignParentStart=<span class="string">&quot;true&quot;</span>/&gt;</span><br><span class="line"></span><br><span class="line">  &lt;ProgressBar</span><br><span class="line">      style=<span class="string">&quot;?android:attr/progressBarStyleSmall&quot;</span></span><br><span class="line">      android:layout_width=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">      android:layout_height=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">      android:id=<span class="string">&quot;@+id/progressBar3&quot;</span></span><br><span class="line">      android:layout_below=<span class="string">&quot;@+id/progressBar2&quot;</span></span><br><span class="line">      android:layout_alignParentStart=<span class="string">&quot;true&quot;</span>/&gt;</span><br><span class="line"></span><br><span class="line">  &lt;ProgressBar</span><br><span class="line">      style=<span class="string">&quot;?android:attr/progressBarStyleHorizontal&quot;</span></span><br><span class="line">      android:layout_width=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">      android:layout_height=<span class="string">&quot;wrap_content&quot;</span></span><br><span class="line">      android:id=<span class="string">&quot;@+id/hori&quot;</span></span><br><span class="line">      android:max=<span class="string">&quot;100&quot;</span></span><br><span class="line">      android:progress=<span class="string">&quot;50&quot;</span></span><br><span class="line">      android:secondaryProgress=<span class="string">&quot;80&quot;</span>/&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="&#x8BBE;&#x7F6E;&#x6309;&#x94AE;&#x5B9E;&#x73B0;&#x5BF9;&#x8FDB;&#x5EA6;&#x6761;&#x7684;&#x63A7;&#x5236;"><a href="#&#x8BBE;&#x7F6E;&#x6309;&#x94AE;&#x5B9E;&#x73B0;&#x5BF9;&#x8FDB;&#x5EA6;&#x6761;&#x7684;&#x63A7;&#x5236;" class="headerlink" title="&#x8BBE;&#x7F6E;&#x6309;&#x94AE;&#x5B9E;&#x73B0;&#x5BF9;&#x8FDB;&#x5EA6;&#x6761;&#x7684;&#x63A7;&#x5236;"></a>&#x8BBE;&#x7F6E;&#x6309;&#x94AE;&#x5B9E;&#x73B0;&#x5BF9;&#x8FDB;&#x5EA6;&#x6761;&#x7684;&#x63A7;&#x5236;</h2><blockquote>
+<p>&#x521D;&#x59CB;&#x5316; init()</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>{</span><br><span class="line">        mProgressBar = (ProgressBar) findViewById(R.id.hori);</span><br><span class="line">        add = (Button) findViewById(R.id.add);</span><br><span class="line">        reduce = (Button) findViewById(R.id.reduce);</span><br><span class="line">        reset = (Button) findViewById(R.id.reset);</span><br><span class="line">        mTextView = (TextView) findViewById(R.id.textView);</span><br><span class="line">        show = (Button) findViewById(R.id.show);</span><br><span class="line">        <span class="comment">//&#x83B7;&#x53D6;&#x6700;&#x5927;&#x8FDB;&#x5EA6;&#x6761;</span></span><br><span class="line">        <span class="keyword">int</span> max = mProgressBar.getMax();</span><br><span class="line">        <span class="comment">//&#x83B7;&#x53D6;&#x7B2C;&#x4E00;&#x6761;&#x8FDB;&#x5EA6;&#x6761;</span></span><br><span class="line">        <span class="keyword">int</span> first = mProgressBar.getProgress();</span><br><span class="line">        <span class="comment">//&#x83B7;&#x53D6;&#x7B2C;&#x4E8C;&#x6761;&#x8FDB;&#x5EA6;&#x6761;</span></span><br><span class="line">        <span class="keyword">int</span> second = mProgressBar.getSecondaryProgress();</span><br><span class="line"></span><br><span class="line">        mTextView.setText(<span class="string">&quot;&#x7B2C;&#x4E00;&#x8FDB;&#x5EA6;&#x767E;&#x5206;&#x6BD4;: &quot;</span> + (<span class="keyword">int</span>) (first / (<span class="keyword">float</span>) max * <span class="number">100</span>) + <span class="string">&quot;%&quot;</span></span><br><span class="line">                + <span class="string">&quot; &quot;</span> + <span class="string">&quot;&#x7B2C;&#x4E8C;&#x8FDB;&#x5EA6;&#x767E;&#x5206;&#x6BD4;: &quot;</span> + (<span class="keyword">int</span>) (second / (<span class="keyword">float</span>) max * <span class="number">100</span>) + <span class="string">&quot;%&quot;</span>);</span><br><span class="line">        add.setOnClickListener(<span class="keyword">this</span>);</span><br><span class="line">        reduce.setOnClickListener(<span class="keyword">this</span>);</span><br><span class="line">        reset.setOnClickListener(<span class="keyword">this</span>);</span><br><span class="line">        show.setOnClickListener(<span class="keyword">this</span>);</span><br><span class="line">    }</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>&#x76D1;&#x542C;&#x6309;&#x94AE;</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View view)</span> </span>{</span><br><span class="line">        <span class="keyword">switch</span> (view.getId()){</span><br><span class="line">            <span class="keyword">case</span> R.id.add: {</span><br><span class="line">                mProgressBar.incrementProgressBy(<span class="number">5</span>);</span><br><span class="line">                mProgressBar.incrementSecondaryProgressBy(<span class="number">5</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">case</span> R.id.reduce: {</span><br><span class="line">                mProgressBar.incrementProgressBy(-<span class="number">5</span>);</span><br><span class="line">                mProgressBar.incrementSecondaryProgressBy(-<span class="number">5</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">case</span> R.id.reset: {</span><br><span class="line">                mProgressBar.setProgress(<span class="number">50</span>);</span><br><span class="line">                mProgressBar.setSecondaryProgress(<span class="number">80</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<h2 id="&#x8FDB;&#x5EA6;&#x6761;&#x8BA1;&#x7B97;&#x65B9;&#x6CD5;"><a href="#&#x8FDB;&#x5EA6;&#x6761;&#x8BA1;&#x7B97;&#x65B9;&#x6CD5;" class="headerlink" title="&#x8FDB;&#x5EA6;&#x6761;&#x8BA1;&#x7B97;&#x65B9;&#x6CD5;"></a>&#x8FDB;&#x5EA6;&#x6761;&#x8BA1;&#x7B97;&#x65B9;&#x6CD5;</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mTextView.setText(<span class="string">&quot;&#x7B2C;&#x4E00;&#x8FDB;&#x5EA6;&#x767E;&#x5206;&#x6BD4;: &quot;</span> + (<span class="keyword">int</span>) (mProgressBar.getProgress() / (<span class="keyword">float</span>) mProgressBar.getMax() * <span class="number">100</span>) + <span class="string">&quot;%&quot;</span> + <span class="string">&quot; &quot;</span> + <span class="string">&quot;&#x7B2C;&#x4E8C;&#x8FDB;&#x5EA6;&#x767E;&#x5206;&#x6BD4;: &quot;</span> + (<span class="keyword">int</span>(mProgressBar.getSecondaryProgress() / (<span class="keyword">float</span>) mProgressBar.getMax() * <span class="number">100</span>) + <span class="string">&quot;%&quot;</span>);</span><br></pre></td></tr></table></figure>
+<h1 id="&#x8BBE;&#x5B9A;&#x5BF9;&#x8BDD;&#x6846;&#x5F62;&#x5F0F;&#x7684;&#x8FDB;&#x5EA6;&#x6761;"><a href="#&#x8BBE;&#x5B9A;&#x5BF9;&#x8BDD;&#x6846;&#x5F62;&#x5F0F;&#x7684;&#x8FDB;&#x5EA6;&#x6761;" class="headerlink" title="&#x8BBE;&#x5B9A;&#x5BF9;&#x8BDD;&#x6846;&#x5F62;&#x5F0F;&#x7684;&#x8FDB;&#x5EA6;&#x6761;"></a>&#x8BBE;&#x5B9A;&#x5BF9;&#x8BDD;&#x6846;&#x5F62;&#x5F0F;&#x7684;&#x8FDB;&#x5EA6;&#x6761;</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">case</span> R.id.show: {</span><br><span class="line">                <span class="comment">//1&gt;ProgressDialog&#x754C;&#x9762;&#x663E;&#x793A;</span></span><br><span class="line"></span><br><span class="line">                <span class="comment">//&#x65B0;&#x5EFA;ProgressDialog&#x5BF9;&#x8C61;</span></span><br><span class="line">                mProgressDialog = <span class="keyword">new</span> ProgressDialog(MainActivity.<span class="keyword">this</span>, ProgressDialog.STYLE_HORIZONTAL);</span><br><span class="line">                <span class="comment">//&#x8BBE;&#x7F6E;&#x663E;&#x793A;&#x98CE;&#x683C;</span></span><br><span class="line">                mProgressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);</span><br><span class="line">                <span class="comment">//&#x8BBE;&#x7F6E;&#x6807;&#x9898;</span></span><br><span class="line">                mProgressDialog.setTitle(<span class="string">&quot;LoeStones&quot;</span>);</span><br><span class="line">                <span class="comment">//&#x8BBE;&#x7F6E;&#x4FE1;&#x606F;</span></span><br><span class="line">                mProgressDialog.setMessage(<span class="string">&quot;&#x611F;&#x8C22;&#x5173;&#x6CE8;LeoStones&#x2019;Blog&quot;</span>);</span><br><span class="line">                <span class="comment">//&#x8BBE;&#x7F6E;&#x56FE;&#x6807;</span></span><br><span class="line">                mProgressDialog.setIcon(R.mipmap.ic_launcher);</span><br><span class="line"></span><br><span class="line">                <span class="comment">//2&gt;ProgressDialog&#x7684;&#x4E00;&#x4E9B;&#x5C5E;&#x6027;&#x8BBE;&#x7F6E;</span></span><br><span class="line"></span><br><span class="line">                <span class="comment">//&#x8BBE;&#x5B9A;&#x6700;&#x5927;&#x8FDB;&#x5EA6;</span></span><br><span class="line">                mProgressDialog.setMax(<span class="number">100</span>);</span><br><span class="line">                <span class="comment">//&#x8BBE;&#x5B9A;&#x521D;&#x59CB;&#x5316;&#x7684;&#x5DF2;&#x7ECF;&#x589E;&#x957F;&#x5230;&#x7684;&#x8FDB;&#x5EA6;</span></span><br><span class="line">                mProgressDialog.incrementProgressBy(<span class="number">50</span>);</span><br><span class="line">                <span class="comment">//&#x8BBE;&#x5B9A;&#x8FDB;&#x5EA6;&#x6761;&#x660E;&#x786E;&#x663E;&#x793A;</span></span><br><span class="line">                mProgressDialog.setIndeterminate(<span class="keyword">false</span>);</span><br><span class="line"></span><br><span class="line">                <span class="comment">//3&gt;&#x8BBE;&#x5B9A;&#x4E00;&#x4E2A;&#x786E;&#x5B9A;&#x6309;&#x94AE;</span></span><br><span class="line">                mProgressDialog.setButton(DialogInterface.BUTTON_POSITIVE,<span class="string">&quot;&#x786E;&#x8BA4;&quot;</span>, <span class="keyword">new</span> DialogInterface.OnClickListener() {</span><br><span class="line">                    <span class="meta">@Override</span></span><br><span class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(DialogInterface dialogInterface, <span class="keyword">int</span> i)</span> </span>{</span><br><span class="line">                        Toast.makeText(MainActivity.<span class="keyword">this</span>,<span class="string">&quot;&#x611F;&#x8C22;&#x5927;&#x5BB6;&#x652F;&#x6301;LeoStones&apos;Blog&quot;</span>,Toast.LENGTH_SHORT).show();</span><br><span class="line">                    }</span><br><span class="line">                });</span><br><span class="line">                <span class="comment">//&#x8BBE;&#x5B9A;&#x70B9;&#x51FB;&#x8FD4;&#x56DE;&#xFF0C;&#x53EF;&#x4EE5;&#x9000;&#x51FA;&#x5BF9;&#x8BDD;&#x6846;</span></span><br><span class="line">                mProgressDialog.setCancelable(<span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line">                <span class="comment">//3&gt;&#x5C06;ProgressDialog&#x663E;&#x793A;&#x51FA;&#x6765;</span></span><br><span class="line">                mProgressDialog.show();</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            }</span><br></pre></td></tr></table></figure>
+<h1 id="&#x6548;&#x679C;&#x6F14;&#x793A;"><a href="#&#x6548;&#x679C;&#x6F14;&#x793A;" class="headerlink" title="&#x6548;&#x679C;&#x6F14;&#x793A;"></a>&#x6548;&#x679C;&#x6F14;&#x793A;</h1><p><img src="http://o7dscdnip.bkt.clouddn.com/Android-progressbar-progressbar%E6%BC%94%E7%A4%BA1.gif"></p>
+
+  </article>
+  <div class="random-toc-area">
+  <button class="btn-hide-toc btn-hide-toc-show" style="display: none" onclick="TOCToggle()">Show TOC</button>
+  <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">Hide TOC</button>
+  <div class="random-toc">
+    <h2>Table of Content</h2>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ProgressBar简介"><span class="toc-text">ProgressBar简介</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ProgressBar分类"><span class="toc-text">ProgressBar分类</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#学习内容"><span class="toc-text">学习内容</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#设置ProgressBar的现实风格"><span class="toc-text">设置ProgressBar的现实风格</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#关键属性和方法"><span class="toc-text">关键属性和方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#关键属性"><span class="toc-text">关键属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关键方法"><span class="toc-text">关键方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#标题栏上设置PressBar"><span class="toc-text">标题栏上设置PressBar</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用ProgressBar实现进度条"><span class="toc-text">使用ProgressBar实现进度条</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#布局文件"><span class="toc-text">布局文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设置按钮实现对进度条的控制"><span class="toc-text">设置按钮实现对进度条的控制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进度条计算方法"><span class="toc-text">进度条计算方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#设定对话框形式的进度条"><span class="toc-text">设定对话框形式的进度条</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#效果演示"><span class="toc-text">效果演示</span></a></li></ol>
+  </div>
+</div>
+
+  
+<nav id="pagination">
+  
+    <a href="/blog/2016/08/Android控件学习-.显示网页.html" class="prev">&larr; Prev post Android控件学习-实现进度条</a>
+  
+
+  
+
+  
+    <a href="/blog/2016/08/Android控件学习-实现下拉列表.html" class="next">Next post Android控件学习-实现下拉列表 &rarr;</a>
+  
+</nav>
+
+  <!-- JiaThis Button BEGIN -->
+
+<!-- JiaThis Button END -->
+
+
+      
+      <div class="ds-thread" data-thread-key="/blog/2016/08/Android控件学习-实现进度条.html" data-title="Android控件学习-实现进度条" data-url="http://leostones.cn/Blog/blog/2016/08/Android控件学习-实现进度条.html"></div>
+      
+      
+      
+    </div>
+  </div>
+
+  <div id="bottom-outer">
+    <div id="bottom-inner">
+      Site by LeoStones using
+      <a href="http://hexo.io">Hexo</a> & <a href="https://github.com/stiekel/hexo-theme-random">Random</a>
+      <br>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  <script type="text/javascript">
+var duoshuoQuery = {short_name:"LeoStones"};
+(function() {
+  var ds = document.createElement('script');
+  ds.type = 'text/javascript';ds.async = true;
+  ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+  ds.charset = 'UTF-8';
+  (document.getElementsByTagName('head')[0] 
+   || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script>
+
+
+
+<div id="user-card">
+  <div class="center-field">
+    <img class="avatar" src="http://7te9fe.com1.z0.glb.clouddn.com/default_avatar.jpg">
+    <p id="description">我本来就不是为了输赢，我就是因为任性啊</p>
+    <ul class="social-icon">
+  
+  
+    <li>
+      <a href="https://github.com/leostones">
+        
+          <i class="icon iconfont github">&#xe606;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="https://twitter.com/SidCN">
+        
+          <i class="icon iconfont twitter">&#xe600;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="http://weibo.com/sidcn">
+        
+          <i class="icon iconfont weibo">&#xe602;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="https://www.zhihu.com/people/leostones">
+        
+          <i class="icon iconfont zhihu">&#xe60b;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="http://www.douban.com/people/Stiekel/">
+        
+          <i class="icon iconfont douban">&#xe609;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="http://chensd.com/feed">
+        
+          <i class="icon iconfont rss">&#xe60e;</i>
+        
+      </a>
+    </li>
+  
+</ul>
+  </div>
+</div>
+
+
+<div id="btn-view">Hide</div>
+
+<script>
+// is trigger analytics / tongji script
+var isIgnoreHost = false;
+
+if(window && window.location && window.location.host) {
+  isIgnoreHost = ["localhost","127.0.0.1"].some(function(address){
+    return 0 === window.location.host.indexOf(address);
+  });
+}
+
+var isTriggerAnalytics = !( true && isIgnoreHost );
+
+</script>
+
+  <script>
+if(isTriggerAnalytics) {
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?5b4afc2e848e734d81a9211aed583590";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+  })();
+}
+</script>
+
+
+
+  <script>
+if(isTriggerAnalytics) {
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-LeoStones', 'auto');
+  ga('send', 'pageview');
+}
+
+</script>
+
+
+
+  
+  
+    <script src="/js/jquery-2.2.3.min.js"></script>
+  
+    <script src="/js/vegas.min.js"></script>
+  
+    <script src="/js/random.js"></script>
+  
+    <script src="/js/highlight.pack.js"></script>
+  
+    <script src="/js/jquery.mousewheel.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox-thumbs.js"></script>
+  
+    <script src="/js/plyr.js"></script>
+  
+
+<script>
+
+  // fancybox
+  var backgroundImages = [];
+  
+  $('#post').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox') || $(this).parent().hasClass('fancybox-thumb')) return;
+      var alt = this.alt || this.title;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'post' + i);
+    });
+  });
+  $(".fancybox").fancybox();
+
+var vegasConfig = {"preload­Image":true,"transition":["slideLeft2","slideRight2","flash2"],"timer":true,"delay":10000,"shuffle":true,"count":10};
+var unsplashConfig = {"gravity":"north"};
+// is show background images
+var turnoffBackgroundImage = false;
+
+
+
+  turnoffBackgroundImage = true;
+
+
+var backgroundColor = 123456;
+
+$(".fancybox-thumb").fancybox({
+  prevEffect: 'none',
+  nextEffect: 'none',
+  helpers: {
+    title: {
+      type: 'outside'
+    },
+    thumbs: {
+      width: 50,
+      height: 50
+    }
+  }
+});
+
+// show video with plyr
+$(".video-container iframe").each(function(i){
+  var url = $(this).attr('src');
+  var id = url.split('/').pop();
+  var plyrContainer = document.createElement('div');
+  plyrContainer.className = 'plyr';
+  var plyrElement = document.createElement('div');
+  plyrElement.dataset.videoId = id;
+  switch(true) {
+    case url.search('youtube.com') >= 0:
+      plyrElement.dataset.type = 'youtube';
+      break;
+    case url.search('vimeo.com') >= 0:
+      plyrElement.dataset.type = 'vimeo';
+      break;
+    default:
+      return;
+  };
+  plyrContainer.appendChild(plyrElement);
+  $(this).parent().html(plyrContainer);
+});
+plyr.setup('.plyr', {iconUrl: '/css/sprite.svg'});
+</script>
+</body>
+</html>
+

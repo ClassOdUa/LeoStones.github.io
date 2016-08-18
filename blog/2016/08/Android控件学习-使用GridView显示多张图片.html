@@ -1,0 +1,440 @@
+
+
+
+
+
+
+
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="author" content="LeoStones">
+  
+  
+  
+  
+    <meta name="description" content="">
+  
+  <title>Android控件学习-实现多张图片二维布局 [ LeoStones's Blog ]</title>
+  
+    <link rel="alternate" href="/atom.xml" title="LeoStones's Blog">
+  
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+  <link rel="stylesheet" href="/css/random.css">
+<link rel="stylesheet" href="/css/vegas.min.css">
+<link rel="stylesheet" href="/css/highlight-railscasts.css">
+<link rel="stylesheet" href="/css/jquery.fancybox.css">
+<link rel="stylesheet" href="/css/iconfont/iconfont.css">
+<link rel="stylesheet" href="/css/jquery.fancybox-thumbs.css">
+<link rel="stylesheet" href="/css/plyr.css">
+  
+</head>
+
+<body>
+<div class="side-navigate hide-area">
+  
+    <div class="item prev">
+      <a href="/blog/2016/08/Android控件学习-实现下拉列表.html">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        Android控件学习-实现下拉列表
+      </div>
+    </div>
+  
+  
+    <div class="item next">
+      <a href="/blog/2016/08/Android控件学习-显示当前日历及时间.html">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        Android控件学习-显示当前日历及时间
+      </div>
+    </div>
+  
+</div>
+<div id="outer-container" class="hide-area">
+<div id="container">
+  <div id="menu-outer" class="slide-down">
+    <div id="menu-inner">
+      <div id="brand">
+        
+        <a onClick="openUserCard()">
+          <img id="avatar" src="http://7te9fe.com1.z0.glb.clouddn.com/default_avatar.jpg"/>
+          <div id="homelink">LeoStones's Blog</div>
+        </a>
+      </div>
+      <div id="menu-list">
+        <ul>
+        
+        
+          
+            <li>
+          
+            <a href="/index.html">Home</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/archives">Archives</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/tags">Tags</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/categories">Categories</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/about">About</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/guestbook">Guestbook</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="https://github.com/stiekel/hexo-theme-random">Github</a>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div id="show-menu">
+        <button>Menu</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="content-outer">
+    <div id="content-inner">
+      
+      
+  <article id="post">
+    <h1>Android控件学习-实现多张图片二维布局</h1>
+    <p class="page-title-sub">
+      <span id = "post-title-date">Created at 2016-08-17</span>
+      
+        <span id = "post-title-updated">Updated at 2016-08-17</span>
+      
+      
+      <span id = "post-title-categories">Category
+      
+      
+        
+        
+        <a href="/categories/Android学习之路/">Android学习之路</a>
+      
+      </span>
+      
+      
+      <span id = "post-title-tags">
+      Tag
+      
+      
+        
+        
+        <a href="/tags/Android/">Android</a>
+      
+      </span>
+      
+    </p>
+    
+    <p><img src="http://o7dscdnip.bkt.clouddn.com/Android4-%E4%BD%BF%E7%94%A8GridView%E4%BB%A5%E8%A1%A8%E6%A0%BC%E5%BD%A2%E5%BC%8F%E6%98%BE%E7%A4%BA%E5%A4%9A%E5%BC%A0%E5%9B%BE%E7%89%87.png"></p>
+<a id="more"></a>
+<h1 id="&#x4EC0;&#x4E48;&#x662F;GridView"><a href="#&#x4EC0;&#x4E48;&#x662F;GridView" class="headerlink" title="&#x4EC0;&#x4E48;&#x662F;GridView"></a>&#x4EC0;&#x4E48;&#x662F;GridView</h1><p><img src="http://o7dscdnip.bkt.clouddn.com/Android4-%E4%BB%80%E4%B9%88%E6%98%AFGridView.png"></p>
+<h1 id="&#x5B66;&#x4E60;&#x76EE;&#x6807;"><a href="#&#x5B66;&#x4E60;&#x76EE;&#x6807;" class="headerlink" title="&#x5B66;&#x4E60;&#x76EE;&#x6807;"></a>&#x5B66;&#x4E60;&#x76EE;&#x6807;</h1><p><img src="http://o7dscdnip.bkt.clouddn.com/Android4-%E5%AD%A6%E4%B9%A0%E7%9B%AE%E6%A0%87.png"></p>
+<h1 id="&#x4F7F;&#x7528;GridView&#x5236;&#x4F5C;&#x4E8C;&#x7EF4;&#x5E03;&#x5C40;&#x754C;&#x9762;"><a href="#&#x4F7F;&#x7528;GridView&#x5236;&#x4F5C;&#x4E8C;&#x7EF4;&#x5E03;&#x5C40;&#x754C;&#x9762;" class="headerlink" title="&#x4F7F;&#x7528;GridView&#x5236;&#x4F5C;&#x4E8C;&#x7EF4;&#x5E03;&#x5C40;&#x754C;&#x9762;"></a>&#x4F7F;&#x7528;GridView&#x5236;&#x4F5C;&#x4E8C;&#x7EF4;&#x5E03;&#x5C40;&#x754C;&#x9762;</h1><h2 id="&#x4F7F;&#x7528;&#x6B65;&#x9AA4;"><a href="#&#x4F7F;&#x7528;&#x6B65;&#x9AA4;" class="headerlink" title="&#x4F7F;&#x7528;&#x6B65;&#x9AA4;"></a>&#x4F7F;&#x7528;&#x6B65;&#x9AA4;</h2><ul>
+<li><strong>1&gt;&#x51C6;&#x5907;&#x6570;&#x636E;&#x6E90;</strong></li>
+<li><strong>2&gt;&#x65B0;&#x5EFA;&#x9002;&#x914D;&#x5668;&#xFF08;SimpleAdapter&#xFF09;</strong></li>
+<li><strong>3&gt;GridView&#x52A0;&#x8F7D;&#x9002;&#x914D;&#x5668;</strong></li>
+<li><strong>4&gt;GridView&#x914D;&#x7F6E;&#x70B9;&#x51FB;&#x4E8B;&#x4EF6;&#x76D1;&#x542C;&#x5668;&#xFF08;OnItemClickListener&#xFF09;</strong></li>
+</ul>
+<h2 id="&#x58F0;&#x660E;"><a href="#&#x58F0;&#x660E;" class="headerlink" title="&#x58F0;&#x660E;"></a>&#x58F0;&#x660E;</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> GridView mGridView;</span><br><span class="line"><span class="keyword">private</span> List&lt;Map&lt;String, Object&gt;&gt; datalist;</span><br><span class="line"><span class="keyword">private</span> SimpleAdapter mSimpleAdapter;</span><br><span class="line"></span><br><span class="line"><span class="comment">//&#x5E03;&#x5C40;&#x56FE;&#x6807;&#x53CA;&#x540D;&#x79F0;</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span>[] icon = {R.drawable.youtube, R.drawable.github, R.drawable.github, R.drawable.goo,</span><br><span class="line">            R.drawable.facebook, R.drawable.youtube, R.drawable.facebook, R.drawable.goo,</span><br><span class="line">            R.drawable.facebook, R.drawable.goo, R.drawable.github, R.drawable.youtube};</span><br><span class="line"><span class="keyword">private</span> String[] iconName = {<span class="string">&quot;&#x5FAE;&#x8F6F;&quot;</span>, <span class="string">&quot;&#x706B;&#x72D0;&quot;</span>, <span class="string">&quot;&#x8C37;&#x6B4C;&quot;</span>, <span class="string">&quot;&#x5B89;&#x5353;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;&#x82F9;&#x679C;&quot;</span>, <span class="string">&quot;YouTuBe&quot;</span>, <span class="string">&quot;&#x8C37;&#x6B4C;&#x5E02;&#x573A;&quot;</span>, <span class="string">&quot;Google&quot;</span>,</span><br><span class="line">            <span class="string">&quot;FaceBook&quot;</span>, <span class="string">&quot;&#x4F53;&#x80B2;&#x516C;&#x56ED;&quot;</span>, <span class="string">&quot;GitHub&quot;</span>, <span class="string">&quot;Yhooh&quot;</span>};</span><br></pre></td></tr></table></figure>
+<h2 id="&#x914D;&#x7F6E;&#x9002;&#x914D;&#x5668;-amp-amp-GridView&#x52A0;&#x8F7D;&#x9002;&#x914D;&#x5668;"><a href="#&#x914D;&#x7F6E;&#x9002;&#x914D;&#x5668;-amp-amp-GridView&#x52A0;&#x8F7D;&#x9002;&#x914D;&#x5668;" class="headerlink" title="&#x914D;&#x7F6E;&#x9002;&#x914D;&#x5668;&amp;&amp;GridView&#x52A0;&#x8F7D;&#x9002;&#x914D;&#x5668;"></a>&#x914D;&#x7F6E;&#x9002;&#x914D;&#x5668;&amp;&amp;GridView&#x52A0;&#x8F7D;&#x9002;&#x914D;&#x5668;</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">mGridView = (GridView) findViewById(R.id.gridview);</span><br><span class="line"><span class="comment">/**</span><br><span class="line">* 1&gt;&#x51C6;&#x5907;&#x6570;&#x636E;&#x6E90;</span><br><span class="line">* 2&gt;&#x65B0;&#x5EFA;&#x9002;&#x914D;&#x5668;&#xFF08;SimpleAdapter&#xFF09;</span><br><span class="line">* 3&gt;GridView&#x52A0;&#x8F7D;&#x9002;&#x914D;&#x5668;</span><br><span class="line">* 4&gt;GridView&#x914D;&#x7F6E;&#x70B9;&#x51FB;&#x4E8B;&#x4EF6;&#x76D1;&#x542C;&#x5668;&#xFF08;OnItemClickListener&#xFF09;</span><br><span class="line">*/</span></span><br><span class="line">datalist = <span class="keyword">new</span> ArrayList&lt;Map&lt;String, Object&gt;&gt;();</span><br><span class="line"><span class="comment">//getData();</span></span><br><span class="line">mSimpleAdapter = <span class="keyword">new</span> SimpleAdapter(<span class="keyword">this</span>, getData(), R.layout.item,</span><br><span class="line"><span class="keyword">new</span> String[]{<span class="string">&quot;image&quot;</span>, <span class="string">&quot;text&quot;</span>}, <span class="keyword">new</span> <span class="keyword">int</span>[]{R.id.image, R.id.text});</span><br><span class="line">mGridView.setAdapter(mSimpleAdapter);</span><br><span class="line">mGridView.setOnItemClickListener(<span class="keyword">this</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="&#x6DFB;&#x52A0;&#x6570;&#x636E;&#x6E90;"><a href="#&#x6DFB;&#x52A0;&#x6570;&#x636E;&#x6E90;" class="headerlink" title="&#x6DFB;&#x52A0;&#x6570;&#x636E;&#x6E90;"></a>&#x6DFB;&#x52A0;&#x6570;&#x636E;&#x6E90;</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line">*      list &#x662F;&#x4ED6;&#x7684;&#x6570;&#x636E;&#x6E90;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5B58;&#x653E;&#x5B57;&#x7B26;&#x4E32;&#x96C6;&#x5408;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x5B58;&#x653E;&#x56FE;&#x7247;&#x8D44;&#x6E90;&#x96C6;&#x5408;&#x7B49;&#x7B49;&#xFF0C;</span><br><span class="line">* &#x800C;&#x4ED6;&#x4EEC;&#x662F;&#x4EE5; map &#x7684;&#x5F62;&#x5F0F;&#x5B58;&#x653E;&#x5728; list &#x4E2D;&#x7684;&#xFF0C;&#x800C; map &#x96C6;&#x5408;&#x7684; key &#x662F; string &#x7C7B;&#x578B;&#xFF0C;</span><br><span class="line">* Value &#x662F; object &#x7C7B;&#x578B;&#xFF0C;map&#x4E2D;&#x7684;&#x6BCF;&#x4E00;&#x9879;&#x624D;&#x662F;&#x771F;&#x6B63;&#x7684;&#x6570;&#x636E;&#x96C6;&#x5408;</span><br><span class="line">* <span class="doctag">@return</span></span><br><span class="line">*/</span></span><br><span class="line"><span class="keyword">private</span> List&lt;Map&lt;String,Object&gt;&gt; getData() {</span><br><span class="line">     <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; iconName.length;i++) {</span><br><span class="line">         Map&lt;String, Object&gt; map = <span class="keyword">new</span> HashMap&lt;String, Object&gt;();</span><br><span class="line">         map.put(<span class="string">&quot;image&quot;</span>, icon[i]);</span><br><span class="line">         map.put(<span class="string">&quot;text&quot;</span>, iconName[i]);</span><br><span class="line">         datalist.add(map);</span><br><span class="line">      }</span><br><span class="line">     <span class="keyword">return</span> datalist;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<h2 id="GridView&#x914D;&#x7F6E;&#x70B9;&#x51FB;&#x4E8B;&#x4EF6;&#x76D1;&#x542C;&#x5668;&#xFF08;OnItemClickListener&#xFF09;"><a href="#GridView&#x914D;&#x7F6E;&#x70B9;&#x51FB;&#x4E8B;&#x4EF6;&#x76D1;&#x542C;&#x5668;&#xFF08;OnItemClickListener&#xFF09;" class="headerlink" title="GridView&#x914D;&#x7F6E;&#x70B9;&#x51FB;&#x4E8B;&#x4EF6;&#x76D1;&#x542C;&#x5668;&#xFF08;OnItemClickListener&#xFF09;"></a>GridView&#x914D;&#x7F6E;&#x70B9;&#x51FB;&#x4E8B;&#x4EF6;&#x76D1;&#x542C;&#x5668;&#xFF08;OnItemClickListener&#xFF09;</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onItemClick</span><span class="params">(AdapterView&lt;?&gt; adapterView, View view, <span class="keyword">int</span> position, <span class="keyword">long</span> id)</span> </span>{</span><br><span class="line">     Toast.makeText(<span class="keyword">this</span>, <span class="string">&quot;&#x6253;&#x5F00;&quot;</span> + iconName[position], Toast.LENGTH_SHORT).show();</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<h2 id="&#x6548;&#x679C;&#x6F14;&#x793A;"><a href="#&#x6548;&#x679C;&#x6F14;&#x793A;" class="headerlink" title="&#x6548;&#x679C;&#x6F14;&#x793A;"></a>&#x6548;&#x679C;&#x6F14;&#x793A;</h2><p><img src="http://o7dscdnip.bkt.clouddn.com/Android4-GridView.gif"></p>
+<h2 id="&#x6CE8;&#xFF1A;GridView&#x5173;&#x952E;&#x5C5E;&#x6027;"><a href="#&#x6CE8;&#xFF1A;GridView&#x5173;&#x952E;&#x5C5E;&#x6027;" class="headerlink" title="&#x6CE8;&#xFF1A;GridView&#x5173;&#x952E;&#x5C5E;&#x6027;"></a>&#x6CE8;&#xFF1A;GridView&#x5173;&#x952E;&#x5C5E;&#x6027;</h2><p><img src="http://o7dscdnip.bkt.clouddn.com/Android4-GridView%E7%9A%84%E5%85%B3%E9%94%AE%E5%B1%9E%E6%80%A7.png"></p>
+
+  </article>
+  <div class="random-toc-area">
+  <button class="btn-hide-toc btn-hide-toc-show" style="display: none" onclick="TOCToggle()">Show TOC</button>
+  <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">Hide TOC</button>
+  <div class="random-toc">
+    <h2>Table of Content</h2>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是GridView"><span class="toc-text">什么是GridView</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#学习目标"><span class="toc-text">学习目标</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用GridView制作二维布局界面"><span class="toc-text">使用GridView制作二维布局界面</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用步骤"><span class="toc-text">使用步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#声明"><span class="toc-text">声明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置适配器-amp-amp-GridView加载适配器"><span class="toc-text">配置适配器&&GridView加载适配器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#添加数据源"><span class="toc-text">添加数据源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GridView配置点击事件监听器（OnItemClickListener）"><span class="toc-text">GridView配置点击事件监听器（OnItemClickListener）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#效果演示"><span class="toc-text">效果演示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注：GridView关键属性"><span class="toc-text">注：GridView关键属性</span></a></li></ol></li></ol>
+  </div>
+</div>
+
+  
+<nav id="pagination">
+  
+    <a href="/blog/2016/08/Android控件学习-实现下拉列表.html" class="prev">&larr; Prev post Android控件学习-实现下拉列表</a>
+  
+
+  
+
+  
+    <a href="/blog/2016/08/Android控件学习-显示当前日历及时间.html" class="next">Next post Android控件学习-显示当前日历及时间 &rarr;</a>
+  
+</nav>
+
+  <!-- JiaThis Button BEGIN -->
+
+<!-- JiaThis Button END -->
+
+
+      
+      <div class="ds-thread" data-thread-key="/blog/2016/08/Android控件学习-使用GridView显示多张图片.html" data-title="Android控件学习-实现多张图片二维布局" data-url="http://leostones.cn/Blog/blog/2016/08/Android控件学习-使用GridView显示多张图片.html"></div>
+      
+      
+      
+    </div>
+  </div>
+
+  <div id="bottom-outer">
+    <div id="bottom-inner">
+      Site by LeoStones using
+      <a href="http://hexo.io">Hexo</a> & <a href="https://github.com/stiekel/hexo-theme-random">Random</a>
+      <br>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  <script type="text/javascript">
+var duoshuoQuery = {short_name:"LeoStones"};
+(function() {
+  var ds = document.createElement('script');
+  ds.type = 'text/javascript';ds.async = true;
+  ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+  ds.charset = 'UTF-8';
+  (document.getElementsByTagName('head')[0] 
+   || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script>
+
+
+
+<div id="user-card">
+  <div class="center-field">
+    <img class="avatar" src="http://7te9fe.com1.z0.glb.clouddn.com/default_avatar.jpg">
+    <p id="description">我本来就不是为了输赢，我就是因为任性啊</p>
+    <ul class="social-icon">
+  
+  
+    <li>
+      <a href="https://github.com/leostones">
+        
+          <i class="icon iconfont github">&#xe606;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="https://twitter.com/SidCN">
+        
+          <i class="icon iconfont twitter">&#xe600;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="http://weibo.com/sidcn">
+        
+          <i class="icon iconfont weibo">&#xe602;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="https://www.zhihu.com/people/leostones">
+        
+          <i class="icon iconfont zhihu">&#xe60b;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="http://www.douban.com/people/Stiekel/">
+        
+          <i class="icon iconfont douban">&#xe609;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="http://chensd.com/feed">
+        
+          <i class="icon iconfont rss">&#xe60e;</i>
+        
+      </a>
+    </li>
+  
+</ul>
+  </div>
+</div>
+
+
+<div id="btn-view">Hide</div>
+
+<script>
+// is trigger analytics / tongji script
+var isIgnoreHost = false;
+
+if(window && window.location && window.location.host) {
+  isIgnoreHost = ["localhost","127.0.0.1"].some(function(address){
+    return 0 === window.location.host.indexOf(address);
+  });
+}
+
+var isTriggerAnalytics = !( true && isIgnoreHost );
+
+</script>
+
+  <script>
+if(isTriggerAnalytics) {
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?5b4afc2e848e734d81a9211aed583590";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+  })();
+}
+</script>
+
+
+
+  <script>
+if(isTriggerAnalytics) {
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-LeoStones', 'auto');
+  ga('send', 'pageview');
+}
+
+</script>
+
+
+
+  
+  
+    <script src="/js/jquery-2.2.3.min.js"></script>
+  
+    <script src="/js/vegas.min.js"></script>
+  
+    <script src="/js/random.js"></script>
+  
+    <script src="/js/highlight.pack.js"></script>
+  
+    <script src="/js/jquery.mousewheel.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox-thumbs.js"></script>
+  
+    <script src="/js/plyr.js"></script>
+  
+
+<script>
+
+  // fancybox
+  var backgroundImages = [];
+  
+  $('#post').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox') || $(this).parent().hasClass('fancybox-thumb')) return;
+      var alt = this.alt || this.title;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'post' + i);
+    });
+  });
+  $(".fancybox").fancybox();
+
+var vegasConfig = {"preload­Image":true,"transition":["slideLeft2","slideRight2","flash2"],"timer":true,"delay":10000,"shuffle":true,"count":10};
+var unsplashConfig = {"gravity":"north"};
+// is show background images
+var turnoffBackgroundImage = false;
+
+
+
+  turnoffBackgroundImage = true;
+
+
+var backgroundColor = 123456;
+
+$(".fancybox-thumb").fancybox({
+  prevEffect: 'none',
+  nextEffect: 'none',
+  helpers: {
+    title: {
+      type: 'outside'
+    },
+    thumbs: {
+      width: 50,
+      height: 50
+    }
+  }
+});
+
+// show video with plyr
+$(".video-container iframe").each(function(i){
+  var url = $(this).attr('src');
+  var id = url.split('/').pop();
+  var plyrContainer = document.createElement('div');
+  plyrContainer.className = 'plyr';
+  var plyrElement = document.createElement('div');
+  plyrElement.dataset.videoId = id;
+  switch(true) {
+    case url.search('youtube.com') >= 0:
+      plyrElement.dataset.type = 'youtube';
+      break;
+    case url.search('vimeo.com') >= 0:
+      plyrElement.dataset.type = 'vimeo';
+      break;
+    default:
+      return;
+  };
+  plyrContainer.appendChild(plyrElement);
+  $(this).parent().html(plyrContainer);
+});
+plyr.setup('.plyr', {iconUrl: '/css/sprite.svg'});
+</script>
+</body>
+</html>
+

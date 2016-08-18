@@ -1,0 +1,486 @@
+
+
+
+
+
+
+
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="author" content="LeoStones">
+  
+  
+  
+  
+    <meta name="description" content="">
+  
+  <title>Android控件学习-显示信息列表 [ LeoStones's Blog ]</title>
+  
+    <link rel="alternate" href="/atom.xml" title="LeoStones's Blog">
+  
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+  <link rel="stylesheet" href="/css/random.css">
+<link rel="stylesheet" href="/css/vegas.min.css">
+<link rel="stylesheet" href="/css/highlight-railscasts.css">
+<link rel="stylesheet" href="/css/jquery.fancybox.css">
+<link rel="stylesheet" href="/css/iconfont/iconfont.css">
+<link rel="stylesheet" href="/css/jquery.fancybox-thumbs.css">
+<link rel="stylesheet" href="/css/plyr.css">
+  
+</head>
+
+<body>
+<div class="side-navigate hide-area">
+  
+    <div class="item prev">
+      <a href="/blog/2016/08/Android控件学习-显示当前日历及时间.html">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        Android控件学习-显示当前日历及时间
+      </div>
+    </div>
+  
+  
+    <div class="item next">
+      <a href="/blog/2016/08/Android控件学习-Intent页面间的跳转.html">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        Android控件学习-页面间的跳转
+      </div>
+    </div>
+  
+</div>
+<div id="outer-container" class="hide-area">
+<div id="container">
+  <div id="menu-outer" class="slide-down">
+    <div id="menu-inner">
+      <div id="brand">
+        
+        <a onClick="openUserCard()">
+          <img id="avatar" src="http://7te9fe.com1.z0.glb.clouddn.com/default_avatar.jpg"/>
+          <div id="homelink">LeoStones's Blog</div>
+        </a>
+      </div>
+      <div id="menu-list">
+        <ul>
+        
+        
+          
+            <li>
+          
+            <a href="/index.html">Home</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/archives">Archives</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/tags">Tags</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/categories">Categories</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/about">About</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/guestbook">Guestbook</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="https://github.com/stiekel/hexo-theme-random">Github</a>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div id="show-menu">
+        <button>Menu</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="content-outer">
+    <div id="content-inner">
+      
+      
+  <article id="post">
+    <h1>Android控件学习-显示信息列表</h1>
+    <p class="page-title-sub">
+      <span id = "post-title-date">Created at 2016-08-16</span>
+      
+        <span id = "post-title-updated">Updated at 2016-08-17</span>
+      
+      
+      <span id = "post-title-categories">Category
+      
+      
+        
+        
+        <a href="/categories/Android学习之路/">Android学习之路</a>
+      
+      </span>
+      
+      
+      <span id = "post-title-tags">
+      Tag
+      
+      
+        
+        
+        <a href="/tags/Android/">Android</a>
+      
+      </span>
+      
+    </p>
+    
+    <p><img src="http://o7dscdnip.bkt.clouddn.com/Android2-%E4%BD%BF%E7%94%A8ListView%E6%98%BE%E7%A4%BA%E4%BF%A1%E6%81%AF%E5%88%97%E8%A1%A8.png"></p>
+<a id="more"></a>
+<h1 id="&#x5B66;&#x4E60;&#x76EE;&#x6807;"><a href="#&#x5B66;&#x4E60;&#x76EE;&#x6807;" class="headerlink" title="&#x5B66;&#x4E60;&#x76EE;&#x6807;"></a>&#x5B66;&#x4E60;&#x76EE;&#x6807;</h1><ul>
+<li><strong>&#x7406;&#x89E3; ListView &#x7684;&#x57FA;&#x7840;&#x4F7F;&#x7528;</strong></li>
+<li><strong>&#x5B66;&#x4F1A;&#x719F;&#x7EC3;&#x8FD0;&#x7528;&#x4E24;&#x79CD;&#x9002;&#x914D;&#x5668; (ArrayAdapter SimpleAdapter)</strong></li>
+<li><strong>&#x5B66;&#x4F1A;&#x719F;&#x7EC3;&#x8FD0;&#x7528;&#x4E24;&#x79CD;&#x76D1;&#x542C;&#x5668; (OnScrollListener OnItemClickListener)</strong></li>
+<li><strong>&#x5B66;&#x4F1A;&#x719F;&#x7EC3;&#x8FD0;&#x7528;&#x9002;&#x914D;&#x5668;&#x6570;&#x636E;&#x7684;&#x5237;&#x65B0; (notifyDataChanged)</strong></li>
+</ul>
+<p><img src="http://o7dscdnip.bkt.clouddn.com/Android2-%E5%AD%A6%E4%B9%A0%E7%9B%AE%E6%A0%87.png"></p>
+<h1 id="ListView&#x5728;&#x5E94;&#x7528;&#x4E2D;&#x7684;&#x8FD0;&#x7528;"><a href="#ListView&#x5728;&#x5E94;&#x7528;&#x4E2D;&#x7684;&#x8FD0;&#x7528;" class="headerlink" title="ListView&#x5728;&#x5E94;&#x7528;&#x4E2D;&#x7684;&#x8FD0;&#x7528;"></a>ListView&#x5728;&#x5E94;&#x7528;&#x4E2D;&#x7684;&#x8FD0;&#x7528;</h1><p><img src="http://o7dscdnip.bkt.clouddn.com/Android2-ListView%E7%9A%84%E5%BA%94%E7%94%A8.png"></p>
+<h1 id="ListView&#x7684;&#x89E3;&#x6790;"><a href="#ListView&#x7684;&#x89E3;&#x6790;" class="headerlink" title="ListView&#x7684;&#x89E3;&#x6790;"></a>ListView&#x7684;&#x89E3;&#x6790;</h1><ul>
+<li><strong>&#x4F5C;&#x7528;&#xFF1A;&#x662F;Android&#x7CFB;&#x7EDF;&#x4E2D;&#x663E;&#x793A;&#x5217;&#x8868;&#x7684;&#x63A7;&#x4EF6;</strong></li>
+<li><strong>&#x6BCF;&#x4E00;&#x4E2A; ListView &#x63A7;&#x4EF6;&#x53EF;&#x4EE5;&#x5305;&#x542B;&#x591A;&#x4E2A; item&#xFF0C;&#x5177;&#x4F53;&#x5305;&#x542B;&#x591A;&#x5C11;&#x4E2A; item&#xFF0C;&#x5B8C;&#x5168;&#x662F;&#x7531;&#x6570;&#x636E;&#x6E90;&#x51B3;&#x5B9A;&#x7684;</strong></li>
+</ul>
+<p><img src="http://o7dscdnip.bkt.clouddn.com/Android2-ListView.png"></p>
+<h1 id="&#x89E3;&#x8BFB;&#x9002;&#x914D;&#x5668;"><a href="#&#x89E3;&#x8BFB;&#x9002;&#x914D;&#x5668;" class="headerlink" title="&#x89E3;&#x8BFB;&#x9002;&#x914D;&#x5668;"></a>&#x89E3;&#x8BFB;&#x9002;&#x914D;&#x5668;</h1><h2 id="&#x4F5C;&#x7528;"><a href="#&#x4F5C;&#x7528;" class="headerlink" title="&#x4F5C;&#x7528;"></a><strong>&#x4F5C;&#x7528;</strong></h2><p><strong>&#x6570;&#x636E;&#x9002;&#x914D;&#x5668;&#xFF1A;&#x628A;&#x590D;&#x6742;&#x7684;&#x6570;&#x636E;&#x586B;&#x5145;&#x5728;&#x6307;&#x5B9A;&#x7684;&#x89C6;&#x56FE;&#x754C;&#x9762;&#x4E0A;</strong></p>
+<h2 id="ArrayAdapter-&#x6570;&#x7EC4;&#x9002;&#x914D;&#x5668;"><a href="#ArrayAdapter-&#x6570;&#x7EC4;&#x9002;&#x914D;&#x5668;" class="headerlink" title="ArrayAdapter &#x6570;&#x7EC4;&#x9002;&#x914D;&#x5668;"></a><strong>ArrayAdapter &#x6570;&#x7EC4;&#x9002;&#x914D;&#x5668;</strong></h2><p><strong>&#x7528;&#x4E8E;&#x7ED1;&#x5B9A;&#x683C;&#x5F0F;&#x5355;&#x4E00;&#x7684;&#x6570;&#x636E;</strong></p>
+<p><strong>&#x6570;&#x636E;&#x6E90;&#xFF1A;&#x53EF;&#x4EE5;&#x662F;&#x96C6;&#x5408;&#x6216;&#x6570;&#x7EC4;</strong>  </p>
+<h2 id="SimpleAdapter-&#x7B80;&#x5355;&#x9002;&#x914D;&#x5668;"><a href="#SimpleAdapter-&#x7B80;&#x5355;&#x9002;&#x914D;&#x5668;" class="headerlink" title="SimpleAdapter  &#x7B80;&#x5355;&#x9002;&#x914D;&#x5668;"></a><strong>SimpleAdapter  &#x7B80;&#x5355;&#x9002;&#x914D;&#x5668;</strong></h2><p><strong>&#x7528;&#x4E8E;&#x7ED1;&#x5B9A;&#x683C;&#x5F0F;&#x590D;&#x6742;&#x7684;&#x6570;&#x636E;</strong></p>
+<p><strong>&#x6570;&#x636E;&#x6E90;&#xFF1A;&#x53EA;&#x80FD;&#x662F;&#x7279;&#x5B9A;&#x6CDB;&#x578B;&#x7684;&#x96C6;&#x5408;</strong></p>
+<p><strong>&#x6CE8;&#xFF1A;</strong></p>
+<ul>
+<li><strong>&#x6570;&#x636E;&#x9002;&#x914D;&#x5668;&#x662F;&#x8FDE;&#x63A5;&#x6570;&#x636E;&#x6E90;&#x548C;&#x89C6;&#x56FE;&#x754C;&#x9762;&#x7684;&#x6865;&#x6881;</strong></li>
+</ul>
+<ul>
+<li><strong>&#x4F7F;&#x7528;&#x8FC7;&#x7A0B;&#xFF1A;&#x65B0;&#x5EFA;&#x9002;&#x914D;&#x5668;-&gt;&#x6DFB;&#x52A0;&#x6570;&#x636E;&#x6E90;&#x5230;&#x9002;&#x914D;&#x5668;-&gt;&#x89C6;&#x56FE;&#x52A0;&#x8F7D;&#x9002;&#x914D;&#x5668;</strong></li>
+</ul>
+<h1 id="ArrayAdapter-&#x6570;&#x7EC4;&#x9002;&#x914D;&#x5668;&#x7684;&#x4F7F;&#x7528;"><a href="#ArrayAdapter-&#x6570;&#x7EC4;&#x9002;&#x914D;&#x5668;&#x7684;&#x4F7F;&#x7528;" class="headerlink" title="ArrayAdapter &#x6570;&#x7EC4;&#x9002;&#x914D;&#x5668;&#x7684;&#x4F7F;&#x7528;"></a><strong><code>ArrayAdapter</code> &#x6570;&#x7EC4;&#x9002;&#x914D;&#x5668;&#x7684;&#x4F7F;&#x7528;</strong></h1><p>&#x9996;&#x5148;&#xFF0C;&#x5728;Activity&#x4E2D;&#x914D;&#x7F6E;&#x4E00;&#x4E2A;ListView&#xFF0C;</p>
+<p><img src="http://o7dscdnip.bkt.clouddn.com/Android2-%E9%85%8D%E7%BD%AEListView.png"></p>
+<p>&#x58F0;&#x660E;&#xFF1A;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> ListView ListView;</span><br><span class="line"><span class="keyword">private</span> ArrayAdapter&lt;String&gt;mArrayAdapter;</span><br></pre></td></tr></table></figure>
+<h2 id="&#x914D;&#x7F6E;ArrayAdapter&#x9002;&#x914D;&#x5668;&#xFF1A;"><a href="#&#x914D;&#x7F6E;ArrayAdapter&#x9002;&#x914D;&#x5668;&#xFF1A;" class="headerlink" title="&#x914D;&#x7F6E;ArrayAdapter&#x9002;&#x914D;&#x5668;&#xFF1A;"></a>&#x914D;&#x7F6E;<code>ArrayAdapter</code>&#x9002;&#x914D;&#x5668;&#xFF1A;</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">ListView = (ListView) findViewById(R.id.listView);</span><br><span class="line"><span class="comment">/**</span><br><span class="line">* 1.&#x65B0;&#x5EFA;&#x9002;&#x914D;&#x5668;</span><br><span class="line">* 2.&#x6DFB;&#x52A0;&#x6570;&#x636E;&#x6E90;&#x5230;&#x9002;&#x914D;&#x5668;</span><br><span class="line">* 3.&#x89C6;&#x56FE;&#x52A0;&#x8F7D;&#x5230;&#x9002;&#x914D;&#x5668;</span><br><span class="line">*/</span></span><br><span class="line"><span class="comment">//1&gt;&#x65B0;&#x5EFA;&#x9002;&#x914D;&#x5668;</span></span><br><span class="line"><span class="comment">//ArrayAdapter&lt;String&gt;(&#x4E0A;&#x4E0B;&#x6587;&#xFF0C;&#x5F53;&#x524D;ListView&#x52A0;&#x8F7D;&#x7684;&#x6BCF;&#x4E00;&#x4E2A;&#x5217;&#x8868;&#x9879;&#x6240;&#x5BF9;&#x5E94;&#x7684;&#x5E03;&#x5C40;&#x6587;&#x4EF6;&#xFF0C;&#x6570;&#x636E;&#x6E90;)</span></span><br><span class="line"><span class="comment">//2&gt;&#x6DFB;&#x52A0;&#x6570;&#x636E;&#x6E90;</span></span><br><span class="line">String[] arr_data = {<span class="string">&quot;&#x674E;&#x78CA;&#x6700;&#x5E05;1&quot;</span>,<span class="string">&quot;&#x674E;&#x78CA;&#x6700;&#x5E05;2&quot;</span>,<span class="string">&quot;&#x674E;&#x78CA;&#x6700;&#x5E05;3&quot;</span>,<span class="string">&quot;&#x674E;&#x78CA;&#x6700;&#x5E05;4&quot;</span>,</span><br><span class="line">                     <span class="string">&quot;&#x674E;&#x78CA;&#x6700;&#x5E05;5&quot;</span>,<span class="string">&quot;&#x674E;&#x78CA;&#x6700;&#x5E05;6&quot;</span>,<span class="string">&quot;&#x674E;&#x78CA;&#x6700;&#x5E05;7&quot;</span>,<span class="string">&quot;&#x674E;&#x78CA;&#x6700;&#x5E05;8&quot;</span>,</span><br><span class="line">                     <span class="string">&quot;&#x674E;&#x78CA;&#x6700;&#x5E05;5&quot;</span>,<span class="string">&quot;&#x674E;&#x78CA;&#x6700;&#x5E05;6&quot;</span>,<span class="string">&quot;&#x674E;&#x78CA;&#x6700;&#x5E05;7&quot;</span>,<span class="string">&quot;&#x674E;&#x78CA;&#x6700;&#x5E05;8&quot;</span>,</span><br><span class="line">                     <span class="string">&quot;&#x674E;&#x78CA;&#x6700;&#x5E05;5&quot;</span>,<span class="string">&quot;&#x674E;&#x78CA;&#x6700;&#x5E05;6&quot;</span>,<span class="string">&quot;&#x674E;&#x78CA;&#x6700;&#x5E05;7&quot;</span>,<span class="string">&quot;&#x674E;&#x78CA;&#x6700;&#x5E05;8&quot;</span>};</span><br><span class="line">mArrayAdapter = <span class="keyword">new</span> ArrayAdapter&lt;String&gt;(<span class="keyword">this</span>, android.R.layout.simple_list_item_1,arr_data);</span><br><span class="line"><span class="comment">//&gt;&#x89C6;&#x56FE;&#xFF08;listView&#xFF09;&#x52A0;&#x8F7D;&#x9002;&#x914D;&#x5668;</span></span><br><span class="line">ListView.setAdapter(mArrayAdapter);</span><br></pre></td></tr></table></figure>
+<h2 id="&#x5B9E;&#x73B0;&#x6548;&#x679C;"><a href="#&#x5B9E;&#x73B0;&#x6548;&#x679C;" class="headerlink" title="&#x5B9E;&#x73B0;&#x6548;&#x679C;"></a>&#x5B9E;&#x73B0;&#x6548;&#x679C;</h2><p><img src="http://o7dscdnip.bkt.clouddn.com/Android2-ArrayAdapter.gif "></p>
+<h1 id="SimpleAdapter-&#x7B80;&#x5355;&#x9002;&#x914D;&#x5668;&#x7684;&#x4F7F;&#x7528;"><a href="#SimpleAdapter-&#x7B80;&#x5355;&#x9002;&#x914D;&#x5668;&#x7684;&#x4F7F;&#x7528;" class="headerlink" title="SimpleAdapter  &#x7B80;&#x5355;&#x9002;&#x914D;&#x5668;&#x7684;&#x4F7F;&#x7528;"></a><strong><code>SimpleAdapter</code>  &#x7B80;&#x5355;&#x9002;&#x914D;&#x5668;</strong>&#x7684;&#x4F7F;&#x7528;</h1><p>&#x58F0;&#x660E;&#xFF1A;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> SimpleAdapter mSimpleAdapter;</span><br><span class="line"><span class="keyword">private</span> List&lt;Map&lt;String,Object&gt;&gt;datalist;<span class="comment">//&#x58F0;&#x660E;&#x597D;&#x7279;&#x5B9A;&#x6CDB;&#x578B;&#x7684;&#x96C6;&#x5408;</span></span><br></pre></td></tr></table></figure>
+<h2 id="&#x914D;&#x7F6E;SimpleAdapter&#x9002;&#x914D;&#x5668;"><a href="#&#x914D;&#x7F6E;SimpleAdapter&#x9002;&#x914D;&#x5668;" class="headerlink" title="&#x914D;&#x7F6E;SimpleAdapter&#x9002;&#x914D;&#x5668;"></a>&#x914D;&#x7F6E;<code>SimpleAdapter</code>&#x9002;&#x914D;&#x5668;</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1&gt;&#x65B0;&#x5EFA;&#x9002;&#x914D;&#x5668;</span></span><br><span class="line"><span class="comment">/**</span><br><span class="line">* context: &#x4E0A;&#x4E0B;&#x6587;</span><br><span class="line">* data:  &#x7531;&#x7279;&#x5B9A;&#x6CDB;&#x578B;&#x7684;&#x96C6;&#x5408;&#x7EC4;&#x6210;&#x7684;&#x6570;&#x636E;&#x6E90;&#xFF08;List&lt;? extends Map&lt;String,?&gt;&gt;data&#xFF09;&#x4E00;&#x4E2A;Map&#x6240;&#x7EC4;&#x6210;&#x7684;List&#x96C6;&#x5408;&#x3002;</span><br><span class="line">*        &#x6BCF;&#x4E00;&#x4E2A; Map &#x5BF9;&#x5E94;&#x4E8E; ListView &#x4E2D;&#x7684;&#x4E00;&#x884C;&#xFF1B;</span><br><span class="line">*        &#x6BCF;&#x4E00;&#x4E2A; Map&#xFF08;&#x952E;_&#x503C;&#x5BF9;)&#x4E2D;&#x7684;&#x952E;&#x5FC5;&#x987B;&#x5305;&#x542B;&#x6240;&#x6709;&#x5728; from &#x4E2D;&#x6240;&#x6307;&#x5B9A;&#x7684;&#x952E;</span><br><span class="line">* resource&#xFF1A;&#x5217;&#x8868;&#x9879;&#x7684;&#x5E03;&#x5C40;&#x6587;&#x4EF6; ID&#x3002;</span><br><span class="line">* from&#xFF1A;Map &#x4E2D;&#x952E;&#x540D;&#x3002;</span><br><span class="line">* to&#xFF1A;&#x7ED1;&#x5B9A;&#x6570;&#x636E;&#x89C6;&#x56FE;&#x4E2D;&#x7684; ID&#xFF0C;&#x4E0E; from &#x6210;&#x5BF9;&#x5E94;&#x65B9;&#x5411;&#x3002;</span><br><span class="line">*/</span></span><br><span class="line">datalist = <span class="keyword">new</span> ArrayList&lt;Map&lt;String,Object&gt;&gt;();</span><br><span class="line">mSimpleAdapter = <span class="keyword">new</span> SimpleAdapter(<span class="keyword">this</span>, getData(), R.layout.sim_item,</span><br><span class="line"><span class="keyword">new</span> String[]{<span class="string">&quot;pic&quot;</span>, <span class="string">&quot;text&quot;</span>}, <span class="keyword">new</span> <span class="keyword">int</span>[]{R.id.pic, R.id.text});</span><br><span class="line"><span class="comment">//2&gt;&#x6DFB;&#x52A0;&#x6570;&#x636E;&#x6E90;(&#x4F7F;&#x7528;&#x5916;&#x90E8;&#x65B9;&#x6CD5;)</span></span><br><span class="line"><span class="comment">//3&gt;&#x89C6;&#x56FE;&#xFF08;listView&#xFF09;&#x52A0;&#x8F7D;&#x9002;&#x914D;&#x5668;</span></span><br><span class="line">ListView.setAdapter(mSimpleAdapter);</span><br></pre></td></tr></table></figure>
+<h3 id="&#x4F7F;&#x7528;&#x5916;&#x90E8;&#x65B9;&#x6CD5;&#x6DFB;&#x52A0;&#x6570;&#x636E;&#x6E90;"><a href="#&#x4F7F;&#x7528;&#x5916;&#x90E8;&#x65B9;&#x6CD5;&#x6DFB;&#x52A0;&#x6570;&#x636E;&#x6E90;" class="headerlink" title="&#x4F7F;&#x7528;&#x5916;&#x90E8;&#x65B9;&#x6CD5;&#x6DFB;&#x52A0;&#x6570;&#x636E;&#x6E90;"></a>&#x4F7F;&#x7528;&#x5916;&#x90E8;&#x65B9;&#x6CD5;&#x6DFB;&#x52A0;&#x6570;&#x636E;&#x6E90;</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> List&lt;Map&lt;String,Object&gt;&gt; getData(){</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; <span class="number">20</span>;i++){</span><br><span class="line">            Map&lt;String, Object&gt;map = <span class="keyword">new</span> HashMap&lt;String,Object&gt;();</span><br><span class="line">            map.put(<span class="string">&quot;pic&quot;</span>, R.mipmap.ic_launcher);</span><br><span class="line">            map.put(<span class="string">&quot;text&quot;</span>, <span class="string">&quot;&#x6211;&#x6700;&#x5E05;&quot;</span> + i);</span><br><span class="line">            datalist.add(map);</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> datalist;</span><br><span class="line">    }</span><br></pre></td></tr></table></figure>
+<h2 id="&#x5B9E;&#x73B0;&#x6548;&#x679C;-1"><a href="#&#x5B9E;&#x73B0;&#x6548;&#x679C;-1" class="headerlink" title="&#x5B9E;&#x73B0;&#x6548;&#x679C;"></a>&#x5B9E;&#x73B0;&#x6548;&#x679C;</h2><p><img src="http://o7dscdnip.bkt.clouddn.com/Android2-SimpleAdapter.gif"></p>
+<h1 id="&#x76D1;&#x542C;ListView&#x5217;&#x8868;&#x9879;&#x70B9;&#x51FB;&#x4E8B;&#x4EF6;"><a href="#&#x76D1;&#x542C;ListView&#x5217;&#x8868;&#x9879;&#x70B9;&#x51FB;&#x4E8B;&#x4EF6;" class="headerlink" title="&#x76D1;&#x542C;ListView&#x5217;&#x8868;&#x9879;&#x70B9;&#x51FB;&#x4E8B;&#x4EF6;"></a>&#x76D1;&#x542C;ListView&#x5217;&#x8868;&#x9879;&#x70B9;&#x51FB;&#x4E8B;&#x4EF6;</h1><ul>
+<li>&#x9996;&#x5148;&#x6DFB;&#x52A0;&#x76D1;&#x542C;&#x70B9;&#x51FB;&#x4EE5;&#x53CA;&#x6EDA;&#x52A8;&#x4E8B;&#x4EF6;&#x7684;&#x65B9;&#x6CD5;<ul>
+<li><strong><code>OnItemClickListener</code>&#x70B9;&#x51FB;&#x76D1;&#x542C;</strong></li>
+<li><strong><code>OnScrollListener</code>&#x6EDA;&#x52A8;&#x76D1;&#x542C;</strong></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> <span class="keyword">implements</span> <span class="title">AdapterView</span>.<span class="title">OnItemClickListener</span>,<span class="title">AbsListView</span>.<span class="title">OnScrollListener</span></span>{</span><br></pre></td></tr></table></figure>
+<ul>
+<li>&#x70B9;&#x51FB;&#x76D1;&#x542C;&#x65B9;&#x6CD5;&#x5B9E;&#x73B0;&#x7684;&#x63A5;&#x53E3;</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="comment">//&#x65B9;&#x6CD5;&#x5B9E;&#x73B0;&#x63A5;&#x53E3;</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onItemClick</span><span class="params">(AdapterView&lt;?&gt; adapterView, View view, <span class="keyword">int</span> position, <span class="keyword">long</span> id)</span> </span>{</span><br><span class="line">    String text = ListView.getItemAtPosition(position) + <span class="string">&quot;&quot;</span>;</span><br><span class="line">    Toast.makeText(<span class="keyword">this</span>, <span class="string">&quot;position&quot;</span> + position + <span class="string">&quot;text&quot;</span> + text, Toast.LENGTH_SHORT).show();</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<ul>
+<li>&#x5B9E;&#x73B0;&#x6548;&#x679C;</li>
+</ul>
+<p><img src="http://o7dscdnip.bkt.clouddn.com/Android2-OnItemClickListener.gif"></p>
+<h1 id="&#x76D1;&#x542C;ListView&#x5217;&#x8868;&#x9879;&#x70B9;&#x6EDA;&#x52A8;&#x5237;&#x65B0;&#x4E8B;&#x4EF6;"><a href="#&#x76D1;&#x542C;ListView&#x5217;&#x8868;&#x9879;&#x70B9;&#x6EDA;&#x52A8;&#x5237;&#x65B0;&#x4E8B;&#x4EF6;" class="headerlink" title="&#x76D1;&#x542C;ListView&#x5217;&#x8868;&#x9879;&#x70B9;&#x6EDA;&#x52A8;&#x5237;&#x65B0;&#x4E8B;&#x4EF6;"></a>&#x76D1;&#x542C;ListView&#x5217;&#x8868;&#x9879;&#x70B9;&#x6EDA;&#x52A8;&#x5237;&#x65B0;&#x4E8B;&#x4EF6;</h1><ul>
+<li>&#x6EDA;&#x52A8;&#x76D1;&#x542C;&#x65B9;&#x6CD5;&#x5B9E;&#x73B0;&#x7684;&#x63A5;&#x53E3;</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onScrollStateChanged</span><span class="params">(AbsListView absListView, <span class="keyword">int</span> scrollState)</span> </span>{</span><br><span class="line">    <span class="keyword">switch</span>(scrollState)</span><br><span class="line">    {</span><br><span class="line">         <span class="comment">//&#x6574;&#x5F62;&#x53D8;&#x91CF;scrollState&#x4EE3;&#x8868;&#x6EDA;&#x52A8;&#x72B6;&#x6001;&#x3002;&#x542B;&#x6709;&#x4E09;&#x79CD;&#x60C5;&#x51B5;&#xFF0C;&#x5206;&#x522B;&#x5982;&#x4E0B;&#xFF1A;</span></span><br><span class="line">        <span class="keyword">case</span> SCROLL_STATE_FLING:</span><br><span class="line">            Log.i(<span class="string">&quot;Main&quot;</span>, <span class="string">&quot;&#x7528;&#x6237;&#x624B;&#x6307;&#x5728;&#x79BB;&#x5F00;&#x5C4F;&#x5E55;&#x524D;&#xFF0C;&#x7531;&#x4E8E;&#x7528;&#x529B;&#x4E00;&#x6ED1;&#x3002;&#x89C6;&#x56FE;&#x4EFB;&#x7136;&#x4F9D;&#x9760;&#x60EF;&#x6027;&#x7EE7;&#x7EED;&#x6ED1;&#x52A8;&quot;</span>);</span><br><span class="line">            <span class="comment">/**</span><br><span class="line">             * &#x4E0B;&#x62C9;&#x5237;&#x65B0;&#xFF0C;&#x589E;&#x52A0;&#x9879;</span><br><span class="line">             * &#x52A8;&#x6001;&#x5237;&#x65B0;UI&#x7EBF;&#x7A0B;&#xFF0C;&#x5237;&#x65B0;&#x754C;&#x9762;</span><br><span class="line">             */</span></span><br><span class="line">            Map&lt;String,Object&gt;map = <span class="keyword">new</span> HashMap&lt;String, Object&gt;();</span><br><span class="line">            map.put(<span class="string">&quot;pic&quot;</span>, R.mipmap.ic_launcher);</span><br><span class="line">            map.put(<span class="string">&quot;text&quot;</span>, <span class="string">&quot;&#x4E0D;&#xFF0C;&#x4F60;&#x4E0D;&#x5E05;&#xFF01;&quot;</span>);</span><br><span class="line">            datalist.add(map); <span class="comment">//&#x6DFB;&#x52A0;&#x5217;&#x8868;&#x9879;&#x5230;datalist</span></span><br><span class="line">            mSimpleAdapter.notifyDataSetChanged();<span class="comment">//&#x901A;&#x77E5;UI&#x7EBF;&#x7A0B;&#xFF0C;&#x5237;&#x65B0;&#x754C;&#x9762;</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">case</span> SCROLL_STATE_IDLE:</span><br><span class="line">            Log.i(<span class="string">&quot;Main&quot;</span>, <span class="string">&quot;&#x89C6;&#x56FE;&#x5DF2;&#x7ECF;&#x505C;&#x6B62;&#x79FB;&#x52A8;&quot;</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> SCROLL_STATE_TOUCH_SCROLL:</span><br><span class="line">            Log.i(<span class="string">&quot;main&quot;</span>, <span class="string">&quot;&#x624B;&#x6307;&#x6CA1;&#x6709;&#x79BB;&#x5F00;&#x5C4F;&#x5E55;&#xFF0C;&#x89C6;&#x56FE;&#x6B63;&#x5728;&#x6ED1;&#x52A8;&quot;</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onScroll</span><span class="params">(AbsListView absListView, <span class="keyword">int</span> i, <span class="keyword">int</span> i1, <span class="keyword">int</span> i2)</span> </span>{</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<ul>
+<li>&#x5B9E;&#x73B0;&#x6548;&#x679C; </li>
+</ul>
+<p><img src="http://o7dscdnip.bkt.clouddn.com/Android2-OnScrollListener.gif"></p>
+
+  </article>
+  <div class="random-toc-area">
+  <button class="btn-hide-toc btn-hide-toc-show" style="display: none" onclick="TOCToggle()">Show TOC</button>
+  <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">Hide TOC</button>
+  <div class="random-toc">
+    <h2>Table of Content</h2>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#学习目标"><span class="toc-text">学习目标</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ListView在应用中的运用"><span class="toc-text">ListView在应用中的运用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ListView的解析"><span class="toc-text">ListView的解析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#解读适配器"><span class="toc-text">解读适配器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#作用"><span class="toc-text">作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ArrayAdapter-数组适配器"><span class="toc-text">ArrayAdapter 数组适配器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SimpleAdapter-简单适配器"><span class="toc-text">SimpleAdapter  简单适配器</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ArrayAdapter-数组适配器的使用"><span class="toc-text">ArrayAdapter 数组适配器的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#配置ArrayAdapter适配器："><span class="toc-text">配置ArrayAdapter适配器：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现效果"><span class="toc-text">实现效果</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SimpleAdapter-简单适配器的使用"><span class="toc-text">SimpleAdapter  简单适配器的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#配置SimpleAdapter适配器"><span class="toc-text">配置SimpleAdapter适配器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用外部方法添加数据源"><span class="toc-text">使用外部方法添加数据源</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现效果-1"><span class="toc-text">实现效果</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#监听ListView列表项点击事件"><span class="toc-text">监听ListView列表项点击事件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#监听ListView列表项点滚动刷新事件"><span class="toc-text">监听ListView列表项点滚动刷新事件</span></a></li></ol>
+  </div>
+</div>
+
+  
+<nav id="pagination">
+  
+    <a href="/blog/2016/08/Android控件学习-显示当前日历及时间.html" class="prev">&larr; Prev post Android控件学习-显示当前日历及时间</a>
+  
+
+  
+
+  
+    <a href="/blog/2016/08/Android控件学习-Intent页面间的跳转.html" class="next">Next post Android控件学习-页面间的跳转 &rarr;</a>
+  
+</nav>
+
+  <!-- JiaThis Button BEGIN -->
+
+<!-- JiaThis Button END -->
+
+
+      
+      <div class="ds-thread" data-thread-key="/blog/2016/08/Android控件学习-使用ListView显示信息列表.html" data-title="Android控件学习-显示信息列表" data-url="http://leostones.cn/Blog/blog/2016/08/Android控件学习-使用ListView显示信息列表.html"></div>
+      
+      
+      
+    </div>
+  </div>
+
+  <div id="bottom-outer">
+    <div id="bottom-inner">
+      Site by LeoStones using
+      <a href="http://hexo.io">Hexo</a> & <a href="https://github.com/stiekel/hexo-theme-random">Random</a>
+      <br>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  <script type="text/javascript">
+var duoshuoQuery = {short_name:"LeoStones"};
+(function() {
+  var ds = document.createElement('script');
+  ds.type = 'text/javascript';ds.async = true;
+  ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+  ds.charset = 'UTF-8';
+  (document.getElementsByTagName('head')[0] 
+   || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script>
+
+
+
+<div id="user-card">
+  <div class="center-field">
+    <img class="avatar" src="http://7te9fe.com1.z0.glb.clouddn.com/default_avatar.jpg">
+    <p id="description">我本来就不是为了输赢，我就是因为任性啊</p>
+    <ul class="social-icon">
+  
+  
+    <li>
+      <a href="https://github.com/leostones">
+        
+          <i class="icon iconfont github">&#xe606;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="https://twitter.com/SidCN">
+        
+          <i class="icon iconfont twitter">&#xe600;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="http://weibo.com/sidcn">
+        
+          <i class="icon iconfont weibo">&#xe602;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="https://www.zhihu.com/people/leostones">
+        
+          <i class="icon iconfont zhihu">&#xe60b;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="http://www.douban.com/people/Stiekel/">
+        
+          <i class="icon iconfont douban">&#xe609;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="http://chensd.com/feed">
+        
+          <i class="icon iconfont rss">&#xe60e;</i>
+        
+      </a>
+    </li>
+  
+</ul>
+  </div>
+</div>
+
+
+<div id="btn-view">Hide</div>
+
+<script>
+// is trigger analytics / tongji script
+var isIgnoreHost = false;
+
+if(window && window.location && window.location.host) {
+  isIgnoreHost = ["localhost","127.0.0.1"].some(function(address){
+    return 0 === window.location.host.indexOf(address);
+  });
+}
+
+var isTriggerAnalytics = !( true && isIgnoreHost );
+
+</script>
+
+  <script>
+if(isTriggerAnalytics) {
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?5b4afc2e848e734d81a9211aed583590";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+  })();
+}
+</script>
+
+
+
+  <script>
+if(isTriggerAnalytics) {
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-LeoStones', 'auto');
+  ga('send', 'pageview');
+}
+
+</script>
+
+
+
+  
+  
+    <script src="/js/jquery-2.2.3.min.js"></script>
+  
+    <script src="/js/vegas.min.js"></script>
+  
+    <script src="/js/random.js"></script>
+  
+    <script src="/js/highlight.pack.js"></script>
+  
+    <script src="/js/jquery.mousewheel.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox-thumbs.js"></script>
+  
+    <script src="/js/plyr.js"></script>
+  
+
+<script>
+
+  // fancybox
+  var backgroundImages = [];
+  
+  $('#post').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox') || $(this).parent().hasClass('fancybox-thumb')) return;
+      var alt = this.alt || this.title;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'post' + i);
+    });
+  });
+  $(".fancybox").fancybox();
+
+var vegasConfig = {"preload­Image":true,"transition":["slideLeft2","slideRight2","flash2"],"timer":true,"delay":10000,"shuffle":true,"count":10};
+var unsplashConfig = {"gravity":"north"};
+// is show background images
+var turnoffBackgroundImage = false;
+
+
+
+  turnoffBackgroundImage = true;
+
+
+var backgroundColor = 123456;
+
+$(".fancybox-thumb").fancybox({
+  prevEffect: 'none',
+  nextEffect: 'none',
+  helpers: {
+    title: {
+      type: 'outside'
+    },
+    thumbs: {
+      width: 50,
+      height: 50
+    }
+  }
+});
+
+// show video with plyr
+$(".video-container iframe").each(function(i){
+  var url = $(this).attr('src');
+  var id = url.split('/').pop();
+  var plyrContainer = document.createElement('div');
+  plyrContainer.className = 'plyr';
+  var plyrElement = document.createElement('div');
+  plyrElement.dataset.videoId = id;
+  switch(true) {
+    case url.search('youtube.com') >= 0:
+      plyrElement.dataset.type = 'youtube';
+      break;
+    case url.search('vimeo.com') >= 0:
+      plyrElement.dataset.type = 'vimeo';
+      break;
+    default:
+      return;
+  };
+  plyrContainer.appendChild(plyrElement);
+  $(this).parent().html(plyrContainer);
+});
+plyr.setup('.plyr', {iconUrl: '/css/sprite.svg'});
+</script>
+</body>
+</html>
+

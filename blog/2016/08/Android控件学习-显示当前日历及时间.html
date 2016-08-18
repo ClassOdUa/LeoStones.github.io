@@ -1,0 +1,451 @@
+
+
+
+
+
+
+
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="author" content="LeoStones">
+  
+  
+  
+  
+    <meta name="description" content="">
+  
+  <title>Android控件学习-显示当前日历及时间 [ LeoStones's Blog ]</title>
+  
+    <link rel="alternate" href="/atom.xml" title="LeoStones's Blog">
+  
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+  <link rel="stylesheet" href="/css/random.css">
+<link rel="stylesheet" href="/css/vegas.min.css">
+<link rel="stylesheet" href="/css/highlight-railscasts.css">
+<link rel="stylesheet" href="/css/jquery.fancybox.css">
+<link rel="stylesheet" href="/css/iconfont/iconfont.css">
+<link rel="stylesheet" href="/css/jquery.fancybox-thumbs.css">
+<link rel="stylesheet" href="/css/plyr.css">
+  
+</head>
+
+<body>
+<div class="side-navigate hide-area">
+  
+    <div class="item prev">
+      <a href="/blog/2016/08/Android控件学习-使用GridView显示多张图片.html">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        Android控件学习-实现多张图片二维布局
+      </div>
+    </div>
+  
+  
+    <div class="item next">
+      <a href="/blog/2016/08/Android控件学习-使用ListView显示信息列表.html">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        Android控件学习-显示信息列表
+      </div>
+    </div>
+  
+</div>
+<div id="outer-container" class="hide-area">
+<div id="container">
+  <div id="menu-outer" class="slide-down">
+    <div id="menu-inner">
+      <div id="brand">
+        
+        <a onClick="openUserCard()">
+          <img id="avatar" src="http://7te9fe.com1.z0.glb.clouddn.com/default_avatar.jpg"/>
+          <div id="homelink">LeoStones's Blog</div>
+        </a>
+      </div>
+      <div id="menu-list">
+        <ul>
+        
+        
+          
+            <li>
+          
+            <a href="/index.html">Home</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/archives">Archives</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/tags">Tags</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/categories">Categories</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/about">About</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/guestbook">Guestbook</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="https://github.com/stiekel/hexo-theme-random">Github</a>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div id="show-menu">
+        <button>Menu</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="content-outer">
+    <div id="content-inner">
+      
+      
+  <article id="post">
+    <h1>Android控件学习-显示当前日历及时间</h1>
+    <p class="page-title-sub">
+      <span id = "post-title-date">Created at 2016-08-17</span>
+      
+        <span id = "post-title-updated">Updated at 2016-08-17</span>
+      
+      
+      <span id = "post-title-categories">Category
+      
+      
+        
+        
+        <a href="/categories/Android学习之路/">Android学习之路</a>
+      
+      </span>
+      
+      
+      <span id = "post-title-tags">
+      Tag
+      
+      
+        
+        
+        <a href="/tags/Android/">Android</a>
+      
+      </span>
+      
+    </p>
+    
+    <p><img src="http://o7dscdnip.bkt.clouddn.com/Android3-%E4%BD%BF%E7%94%A8DataPicker%E4%BB%A5%E5%8F%8ATimePicter%E6%98%BE%E7%A4%BA%E5%BD%93%E5%89%8D%E6%97%A5%E6%9C%9F%E5%92%8C%E6%97%B6%E9%97%B4.png"></p>
+<a id="more"></a>
+<h1 id="&#x5B66;&#x4E60;&#x76EE;&#x6807;"><a href="#&#x5B66;&#x4E60;&#x76EE;&#x6807;" class="headerlink" title="&#x5B66;&#x4E60;&#x76EE;&#x6807;"></a>&#x5B66;&#x4E60;&#x76EE;&#x6807;</h1><ul>
+<li><strong>DatePicker &amp;&amp; TimePicker &#x52A8;&#x6001;&#x8F93;&#x5165;&#x65E5;&#x671F;&#x548C;&#x65F6;&#x95F4;&#x7684;&#x529F;&#x80FD;</strong></li>
+<li><strong>DatePickerDialog &amp;&amp; TimePickerDialog &#x52A8;&#x6001;&#x8F93;&#x5165;&#x65E5;&#x671F;&#x548C;&#x65F6;&#x95F4;&#x7684;&#x5BF9;&#x8BDD;&#x6846;</strong></li>
+<li><strong>&#x76D1;&#x6D4B;&#x65E5;&#x671F;&#x65F6;&#x95F4;&#x6539;&#x53D8;&#x7684;&#x76D1;&#x542C;&#x5668;&#xFF1A;</strong><br><strong>1&gt;OnDateChangedListener &amp;&amp; OnTimeChangedListener()</strong><br><strong>2&gt;OnDateSetListener &amp;&amp; OnTimeSetListener()</strong></li>
+</ul>
+<h2 id="&#x5BF9;&#x5E94;&#x4E8B;&#x4EF6;"><a href="#&#x5BF9;&#x5E94;&#x4E8B;&#x4EF6;" class="headerlink" title="&#x5BF9;&#x5E94;&#x4E8B;&#x4EF6;"></a>&#x5BF9;&#x5E94;&#x4E8B;&#x4EF6;</h2><p>DatePicker&#x2014;&#x2014;OnDateChangedListener&#x2014;&#x2013;OnDateChange() &#x4E8B;&#x4EF6;<br>TimePicker&#x2014;&#x2014;OnTimeChangedListener&#x2014;&#x2013;OnTimeChange() &#x4E8B;&#x4EF6;<br>DatePickerDialog&#x2014;&#x2014;OnDateSetListener&#x2014;&#x2013;OnDateSet() &#x4E8B;&#x4EF6;<br>TimePickerDialog&#x2014;&#x2014;OnTimeSetListener&#x2014;&#x2013;OnTimeSet() &#x4E8B;&#x4EF6;</p>
+<h1 id="&#x5E94;&#x7528;&#x573A;&#x666F;"><a href="#&#x5E94;&#x7528;&#x573A;&#x666F;" class="headerlink" title="&#x5E94;&#x7528;&#x573A;&#x666F;"></a>&#x5E94;&#x7528;&#x573A;&#x666F;</h1><p><img src="http://o7dscdnip.bkt.clouddn.com/Android3-%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF.png"></p>
+<h1 id="Demo&#x793A;&#x4F8B;&#x9700;&#x6C42;&#x529F;&#x80FD;"><a href="#Demo&#x793A;&#x4F8B;&#x9700;&#x6C42;&#x529F;&#x80FD;" class="headerlink" title="Demo&#x793A;&#x4F8B;&#x9700;&#x6C42;&#x529F;&#x80FD;"></a>Demo&#x793A;&#x4F8B;&#x9700;&#x6C42;&#x529F;&#x80FD;</h1><p><img src="http://o7dscdnip.bkt.clouddn.com/Android3-Demo%E5%AE%9E%E4%BE%8B%E9%9C%80%E6%B1%82.png"></p>
+<h1 id="DatePicker-amp-amp-TimePicker-&#x52A8;&#x6001;&#x8F93;&#x5165;&#x65E5;&#x671F;&#x548C;&#x65F6;&#x95F4;&#x7684;&#x529F;&#x80FD;"><a href="#DatePicker-amp-amp-TimePicker-&#x52A8;&#x6001;&#x8F93;&#x5165;&#x65E5;&#x671F;&#x548C;&#x65F6;&#x95F4;&#x7684;&#x529F;&#x80FD;" class="headerlink" title="DatePicker &amp;&amp; TimePicker &#x52A8;&#x6001;&#x8F93;&#x5165;&#x65E5;&#x671F;&#x548C;&#x65F6;&#x95F4;&#x7684;&#x529F;&#x80FD;"></a>DatePicker &amp;&amp; TimePicker &#x52A8;&#x6001;&#x8F93;&#x5165;&#x65E5;&#x671F;&#x548C;&#x65F6;&#x95F4;&#x7684;&#x529F;&#x80FD;</h1><h2 id="&#x4EC0;&#x4E48;&#x662F;DatePicker-amp-amp-TimePicker"><a href="#&#x4EC0;&#x4E48;&#x662F;DatePicker-amp-amp-TimePicker" class="headerlink" title="&#x4EC0;&#x4E48;&#x662F;DatePicker &amp;&amp; TimePicker"></a>&#x4EC0;&#x4E48;&#x662F;DatePicker &amp;&amp; TimePicker</h2><p><img src="http://o7dscdnip.bkt.clouddn.com/Android3-datapicter%E4%B8%8Etimepicter.png"></p>
+<h2 id="&#x76D1;&#x542C;&#x4E8B;&#x4EF6;"><a href="#&#x76D1;&#x542C;&#x4E8B;&#x4EF6;" class="headerlink" title="&#x76D1;&#x542C;&#x4E8B;&#x4EF6;"></a>&#x76D1;&#x542C;&#x4E8B;&#x4EF6;</h2><p><img src="http://o7dscdnip.bkt.clouddn.com/Android3-OnchangListenter.png"></p>
+<h2 id="&#x58F0;&#x660E;"><a href="#&#x58F0;&#x660E;" class="headerlink" title="&#x58F0;&#x660E;"></a>&#x58F0;&#x660E;</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> DatePicker mDatePicker;</span><br><span class="line"><span class="keyword">private</span> TimePicker mTimePicker;</span><br><span class="line"><span class="keyword">private</span> Calendar mCalendar;<span class="comment">//Calendar&#x81EA;&#x52A8;&#x83B7;&#x53D6;&#x5F53;&#x524D;&#x65F6;&#x95F4;&#x7684;&#x7C7B;</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> year;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> month;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> day;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> hour;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> minute;</span><br></pre></td></tr></table></figure>
+<h2 id="&#x4F7F;&#x7528;DatePicker-amp-amp-TimePicker"><a href="#&#x4F7F;&#x7528;DatePicker-amp-amp-TimePicker" class="headerlink" title="&#x4F7F;&#x7528;DatePicker&amp;&amp;TimePicker"></a>&#x4F7F;&#x7528;DatePicker&amp;&amp;TimePicker</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//&#x83B7;&#x53D6;&#x65E5;&#x5386;&#x7684;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;</span></span><br><span class="line">mCalendar = Calendar.getInstance();</span><br><span class="line"><span class="comment">//&#x83B7;&#x53D6;&#x5E74;&#x6708;&#x65E5;&#x5206;&#x79D2;&#x7684;&#x4FE1;&#x606F;</span></span><br><span class="line">year = mCalendar.get(Calendar.YEAR);</span><br><span class="line">month= mCalendar.get(Calendar.MONTH) + <span class="number">1</span>;<span class="comment">//android&#x8BA1;&#x7B97;&#x6708;&#x4EFD;&#x662F;&#x4ECE;0&#x5F00;&#x59CB;&#x7684;</span></span><br><span class="line">day = mCalendar.get(Calendar.DAY_OF_MONTH);</span><br><span class="line">hour = mCalendar.get(Calendar.HOUR);</span><br><span class="line">minute = mCalendar.get(Calendar.MINUTE);</span><br><span class="line"><span class="comment">//&#x5C06;&#x65E5;&#x671F;&#x65F6;&#x95F4;&#x663E;&#x793A;&#x5728;&#x6807;&#x9898;&#x680F;&#x4E0A;</span></span><br><span class="line">setTitle(year + <span class="string">&quot;-&quot;</span> + month + <span class="string">&quot;-&quot;</span> + day + <span class="string">&quot;-&quot;</span> + hour + <span class="string">&quot;:&quot;</span> + minute);</span><br><span class="line"></span><br><span class="line">mDatePicker = (DatePicker) findViewById(R.id.datePicker);</span><br><span class="line">mTimePicker = (TimePicker) findViewById(R.id.timePicker);</span><br><span class="line"><span class="comment">//&#x521D;&#x59CB;&#x5316;DataPicter</span></span><br><span class="line">mDatePicker.init(year, mCalendar.get(Calendar.MONTH), day, <span class="keyword">new</span> DatePicker.OnDateChangedListener() {</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDateChanged</span><span class="params">(DatePicker datePicker, <span class="keyword">int</span> year, <span class="keyword">int</span> monthOfyear, <span class="keyword">int</span> dayOfmonth)</span> </span>{</span><br><span class="line">        setTitle(year + <span class="string">&quot;-&quot;</span> + (monthOfyear + <span class="number">1</span>) + <span class="string">&quot;-&quot;</span> + dayOfmonth);</span><br><span class="line">    }</span><br><span class="line">});</span><br><span class="line">mTimePicker.setOnTimeChangedListener(<span class="keyword">new</span> TimePicker.OnTimeChangedListener() {</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onTimeChanged</span><span class="params">(TimePicker timePicker, <span class="keyword">int</span> hourOfday, <span class="keyword">int</span> minute)</span> </span>{</span><br><span class="line">        setTitle(hourOfday + <span class="string">&quot;:&quot;</span> + minute);</span><br><span class="line">    }</span><br><span class="line">});</span><br></pre></td></tr></table></figure>
+<h2 id="&#x6548;&#x679C;&#x6F14;&#x793A;"><a href="#&#x6548;&#x679C;&#x6F14;&#x793A;" class="headerlink" title="&#x6548;&#x679C;&#x6F14;&#x793A;"></a>&#x6548;&#x679C;&#x6F14;&#x793A;</h2><p><img src="http://o7dscdnip.bkt.clouddn.com/Android3-TimePicker&amp;Datepicker.gif"></p>
+<h1 id=""><a href="#" class="headerlink" title=" "></a> </h1><h1 id="DatePickerDialog-amp-amp-TimePickerDialog-&#x52A8;&#x6001;&#x8F93;&#x5165;&#x65E5;&#x671F;&#x548C;&#x65F6;&#x95F4;&#x7684;&#x5BF9;&#x8BDD;&#x6846;"><a href="#DatePickerDialog-amp-amp-TimePickerDialog-&#x52A8;&#x6001;&#x8F93;&#x5165;&#x65E5;&#x671F;&#x548C;&#x65F6;&#x95F4;&#x7684;&#x5BF9;&#x8BDD;&#x6846;" class="headerlink" title="DatePickerDialog &amp;&amp; TimePickerDialog &#x52A8;&#x6001;&#x8F93;&#x5165;&#x65E5;&#x671F;&#x548C;&#x65F6;&#x95F4;&#x7684;&#x5BF9;&#x8BDD;&#x6846;"></a><strong>DatePickerDialog &amp;&amp; TimePickerDialog &#x52A8;&#x6001;&#x8F93;&#x5165;&#x65E5;&#x671F;&#x548C;&#x65F6;&#x95F4;&#x7684;&#x5BF9;&#x8BDD;&#x6846;</strong></h1><h2 id="&#x76D1;&#x542C;&#x4E8B;&#x4EF6;-1"><a href="#&#x76D1;&#x542C;&#x4E8B;&#x4EF6;-1" class="headerlink" title="&#x76D1;&#x542C;&#x4E8B;&#x4EF6;"></a>&#x76D1;&#x542C;&#x4E8B;&#x4EF6;</h2><p><img src="http://o7dscdnip.bkt.clouddn.com/Android3-OnsetListenter.png "></p>
+<h2 id="&#x4F7F;&#x7528;DatePickerDialog&#x5B9E;&#x73B0;&#x65E5;&#x5386;&#x5BF9;&#x8BDD;&#x6846;&#x9009;&#x62E9;"><a href="#&#x4F7F;&#x7528;DatePickerDialog&#x5B9E;&#x73B0;&#x65E5;&#x5386;&#x5BF9;&#x8BDD;&#x6846;&#x9009;&#x62E9;" class="headerlink" title="&#x4F7F;&#x7528;DatePickerDialog&#x5B9E;&#x73B0;&#x65E5;&#x5386;&#x5BF9;&#x8BDD;&#x6846;&#x9009;&#x62E9;"></a>&#x4F7F;&#x7528;DatePickerDialog&#x5B9E;&#x73B0;&#x65E5;&#x5386;&#x5BF9;&#x8BDD;&#x6846;&#x9009;&#x62E9;</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//&#x4F7F;&#x7528;DatePickerDialog&#x5B9E;&#x73B0;&#x65E5;&#x5386;&#x9009;&#x62E9;</span></span><br><span class="line"><span class="keyword">new</span> DatePickerDialog(<span class="keyword">this</span>, <span class="keyword">new</span> DatePickerDialog.OnDateSetListener() {</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDateSet</span><span class="params">(DatePicker datePicker, <span class="keyword">int</span> year, <span class="keyword">int</span> monthOfyear, <span class="keyword">int</span> dayOfmonth)</span> </span>{</span><br><span class="line">       setTitle(year + <span class="string">&quot;-&quot;</span> + (monthOfyear + <span class="number">1</span>) + <span class="string">&quot;-&quot;</span> + dayOfmonth);</span><br><span class="line">    }</span><br><span class="line">},year,mCalendar.get(Calendar.MONTH), day).show();</span><br></pre></td></tr></table></figure>
+<h2 id="DatePickerDialog&#x6548;&#x679C;&#x6F14;&#x793A;"><a href="#DatePickerDialog&#x6548;&#x679C;&#x6F14;&#x793A;" class="headerlink" title="DatePickerDialog&#x6548;&#x679C;&#x6F14;&#x793A;"></a>DatePickerDialog&#x6548;&#x679C;&#x6F14;&#x793A;</h2><p><img src="http://o7dscdnip.bkt.clouddn.com/Android3-DatapickerDialog.gif"></p>
+<h2 id="&#x4F7F;&#x7528;TimePickerDialog&#x5B9E;&#x73B0;&#x65F6;&#x95F4;&#x5BF9;&#x8BDD;&#x6846;&#x9009;&#x62E9;"><a href="#&#x4F7F;&#x7528;TimePickerDialog&#x5B9E;&#x73B0;&#x65F6;&#x95F4;&#x5BF9;&#x8BDD;&#x6846;&#x9009;&#x62E9;" class="headerlink" title="&#x4F7F;&#x7528;TimePickerDialog&#x5B9E;&#x73B0;&#x65F6;&#x95F4;&#x5BF9;&#x8BDD;&#x6846;&#x9009;&#x62E9;"></a>&#x4F7F;&#x7528;TimePickerDialog&#x5B9E;&#x73B0;&#x65F6;&#x95F4;&#x5BF9;&#x8BDD;&#x6846;&#x9009;&#x62E9;</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//&#x4F7F;&#x7528;TimePickerDialog&#x5B9E;&#x73B0;&#x65F6;&#x95F4;&#x9009;&#x62E9;</span></span><br><span class="line"><span class="keyword">new</span> TimePickerDialog(<span class="keyword">this</span>, <span class="keyword">new</span> TimePickerDialog.OnTimeSetListener() {</span><br><span class="line">     <span class="meta">@Override</span></span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onTimeSet</span><span class="params">(TimePicker timePicker, <span class="keyword">int</span> hourOfday, <span class="keyword">int</span> minute)</span> </span>{</span><br><span class="line">         etTitle(hourOfday + <span class="string">&quot;:&quot;</span> + minute);</span><br><span class="line">     }</span><br><span class="line">,day,minute,<span class="keyword">true</span>).show();</span><br></pre></td></tr></table></figure>
+<h2 id="TimePickerDialog&#x6548;&#x679C;&#x6F14;&#x793A;"><a href="#TimePickerDialog&#x6548;&#x679C;&#x6F14;&#x793A;" class="headerlink" title="TimePickerDialog&#x6548;&#x679C;&#x6F14;&#x793A;"></a>TimePickerDialog&#x6548;&#x679C;&#x6F14;&#x793A;</h2><p><img src="http://o7dscdnip.bkt.clouddn.com/Android3-TimepickerDialog.gif"></p>
+<h1 id="&#x6CE8;&#x610F;&#x4E8B;&#x9879;"><a href="#&#x6CE8;&#x610F;&#x4E8B;&#x9879;" class="headerlink" title="&#x6CE8;&#x610F;&#x4E8B;&#x9879;"></a>&#x6CE8;&#x610F;&#x4E8B;&#x9879;</h1><ul>
+<li><p><strong>DatePicker &#x5BF9;&#x8C61;&#x662F;&#x4EE5; init &#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x521D;&#x59CB;&#x5316;&#x6765;&#x6307;&#x5B9A; DatePicker &#x521D;&#x59CB;&#x5316;&#x7684;&#x5E74;&#x6708;&#x65E5;&#x4EE5;&#x53CA; OnDateChangedListener &#x6765;&#x76D1;&#x542C;&#x65E5;&#x671F;&#x7684;&#x6539;&#x53D8;&#xFF0C;&#x800C; TimePicker &#x4E0D;&#x9700;&#x8981; init &#x521D;&#x59CB;&#x5316;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x8BBE;&#x7F6E;&#x76D1;&#x542C; OnTimeChangedListener &#x6765;&#x76D1;&#x542C;&#x65F6;&#x95F4;&#x7684;&#x6539;&#x53D8;</strong></p>
+<p>&#x200B;</p>
+</li>
+<li><p><strong>DatePickerDailog &#x662F;&#x4EE5;&#x5BF9;&#x8BDD;&#x6846;&#x7684;&#x65B9;&#x5F0F;&#x5F39;&#x51FA;&#x65E5;&#x671F;&#x9009;&#x62E9;&#x5668;&#xFF0C;&#x9700;&#x8981;&#x7528; new &#x7684;&#x65B9;&#x5F0F;&#x521B;&#x5EFA;&#x5E76;&#x4E14;&#x4F20;&#x5165;&#x5BF9;&#x5E94;&#x7684;&#x76D1;&#x542C; OnDateSetListener&#xFF0C;&#x65E5;&#x671F;&#x521D;&#x59CB;&#x5316;&#x6570;&#x636E;&#xFF0C;&#x6700;&#x540E;&#x8BB0;&#x5F97;&#x8BBE;&#x7F6E;&#x5BF9;&#x8BDD;&#x6846;&#x663E;&#x793A; (show) &#x65B9;&#x6CD5;&#x3002;&#x540C;&#x6837; TimePickerDailog &#x4E5F;&#x662F;&#x9700;&#x8981;&#x4EE5; new &#x7684;&#x65B9;&#x5F0F;&#x8FDB;&#x884C;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x5E76;&#x4E14;&#x8BBE;&#x7F6E; OnTimeListener,</strong></p>
+</li>
+</ul>
+
+  </article>
+  <div class="random-toc-area">
+  <button class="btn-hide-toc btn-hide-toc-show" style="display: none" onclick="TOCToggle()">Show TOC</button>
+  <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">Hide TOC</button>
+  <div class="random-toc">
+    <h2>Table of Content</h2>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#学习目标"><span class="toc-text">学习目标</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#对应事件"><span class="toc-text">对应事件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#应用场景"><span class="toc-text">应用场景</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Demo示例需求功能"><span class="toc-text">Demo示例需求功能</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DatePicker-amp-amp-TimePicker-动态输入日期和时间的功能"><span class="toc-text">DatePicker && TimePicker 动态输入日期和时间的功能</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是DatePicker-amp-amp-TimePicker"><span class="toc-text">什么是DatePicker && TimePicker</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#监听事件"><span class="toc-text">监听事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#声明"><span class="toc-text">声明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用DatePicker-amp-amp-TimePicker"><span class="toc-text">使用DatePicker&&TimePicker</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#效果演示"><span class="toc-text">效果演示</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-text"> </span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DatePickerDialog-amp-amp-TimePickerDialog-动态输入日期和时间的对话框"><span class="toc-text">DatePickerDialog && TimePickerDialog 动态输入日期和时间的对话框</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#监听事件-1"><span class="toc-text">监听事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用DatePickerDialog实现日历对话框选择"><span class="toc-text">使用DatePickerDialog实现日历对话框选择</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DatePickerDialog效果演示"><span class="toc-text">DatePickerDialog效果演示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用TimePickerDialog实现时间对话框选择"><span class="toc-text">使用TimePickerDialog实现时间对话框选择</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TimePickerDialog效果演示"><span class="toc-text">TimePickerDialog效果演示</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#注意事项"><span class="toc-text">注意事项</span></a></li></ol>
+  </div>
+</div>
+
+  
+<nav id="pagination">
+  
+    <a href="/blog/2016/08/Android控件学习-使用GridView显示多张图片.html" class="prev">&larr; Prev post Android控件学习-实现多张图片二维布局</a>
+  
+
+  
+
+  
+    <a href="/blog/2016/08/Android控件学习-使用ListView显示信息列表.html" class="next">Next post Android控件学习-显示信息列表 &rarr;</a>
+  
+</nav>
+
+  <!-- JiaThis Button BEGIN -->
+
+<!-- JiaThis Button END -->
+
+
+      
+      <div class="ds-thread" data-thread-key="/blog/2016/08/Android控件学习-显示当前日历及时间.html" data-title="Android控件学习-显示当前日历及时间" data-url="http://leostones.cn/Blog/blog/2016/08/Android控件学习-显示当前日历及时间.html"></div>
+      
+      
+      
+    </div>
+  </div>
+
+  <div id="bottom-outer">
+    <div id="bottom-inner">
+      Site by LeoStones using
+      <a href="http://hexo.io">Hexo</a> & <a href="https://github.com/stiekel/hexo-theme-random">Random</a>
+      <br>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  <script type="text/javascript">
+var duoshuoQuery = {short_name:"LeoStones"};
+(function() {
+  var ds = document.createElement('script');
+  ds.type = 'text/javascript';ds.async = true;
+  ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+  ds.charset = 'UTF-8';
+  (document.getElementsByTagName('head')[0] 
+   || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script>
+
+
+
+<div id="user-card">
+  <div class="center-field">
+    <img class="avatar" src="http://7te9fe.com1.z0.glb.clouddn.com/default_avatar.jpg">
+    <p id="description">我本来就不是为了输赢，我就是因为任性啊</p>
+    <ul class="social-icon">
+  
+  
+    <li>
+      <a href="https://github.com/leostones">
+        
+          <i class="icon iconfont github">&#xe606;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="https://twitter.com/SidCN">
+        
+          <i class="icon iconfont twitter">&#xe600;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="http://weibo.com/sidcn">
+        
+          <i class="icon iconfont weibo">&#xe602;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="https://www.zhihu.com/people/leostones">
+        
+          <i class="icon iconfont zhihu">&#xe60b;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="http://www.douban.com/people/Stiekel/">
+        
+          <i class="icon iconfont douban">&#xe609;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="http://chensd.com/feed">
+        
+          <i class="icon iconfont rss">&#xe60e;</i>
+        
+      </a>
+    </li>
+  
+</ul>
+  </div>
+</div>
+
+
+<div id="btn-view">Hide</div>
+
+<script>
+// is trigger analytics / tongji script
+var isIgnoreHost = false;
+
+if(window && window.location && window.location.host) {
+  isIgnoreHost = ["localhost","127.0.0.1"].some(function(address){
+    return 0 === window.location.host.indexOf(address);
+  });
+}
+
+var isTriggerAnalytics = !( true && isIgnoreHost );
+
+</script>
+
+  <script>
+if(isTriggerAnalytics) {
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?5b4afc2e848e734d81a9211aed583590";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+  })();
+}
+</script>
+
+
+
+  <script>
+if(isTriggerAnalytics) {
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-LeoStones', 'auto');
+  ga('send', 'pageview');
+}
+
+</script>
+
+
+
+  
+  
+    <script src="/js/jquery-2.2.3.min.js"></script>
+  
+    <script src="/js/vegas.min.js"></script>
+  
+    <script src="/js/random.js"></script>
+  
+    <script src="/js/highlight.pack.js"></script>
+  
+    <script src="/js/jquery.mousewheel.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox-thumbs.js"></script>
+  
+    <script src="/js/plyr.js"></script>
+  
+
+<script>
+
+  // fancybox
+  var backgroundImages = [];
+  
+  $('#post').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox') || $(this).parent().hasClass('fancybox-thumb')) return;
+      var alt = this.alt || this.title;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'post' + i);
+    });
+  });
+  $(".fancybox").fancybox();
+
+var vegasConfig = {"preload­Image":true,"transition":["slideLeft2","slideRight2","flash2"],"timer":true,"delay":10000,"shuffle":true,"count":10};
+var unsplashConfig = {"gravity":"north"};
+// is show background images
+var turnoffBackgroundImage = false;
+
+
+
+  turnoffBackgroundImage = true;
+
+
+var backgroundColor = 123456;
+
+$(".fancybox-thumb").fancybox({
+  prevEffect: 'none',
+  nextEffect: 'none',
+  helpers: {
+    title: {
+      type: 'outside'
+    },
+    thumbs: {
+      width: 50,
+      height: 50
+    }
+  }
+});
+
+// show video with plyr
+$(".video-container iframe").each(function(i){
+  var url = $(this).attr('src');
+  var id = url.split('/').pop();
+  var plyrContainer = document.createElement('div');
+  plyrContainer.className = 'plyr';
+  var plyrElement = document.createElement('div');
+  plyrElement.dataset.videoId = id;
+  switch(true) {
+    case url.search('youtube.com') >= 0:
+      plyrElement.dataset.type = 'youtube';
+      break;
+    case url.search('vimeo.com') >= 0:
+      plyrElement.dataset.type = 'vimeo';
+      break;
+    default:
+      return;
+  };
+  plyrContainer.appendChild(plyrElement);
+  $(this).parent().html(plyrContainer);
+});
+plyr.setup('.plyr', {iconUrl: '/css/sprite.svg'});
+</script>
+</body>
+</html>
+
