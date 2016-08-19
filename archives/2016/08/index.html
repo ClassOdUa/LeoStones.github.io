@@ -1,736 +1,825 @@
-
-
-  
-
-
-
-
-  
-
-
-  
-
-
-<!doctype html>
-<html lang="zh-Hans">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <meta name="author" content="LeoStones">
-  
-  
-  
-  
+    <meta charset="utf-8">
+    
+    <title>Arxiu: 2016/8 | LeoStones&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
     <meta name="description" content="我本来就不是为了输赢，我就是因为任性啊">
-  
-  <title>Archives: 8/2016: 2016 [ LeoStones's Blog ]</title>
-  
-    <link rel="alternate" href="/atom.xml" title="LeoStones's Blog">
-  
-  
-    <link rel="shortcut icon" href="/favicon.ico">
-  
-  
-  <link rel="stylesheet" href="/css/random.css">
-<link rel="stylesheet" href="/css/vegas.min.css">
-<link rel="stylesheet" href="/css/highlight-railscasts.css">
-<link rel="stylesheet" href="/css/jquery.fancybox.css">
-<link rel="stylesheet" href="/css/iconfont/iconfont.css">
-<link rel="stylesheet" href="/css/jquery.fancybox-thumbs.css">
-<link rel="stylesheet" href="/css/plyr.css">
-  
+<meta property="og:type" content="website">
+<meta property="og:title" content="LeoStones's Blog">
+<meta property="og:url" content="http://leostones.cn/Blog/archives/2016/08/index.html">
+<meta property="og:site_name" content="LeoStones's Blog">
+<meta property="og:description" content="我本来就不是为了输赢，我就是因为任性啊">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LeoStones's Blog">
+<meta name="twitter:description" content="我本来就不是为了输赢，我就是因为任性啊">
+    
+
+    
+        <link rel="alternate" href="http://chensd.com/feed" title="LeoStones&#39;s Blog" type="application/atom+xml" />
+    
+
+    
+
+    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/vendor/titillium-web/styles.css">
+    <link rel="stylesheet" href="/vendor/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/vendor/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/vendor/fancybox/jquery.fancybox.css">
+    
+    
+        <link rel="stylesheet" href="/vendor/scrollLoading/style.css">
+    
+    
+    
+
 </head>
 
 <body>
-<div class="side-navigate hide-area">
-  
-  
-</div>
-<div id="outer-container" class="hide-area">
-<div id="container">
-  <div id="menu-outer" class="slide-down">
-    <div id="menu-inner">
-      <div id="brand">
-        
-        <a onClick="openUserCard()">
-          <img id="avatar" src="http://7te9fe.com1.z0.glb.clouddn.com/default_avatar.jpg"/>
-          <div id="homelink">LeoStones's Blog</div>
-        </a>
-      </div>
-      <div id="menu-list">
-        <ul>
-        
-        
-          
-            <li>
-          
-            <a href="/index.html">Home</a>
-            
-          </li>
-        
-          
-            <li class="active">
-          
-            <a href="/archives">Archives</a>
-            
-          </li>
-        
-          
-            <li>
-          
-            <a href="/tags">Tags</a>
-            
-          </li>
-        
-          
-            <li>
-          
-            <a href="/categories">Categories</a>
-            
-          </li>
-        
-          
-            <li>
-          
-            <a href="/about">About</a>
-            
-          </li>
-        
-          
-            <li>
-          
-            <a href="/guestbook">Guestbook</a>
-            
-          </li>
-        
-          
-            <li>
-          
-            <a href="https://github.com/stiekel/hexo-theme-random">Github</a>
-            
-          </li>
-        
-        </ul>
-      </div>
-      <div id="show-menu">
-        <button>Menu</button>
-      </div>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">我本来就不是为了输赢，我就是因为任性啊</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Inici</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Android学习之路/">Android学习之路</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Blog/">Blog</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Hexo/">Hexo</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Java/">Java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/实用技巧/">实用技巧</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/生活杂谈/">生活杂谈</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/资料整理/">资料整理</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/archives/index.html">index.archives</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/tags/index.html">index.tags</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">Quant a</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/guestbook/index.html">index.guestbook</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Cercar" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
     </div>
-  </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'categories',
+            TAGS: 'etiquetes',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
 
-  <div id="content-outer">
-    <div id="content-inner">
-      
-      
-  <article>
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
     
-
-  <div id="recent-posts">
-    <h1>Archives
-    
-      <span class="posts-count">
-      Total
-      8
-      
-        posts
-      
-      </span>
-    
+    <i class="icon fa fa-archive"></i>Arxiu: 2016/8
     </h1>
-    
-    
-      
-      
-        
-      
-      
-    
-      
-      
-      
-    
-      
-      
-      
-    
-      
-      
-      
-    
-      
-      
-      
-    
-      
-      
-      
-    
-      
-      
-      
-    
-      
-      
-      
-    
-    
-    
-      
-      
-        
-        <h3 class="archive-year-title">2016
-        
-          <span class="posts-count">
-          Total
-          8
-          
-            posts
-          
-          </span>
-        
-        </h3>
-      
-      <div class="post-title-item">
-  
-  <a href="//blog/2016/08/Android控件学习-.显示网页.html">
-  
-    Android控件学习-实现进度条
-  
-  </a>
-  <p class="page-title-sub">
-    <span id = "post-title-date">8-18</span>
-    
-    <span id = "post-title-categories">Category
-    
-    
-      
-      
-      <a href="/categories/Android学习之路/">Android学习之路</a>
-    
-    </span>
-    
-    
-    <span id = "post-title-tags">
-    Tag
-    
-    
-      
-      
-      <a href="/tags/Android/">Android</a>
-    
-    </span>
-    
-    
-      <br>
-      
-      
-    
-  </p>
-  
 </div>
-    
-      
-      
-      <div class="post-title-item">
-  
-  <a href="//blog/2016/08/Android控件学习-实现进度条.html">
-  
-    Android控件学习-实现进度条
-  
-  </a>
-  <p class="page-title-sub">
-    <span id = "post-title-date">8-18</span>
-    
-    <span id = "post-title-categories">Category
-    
-    
-      
-      
-      <a href="/categories/Android学习之路/">Android学习之路</a>
-    
-    </span>
-    
-    
-    <span id = "post-title-tags">
-    Tag
-    
-    
-      
-      
-      <a href="/tags/Android/">Android</a>
-    
-    </span>
-    
-    
-      <br>
-      
-      
-    
-  </p>
-  
-</div>
-    
-      
-      
-      <div class="post-title-item">
-  
-  <a href="//blog/2016/08/Android控件学习-实现下拉列表.html">
-  
-    Android控件学习-实现下拉列表
-  
-  </a>
-  <p class="page-title-sub">
-    <span id = "post-title-date">8-18</span>
-    
-    <span id = "post-title-categories">Category
-    
-    
-      
-      
-      <a href="/categories/Android学习之路/">Android学习之路</a>
-    
-    </span>
-    
-    
-    <span id = "post-title-tags">
-    Tag
-    
-    
-      
-      
-      <a href="/tags/Android/">Android</a>
-    
-    </span>
-    
-    
-      <br>
-      
-      
-    
-  </p>
-  
-</div>
-    
-      
-      
-      <div class="post-title-item">
-  
-  <a href="//blog/2016/08/Android控件学习-使用GridView显示多张图片.html">
-  
-    Android控件学习-实现多张图片二维布局
-  
-  </a>
-  <p class="page-title-sub">
-    <span id = "post-title-date">8-17</span>
-    
-    <span id = "post-title-categories">Category
-    
-    
-      
-      
-      <a href="/categories/Android学习之路/">Android学习之路</a>
-    
-    </span>
-    
-    
-    <span id = "post-title-tags">
-    Tag
-    
-    
-      
-      
-      <a href="/tags/Android/">Android</a>
-    
-    </span>
-    
-    
-      <br>
-      
-      
-    
-  </p>
-  
-</div>
-    
-      
-      
-      <div class="post-title-item">
-  
-  <a href="//blog/2016/08/Android控件学习-显示当前日历及时间.html">
-  
-    Android控件学习-显示当前日历及时间
-  
-  </a>
-  <p class="page-title-sub">
-    <span id = "post-title-date">8-17</span>
-    
-    <span id = "post-title-categories">Category
-    
-    
-      
-      
-      <a href="/categories/Android学习之路/">Android学习之路</a>
-    
-    </span>
-    
-    
-    <span id = "post-title-tags">
-    Tag
-    
-    
-      
-      
-      <a href="/tags/Android/">Android</a>
-    
-    </span>
-    
-    
-      <br>
-      
-      
-    
-  </p>
-  
-</div>
-    
-      
-      
-      <div class="post-title-item">
-  
-  <a href="//blog/2016/08/Android控件学习-使用ListView显示信息列表.html">
-  
-    Android控件学习-显示信息列表
-  
-  </a>
-  <p class="page-title-sub">
-    <span id = "post-title-date">8-16</span>
-    
-    <span id = "post-title-categories">Category
-    
-    
-      
-      
-      <a href="/categories/Android学习之路/">Android学习之路</a>
-    
-    </span>
-    
-    
-    <span id = "post-title-tags">
-    Tag
-    
-    
-      
-      
-      <a href="/tags/Android/">Android</a>
-    
-    </span>
-    
-    
-      <br>
-      
-      
-    
-  </p>
-  
-</div>
-    
-      
-      
-      <div class="post-title-item">
-  
-  <a href="//blog/2016/08/Android控件学习-Intent页面间的跳转.html">
-  
-    Android控件学习-页面间的跳转
-  
-  </a>
-  <p class="page-title-sub">
-    <span id = "post-title-date">8-14</span>
-    
-    <span id = "post-title-categories">Category
-    
-    
-      
-      
-      <a href="/categories/Android学习之路/">Android学习之路</a>
-    
-    </span>
-    
-    
-    <span id = "post-title-tags">
-    Tag
-    
-    
-      
-      
-      <a href="/tags/Android/">Android</a>
-    
-    </span>
-    
-    
-      <br>
-      
-      
-    
-  </p>
-  
-</div>
-    
-      
-      
-      <div class="post-title-item">
-  
-  <a href="//blog/2016/08/Android Studio快捷键.html">
-  
-    Android Studio常用快捷键
-  
-  </a>
-  <p class="page-title-sub">
-    <span id = "post-title-date">8-13</span>
-    
-    <span id = "post-title-categories">Category
-    
-    
-      
-      
-      <a href="/categories/Android学习之路/">Android学习之路</a>
-    
-    </span>
-    
-    
-    <span id = "post-title-tags">
-    Tag
-    
-    
-      
-      
-      <a href="/tags/Android/">Android</a>
-    
-    </span>
-    
-    
-      <br>
-      
-      
-    
-  </p>
-  
-</div>
-    
-  </div>
+                        <div class="main-body-content">
+                            
 
+    
+    
+        
+        
+        <section class="archives-wrap">
+            <div class="archive-year-wrap">
+                <a href="/archives/2016" class="archive-year"><i class="icon fa fa-calendar-o"></i>2016</a>
+            </div>
+            <div class="archives">
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/blog/2016/08/Android控件学习-.显示网页.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://o7dscdnip.bkt.clouddn.com/Android-webview-%E4%BD%BF%E7%94%A8Webview%E6%98%BE%E7%A4%BA%E7%BD%91%E9%A1%B5.png)" alt="Android控件学习-实现进度条" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://leostones.cn/Blog/blog/2016/08/Android控件学习-.显示网页.html">0</span>
+    
+</span>
 
-  </article>
+    
+</a>
 
-      
-      
-      
+        
+        <div class="article-meta">
+            <p class="category">
+            <a class="article-category-link" href="/categories/Android学习之路/">Android学习之路</a>
+            </p>
+            <p class="date"><time datetime="2016-08-18T14:01:23.104Z" itemprop="datePublished">2016-08-18</time></p>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/blog/2016/08/Android控件学习-.显示网页.html">Android控件学习-实现进度条</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            
+        </p>
     </div>
-  </div>
+</article>
+    
 
-  <div id="bottom-outer">
-    <div id="bottom-inner">
-      Site by LeoStones using
-      <a href="http://hexo.io">Hexo</a> & <a href="https://github.com/stiekel/hexo-theme-random">Random</a>
-      <br>
-      
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/blog/2016/08/Android控件学习-实现进度条.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://o7dscdnip.bkt.clouddn.com/Android-progressbar-%E4%BD%BF%E7%94%A8ProgressBar.png)" alt="Android控件学习-实现进度条" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://leostones.cn/Blog/blog/2016/08/Android控件学习-实现进度条.html">0</span>
+    
+</span>
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <p class="category">
+            <a class="article-category-link" href="/categories/Android学习之路/">Android学习之路</a>
+            </p>
+            <p class="date"><time datetime="2016-08-18T13:41:34.310Z" itemprop="datePublished">2016-08-18</time></p>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/blog/2016/08/Android控件学习-实现进度条.html">Android控件学习-实现进度条</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            
+        </p>
     </div>
-  </div>
-</div>
+</article>
+    
+        </div>
+    
 
-</div>
-
-
-
-<div id="user-card">
-  <div class="center-field">
-    <img class="avatar" src="http://7te9fe.com1.z0.glb.clouddn.com/default_avatar.jpg">
-    <p id="description">我本来就不是为了输赢，我就是因为任性啊</p>
-    <ul class="social-icon">
-  
-  
-    <li>
-      <a href="https://github.com/leostones">
+    
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
         
-          <i class="icon iconfont github">&#xe606;</i>
+        <a href="/blog/2016/08/Android控件学习-实现下拉列表.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://o7dscdnip.bkt.clouddn.com/Android-spinnner-%E5%AE%9E%E7%8E%B0%E4%B8%8B%E6%8B%89%E5%88%97%E8%A1%A8.png)" alt="Android控件学习-实现下拉列表" class="thumbnail-image"></span>
+    
+    
         
-      </a>
-    </li>
-  
-    <li>
-      <a href="https://twitter.com/SidCN">
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://leostones.cn/Blog/blog/2016/08/Android控件学习-实现下拉列表.html">0</span>
+    
+</span>
+
+    
+</a>
+
         
-          <i class="icon iconfont twitter">&#xe600;</i>
+        <div class="article-meta">
+            <p class="category">
+            <a class="article-category-link" href="/categories/Android学习之路/">Android学习之路</a>
+            </p>
+            <p class="date"><time datetime="2016-08-18T13:20:19.669Z" itemprop="datePublished">2016-08-18</time></p>
+        </div>
         
-      </a>
-    </li>
-  
-    <li>
-      <a href="http://weibo.com/sidcn">
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/blog/2016/08/Android控件学习-实现下拉列表.html">Android控件学习-实现下拉列表</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
         
-          <i class="icon iconfont weibo">&#xe602;</i>
+        <a href="/blog/2016/08/Android控件学习-使用GridView显示多张图片.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://o7dscdnip.bkt.clouddn.com/Android4-%E4%BD%BF%E7%94%A8GridView%E4%BB%A5%E8%A1%A8%E6%A0%BC%E5%BD%A2%E5%BC%8F%E6%98%BE%E7%A4%BA%E5%A4%9A%E5%BC%A0%E5%9B%BE%E7%89%87.png)" alt="Android控件学习-实现多张图片二维布局" class="thumbnail-image"></span>
+    
+    
         
-      </a>
-    </li>
-  
-    <li>
-      <a href="https://www.zhihu.com/people/leostones">
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://leostones.cn/Blog/blog/2016/08/Android控件学习-使用GridView显示多张图片.html">0</span>
+    
+</span>
+
+    
+</a>
+
         
-          <i class="icon iconfont zhihu">&#xe60b;</i>
+        <div class="article-meta">
+            <p class="category">
+            <a class="article-category-link" href="/categories/Android学习之路/">Android学习之路</a>
+            </p>
+            <p class="date"><time datetime="2016-08-17T11:31:56.014Z" itemprop="datePublished">2016-08-17</time></p>
+        </div>
         
-      </a>
-    </li>
-  
-    <li>
-      <a href="http://www.douban.com/people/Stiekel/">
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/blog/2016/08/Android控件学习-使用GridView显示多张图片.html">Android控件学习-实现多张图片二维布局</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+    
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
         
-          <i class="icon iconfont douban">&#xe609;</i>
+        <a href="/blog/2016/08/Android控件学习-显示当前日历及时间.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://o7dscdnip.bkt.clouddn.com/Android3-%E4%BD%BF%E7%94%A8DataPicker%E4%BB%A5%E5%8F%8ATimePicter%E6%98%BE%E7%A4%BA%E5%BD%93%E5%89%8D%E6%97%A5%E6%9C%9F%E5%92%8C%E6%97%B6%E9%97%B4.png)" alt="Android控件学习-显示当前日历及时间" class="thumbnail-image"></span>
+    
+    
         
-      </a>
-    </li>
-  
-    <li>
-      <a href="http://chensd.com/feed">
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://leostones.cn/Blog/blog/2016/08/Android控件学习-显示当前日历及时间.html">0</span>
+    
+</span>
+
+    
+</a>
+
         
-          <i class="icon iconfont rss">&#xe60e;</i>
+        <div class="article-meta">
+            <p class="category">
+            <a class="article-category-link" href="/categories/Android学习之路/">Android学习之路</a>
+            </p>
+            <p class="date"><time datetime="2016-08-16T22:52:35.741Z" itemprop="datePublished">2016-08-17</time></p>
+        </div>
         
-      </a>
-    </li>
-  
-</ul>
-  </div>
-</div>
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/blog/2016/08/Android控件学习-显示当前日历及时间.html">Android控件学习-显示当前日历及时间</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/blog/2016/08/Android控件学习-使用ListView显示信息列表.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://o7dscdnip.bkt.clouddn.com/Android2-%E4%BD%BF%E7%94%A8ListView%E6%98%BE%E7%A4%BA%E4%BF%A1%E6%81%AF%E5%88%97%E8%A1%A8.png)" alt="Android控件学习-显示信息列表" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://leostones.cn/Blog/blog/2016/08/Android控件学习-使用ListView显示信息列表.html">0</span>
+    
+</span>
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <p class="category">
+            <a class="article-category-link" href="/categories/Android学习之路/">Android学习之路</a>
+            </p>
+            <p class="date"><time datetime="2016-08-15T19:14:52.552Z" itemprop="datePublished">2016-08-16</time></p>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/blog/2016/08/Android控件学习-使用ListView显示信息列表.html">Android控件学习-显示信息列表</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+    
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/blog/2016/08/Android控件学习-Intent页面间的跳转.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://o7dscdnip.bkt.clouddn.com/Android%E5%AD%A6%E4%B9%A0-%E9%A1%B5%E9%9D%A2%E9%97%B4%E7%9A%84%E8%B7%B3%E8%BD%AC%20Intent.png)" alt="Android控件学习-页面间的跳转" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://leostones.cn/Blog/blog/2016/08/Android控件学习-Intent页面间的跳转.html">0</span>
+    
+</span>
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <p class="category">
+            <a class="article-category-link" href="/categories/Android学习之路/">Android学习之路</a>
+            </p>
+            <p class="date"><time datetime="2016-08-14T02:00:19.740Z" itemprop="datePublished">2016-08-14</time></p>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/blog/2016/08/Android控件学习-Intent页面间的跳转.html">Android控件学习-页面间的跳转</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/blog/2016/08/Android Studio快捷键.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://o7dscdnip.bkt.clouddn.com/Android%20studio%E5%BF%AB%E6%8D%B7%E9%94%AE.png)" alt="Android Studio常用快捷键" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://leostones.cn/Blog/blog/2016/08/Android Studio快捷键.html">0</span>
+    
+</span>
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <p class="category">
+            <a class="article-category-link" href="/categories/Android学习之路/">Android学习之路</a>
+            </p>
+            <p class="date"><time datetime="2016-08-13T13:58:46.731Z" itemprop="datePublished">2016-08-13</time></p>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/blog/2016/08/Android Studio快捷键.html">Android Studio常用快捷键</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
 
 
-<div id="btn-view">Hide</div>
-
-<script>
-// is trigger analytics / tongji script
-var isIgnoreHost = false;
-
-if(window && window.location && window.location.host) {
-  isIgnoreHost = ["localhost","127.0.0.1"].some(function(address){
-    return 0 === window.location.host.indexOf(address);
-  });
-}
-
-var isTriggerAnalytics = !( true && isIgnoreHost );
-
-</script>
-
-  <script>
-if(isTriggerAnalytics) {
-  var _hmt = _hmt || [];
-  (function() {
-    var hm = document.createElement("script");
-    hm.src = "//hm.baidu.com/hm.js?5b4afc2e848e734d81a9211aed583590";
-    var s = document.getElementsByTagName("script")[0]; 
-    s.parentNode.insertBefore(hm, s);
-  })();
-}
-</script>
+    </div></section>
 
 
 
-  <script>
-if(isTriggerAnalytics) {
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>seguir:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="/" target="_blank">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="/" target="_blank">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="google-plus" href="/" target="_blank">
+                        <i class="icon fa fa-google-plus"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/leostones" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="知乎" href="https://www.zhihu.com/people/leostones" target="_blank">
+                        <i class="icon fa fa-知乎"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="http://weibo.com/sidcn" target="_blank">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="http://chensd.com/feed" target="_blank">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+    <div class="widgets-container">
+        
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/2016/08/Android控件学习-.显示网页.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://o7dscdnip.bkt.clouddn.com/Android-webview-%E4%BD%BF%E7%94%A8Webview%E6%98%BE%E7%A4%BA%E7%BD%91%E9%A1%B5.png)" alt="Android控件学习-实现进度条" class="thumbnail-image"></span>
+    
+    
+</a>
 
-  ga('create', 'UA-LeoStones', 'auto');
-  ga('send', 'pageview');
-}
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Android学习之路/">Android学习之路</a></p>
+                            <p class="item-title"><a href="/blog/2016/08/Android控件学习-.显示网页.html" class="title">Android控件学习-实现进度条</a></p>
+                            <p class="item-date"><time datetime="2016-08-18T14:01:23.104Z" itemprop="datePublished">2016-08-18</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/2016/08/Android控件学习-实现进度条.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://o7dscdnip.bkt.clouddn.com/Android-progressbar-%E4%BD%BF%E7%94%A8ProgressBar.png)" alt="Android控件学习-实现进度条" class="thumbnail-image"></span>
+    
+    
+</a>
 
-</script>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Android学习之路/">Android学习之路</a></p>
+                            <p class="item-title"><a href="/blog/2016/08/Android控件学习-实现进度条.html" class="title">Android控件学习-实现进度条</a></p>
+                            <p class="item-date"><time datetime="2016-08-18T13:41:34.310Z" itemprop="datePublished">2016-08-18</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/2016/08/Android控件学习-实现下拉列表.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://o7dscdnip.bkt.clouddn.com/Android-spinnner-%E5%AE%9E%E7%8E%B0%E4%B8%8B%E6%8B%89%E5%88%97%E8%A1%A8.png)" alt="Android控件学习-实现下拉列表" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Android学习之路/">Android学习之路</a></p>
+                            <p class="item-title"><a href="/blog/2016/08/Android控件学习-实现下拉列表.html" class="title">Android控件学习-实现下拉列表</a></p>
+                            <p class="item-date"><time datetime="2016-08-18T13:20:19.669Z" itemprop="datePublished">2016-08-18</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/2016/08/Android控件学习-使用GridView显示多张图片.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://o7dscdnip.bkt.clouddn.com/Android4-%E4%BD%BF%E7%94%A8GridView%E4%BB%A5%E8%A1%A8%E6%A0%BC%E5%BD%A2%E5%BC%8F%E6%98%BE%E7%A4%BA%E5%A4%9A%E5%BC%A0%E5%9B%BE%E7%89%87.png)" alt="Android控件学习-实现多张图片二维布局" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Android学习之路/">Android学习之路</a></p>
+                            <p class="item-title"><a href="/blog/2016/08/Android控件学习-使用GridView显示多张图片.html" class="title">Android控件学习-实现多张图片二维布局</a></p>
+                            <p class="item-date"><time datetime="2016-08-17T11:31:56.014Z" itemprop="datePublished">2016-08-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/2016/08/Android控件学习-显示当前日历及时间.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://o7dscdnip.bkt.clouddn.com/Android3-%E4%BD%BF%E7%94%A8DataPicker%E4%BB%A5%E5%8F%8ATimePicter%E6%98%BE%E7%A4%BA%E5%BD%93%E5%89%8D%E6%97%A5%E6%9C%9F%E5%92%8C%E6%97%B6%E9%97%B4.png)" alt="Android控件学习-显示当前日历及时间" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Android学习之路/">Android学习之路</a></p>
+                            <p class="item-title"><a href="/blog/2016/08/Android控件学习-显示当前日历及时间.html" class="title">Android控件学习-显示当前日历及时间</a></p>
+                            <p class="item-date"><time datetime="2016-08-16T22:52:35.741Z" itemprop="datePublished">2016-08-17</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android学习之路/">Android学习之路</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Blog/">Blog</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/实用技巧/">实用技巧</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活杂谈/">生活杂谈</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/资料整理/">资料整理</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">arxius</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">8</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">etiquetes</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/">Blog</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/">Github</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html/">Html</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Next/">Next</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Socket/">Socket</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XML/">XML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图库/">图库</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/实用技巧/">实用技巧</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/电影/">电影</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程/">编程</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随记/">随记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/项目分享/">项目分享</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">etiqueta cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Blog/" style="font-size: 16.67px;">Blog</a> <a href="/tags/Github/" style="font-size: 13.33px;">Github</a> <a href="/tags/Hexo/" style="font-size: 16.67px;">Hexo</a> <a href="/tags/Html/" style="font-size: 10px;">Html</a> <a href="/tags/Java/" style="font-size: 16.67px;">Java</a> <a href="/tags/Next/" style="font-size: 10px;">Next</a> <a href="/tags/Socket/" style="font-size: 13.33px;">Socket</a> <a href="/tags/XML/" style="font-size: 10px;">XML</a> <a href="/tags/图库/" style="font-size: 10px;">图库</a> <a href="/tags/实用技巧/" style="font-size: 10px;">实用技巧</a> <a href="/tags/电影/" style="font-size: 10px;">电影</a> <a href="/tags/编程/" style="font-size: 13.33px;">编程</a> <a href="/tags/随记/" style="font-size: 10px;">随记</a> <a href="/tags/项目分享/" style="font-size: 10px;">项目分享</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2016 LeoStones</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
 
 
 
-  
-  
-    <script src="/js/jquery-2.2.3.min.js"></script>
-  
-    <script src="/js/vegas.min.js"></script>
-  
-    <script src="/js/random.js"></script>
-  
-    <script src="/js/highlight.pack.js"></script>
-  
-    <script src="/js/jquery.mousewheel.pack.js"></script>
-  
-    <script src="/js/jquery.fancybox.pack.js"></script>
-  
-    <script src="/js/jquery.fancybox-thumbs.js"></script>
-  
-    <script src="/js/plyr.js"></script>
-  
+    
+        <script src="/vendor/fancybox/jquery.fancybox.pack.js"></script>
+    
 
-<script>
-
-  // fancybox
-  var backgroundImages = [];
-  
-  $('#post').each(function(i){
-    $(this).find('img').each(function(){
-      if ($(this).parent().hasClass('fancybox') || $(this).parent().hasClass('fancybox-thumb')) return;
-      var alt = this.alt || this.title;
-      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
-      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
-    });
-    $(this).find('.fancybox').each(function(){
-      $(this).attr('rel', 'post' + i);
-    });
-  });
-  $(".fancybox").fancybox();
-
-var vegasConfig = {"preload­Image":true,"transition":["slideLeft2","slideRight2","flash2"],"timer":true,"delay":10000,"shuffle":true,"count":10};
-var unsplashConfig = {"gravity":"north"};
-// is show background images
-var turnoffBackgroundImage = false;
+    
+        <script src="/vendor/scrollLoading/jquery.scrollLoading.js"></script>
+        <script src="/vendor/scrollLoading/main.js"></script>
+    
 
 
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
 
-
-var backgroundColor = 123456;
-
-$(".fancybox-thumb").fancybox({
-  prevEffect: 'none',
-  nextEffect: 'none',
-  helpers: {
-    title: {
-      type: 'outside'
-    },
-    thumbs: {
-      width: 50,
-      height: 50
-    }
-  }
-});
-
-// show video with plyr
-$(".video-container iframe").each(function(i){
-  var url = $(this).attr('src');
-  var id = url.split('/').pop();
-  var plyrContainer = document.createElement('div');
-  plyrContainer.className = 'plyr';
-  var plyrElement = document.createElement('div');
-  plyrElement.dataset.videoId = id;
-  switch(true) {
-    case url.search('youtube.com') >= 0:
-      plyrElement.dataset.type = 'youtube';
-      break;
-    case url.search('vimeo.com') >= 0:
-      plyrElement.dataset.type = 'vimeo';
-      break;
-    default:
-      return;
-  };
-  plyrContainer.appendChild(plyrElement);
-  $(this).parent().html(plyrContainer);
-});
-plyr.setup('.plyr', {iconUrl: '/css/sprite.svg'});
-</script>
+    </div>
 </body>
 </html>
-
