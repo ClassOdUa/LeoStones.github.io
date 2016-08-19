@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>LeoStones&#39;s Blog</title>
-  <subtitle>我本来就不是为了输赢，我就是因为任性啊</subtitle>
+  <subtitle>LeoStones&#39;s Blog</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://leostones.cn/Blog/"/>
