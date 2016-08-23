@@ -1,0 +1,958 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Android," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Leo的小窝" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android控件学习-实现图片的动画切换效果">
+<meta property="og:url" content="http://leostones.cn/Blog/blog/2016/08/Android控件学习-实现图片的动画切换效果.html">
+<meta property="og:site_name" content="Leo的小窝">
+<meta property="og:description">
+<meta property="og:image" content="http://o7dscdnip.bkt.clouddn.com/Android-viewflipper-%E5%AE%9E%E7%8E%B0%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C.png">
+<meta property="og:image" content="http://o7dscdnip.bkt.clouddn.com/Android-viewflipper-%E4%BB%8B%E7%BB%8D.png">
+<meta property="og:image" content="http://o7dscdnip.bkt.clouddn.com/Android-viewflipper-%E6%A1%88%E4%BE%8B%E5%AE%9E%E7%8E%B0.png">
+<meta property="og:image" content="http://o7dscdnip.bkt.clouddn.com/Android-viewflipper-%E9%9D%99%E6%80%81%E5%AF%BC%E5%85%A5%EF%BC%88%E5%86%99%E6%AD%BB%EF%BC%89.png">
+<meta property="og:image" content="http://o7dscdnip.bkt.clouddn.com/Android-viewflipper-Viewflipper%E7%9A%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95.png">
+<meta property="og:image" content="http://o7dscdnip.bkt.clouddn.com/Android-viewflipper-viewflipper%E6%BC%94%E7%A4%BA.gif">
+<meta property="og:image" content="http://o7dscdnip.bkt.clouddn.com/Android-viewflipper-viewflipper%E6%BB%91%E5%8A%A8%E6%BC%94%E7%A4%BA.gif">
+<meta property="og:updated_time" content="2016-08-23T18:36:30.203Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android控件学习-实现图片的动画切换效果">
+<meta name="twitter:description">
+<meta name="twitter:image" content="http://o7dscdnip.bkt.clouddn.com/Android-viewflipper-%E5%AE%9E%E7%8E%B0%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6285268891241285000,
+      author: '权限汪'
+    }
+  };
+</script>
+
+
+
+
+  <title> Android控件学习-实现图片的动画切换效果 | Leo的小窝 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-LeoStones', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?5b4afc2e848e734d81a9211aed583590";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Leo的小窝</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">假装来过，偷偷看眼</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            情愫
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input" placeholder="search my blog...">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Android控件学习-实现图片的动画切换效果
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-24T00:09:04+08:00" content="2016-08-24">
+              2016-08-24
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android学习之路/" itemprop="url" rel="index">
+                    <span itemprop="name">Android学习之路</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/2016/08/Android控件学习-实现图片的动画切换效果.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="/blog/2016/08/Android控件学习-实现图片的动画切换效果.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv">本文总阅读量
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://o7dscdnip.bkt.clouddn.com/Android-viewflipper-%E5%AE%9E%E7%8E%B0%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C.png"></p>
+<a id="more"></a>
+<h1 id="ViewFlipper-&#x4ECB;&#x7ECD;"><a href="#ViewFlipper-&#x4ECB;&#x7ECD;" class="headerlink" title="ViewFlipper &#x4ECB;&#x7ECD;"></a>ViewFlipper &#x4ECB;&#x7ECD;</h1><p><img src="http://o7dscdnip.bkt.clouddn.com/Android-viewflipper-%E4%BB%8B%E7%BB%8D.png"></p>
+<h1 id="&#x6848;&#x4F8B;&#x5B9E;&#x73B0;"><a href="#&#x6848;&#x4F8B;&#x5B9E;&#x73B0;" class="headerlink" title="&#x6848;&#x4F8B;&#x5B9E;&#x73B0;"></a>&#x6848;&#x4F8B;&#x5B9E;&#x73B0;</h1><p><img src="http://o7dscdnip.bkt.clouddn.com/Android-viewflipper-%E6%A1%88%E4%BE%8B%E5%AE%9E%E7%8E%B0.png"></p>
+<h1 id="&#x4E3A;ViewFlipper&#x52A0;&#x5165;View"><a href="#&#x4E3A;ViewFlipper&#x52A0;&#x5165;View" class="headerlink" title="&#x4E3A;ViewFlipper&#x52A0;&#x5165;View"></a>&#x4E3A;ViewFlipper&#x52A0;&#x5165;View</h1><h2 id="&#x9759;&#x6001;&#x5BFC;&#x5165;&#xFF1A;&#x5728;layout&#x5E03;&#x5C40;&#x6587;&#x4EF6;&#x4E2D;&#x76F4;&#x63A5;&#x5BFC;&#x5165;"><a href="#&#x9759;&#x6001;&#x5BFC;&#x5165;&#xFF1A;&#x5728;layout&#x5E03;&#x5C40;&#x6587;&#x4EF6;&#x4E2D;&#x76F4;&#x63A5;&#x5BFC;&#x5165;" class="headerlink" title="&#x9759;&#x6001;&#x5BFC;&#x5165;&#xFF1A;&#x5728;layout&#x5E03;&#x5C40;&#x6587;&#x4EF6;&#x4E2D;&#x76F4;&#x63A5;&#x5BFC;&#x5165;"></a>&#x9759;&#x6001;&#x5BFC;&#x5165;&#xFF1A;&#x5728;layout&#x5E03;&#x5C40;&#x6587;&#x4EF6;&#x4E2D;&#x76F4;&#x63A5;&#x5BFC;&#x5165;</h2><p><img src="http://o7dscdnip.bkt.clouddn.com/Android-viewflipper-%E9%9D%99%E6%80%81%E5%AF%BC%E5%85%A5%EF%BC%88%E5%86%99%E6%AD%BB%EF%BC%89.png"></p>
+<h2 id="&#x52A8;&#x6001;&#x5BFC;&#x5165;&#xFF1A;addView-&#x65B9;&#x6CD5;"><a href="#&#x52A8;&#x6001;&#x5BFC;&#x5165;&#xFF1A;addView-&#x65B9;&#x6CD5;" class="headerlink" title="&#x52A8;&#x6001;&#x5BFC;&#x5165;&#xFF1A;addView()&#x65B9;&#x6CD5;"></a>&#x52A8;&#x6001;&#x5BFC;&#x5165;&#xFF1A;addView()&#x65B9;&#x6CD5;</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mViewFlipper.addView(getImageView(resId[i]));</span><br></pre></td></tr></table></figure>
+<h1 id="ViewFlipper&#x5E38;&#x7528;&#x65B9;&#x6CD5;"><a href="#ViewFlipper&#x5E38;&#x7528;&#x65B9;&#x6CD5;" class="headerlink" title="ViewFlipper&#x5E38;&#x7528;&#x65B9;&#x6CD5;"></a>ViewFlipper&#x5E38;&#x7528;&#x65B9;&#x6CD5;</h1><p><img src="http://o7dscdnip.bkt.clouddn.com/Android-viewflipper-Viewflipper%E7%9A%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95.png"></p>
+<h1 id="ViewFlipper&#x5B9E;&#x73B0;&#x81EA;&#x52A8;&#x52A8;&#x753B;&#x5207;&#x6362;&#x56FE;&#x7247;"><a href="#ViewFlipper&#x5B9E;&#x73B0;&#x81EA;&#x52A8;&#x52A8;&#x753B;&#x5207;&#x6362;&#x56FE;&#x7247;" class="headerlink" title="ViewFlipper&#x5B9E;&#x73B0;&#x81EA;&#x52A8;&#x52A8;&#x753B;&#x5207;&#x6362;&#x56FE;&#x7247;"></a>ViewFlipper&#x5B9E;&#x73B0;&#x81EA;&#x52A8;&#x52A8;&#x753B;&#x5207;&#x6362;&#x56FE;&#x7247;</h1><blockquote>
+<p>activity_main.xml</p>
+</blockquote>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;ViewFlipper</span><br><span class="line">    android:layout_width=&quot;match_parent&quot;</span><br><span class="line">    android:layout_height=&quot;match_parent&quot;</span><br><span class="line">    android:id=&quot;@+id/flipper&quot;&gt;</span><br><span class="line">&lt;/ViewFlipper&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>MainActivity.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>{</span><br><span class="line">    <span class="keyword">private</span> ViewFlipper mViewFlipper;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">float</span> startX;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span>[] resId = {R.drawable.pic1, R.drawable.pic2, R.drawable.pic3, R.drawable.pic4};</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>{</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        mViewFlipper = (ViewFlipper) findViewById(R.id.flipper);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i =<span class="number">0</span>; i&lt;resId.length; i++){</span><br><span class="line">            mViewFlipper.addView(getImageView(resId[i]));</span><br><span class="line">        }</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//&#x8BBE;&#x7F6E;ViewFlipper&#x7684;&#x4E00;&#x4E9B;&#x52A8;&#x753B;&#x6548;&#x679C;</span></span><br><span class="line">        mViewFlipper.setInAnimation(<span class="keyword">this</span>,R.anim.right_in);</span><br><span class="line">        mViewFlipper.setOutAnimation(<span class="keyword">this</span>,R.anim.right_out);</span><br><span class="line">        <span class="comment">//ViewFlipper&#x89C6;&#x56FE;&#x5207;&#x6362;&#x65F6;&#x95F4;&#x95F4;&#x9694;</span></span><br><span class="line">        mViewFlipper.setFlipInterval(<span class="number">3000</span>);<span class="comment">//3&#x79D2;</span></span><br><span class="line">        <span class="comment">//&#x5F00;&#x59CB;&#x64AD;&#x653E;</span></span><br><span class="line">        mViewFlipper.startFlipping();</span><br><span class="line">        </span><br><span class="line">    }</span><br><span class="line">   </span><br><span class="line">    <span class="function"><span class="keyword">private</span> ImageView <span class="title">getImageView</span><span class="params">(<span class="keyword">int</span> resId)</span></span>{</span><br><span class="line">        ImageView img = <span class="keyword">new</span> ImageView(<span class="keyword">this</span>);</span><br><span class="line">        <span class="comment">//img.setImageResource(resId);//&#x5BBD;&#x9AD8;&#x4E3A;&#x56FE;&#x7247;&#x5B9E;&#x9645;&#x5BBD;&#x9AD8;</span></span><br><span class="line">        img.setBackgroundResource(resId);</span><br><span class="line">        <span class="keyword">return</span> img;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>&#x81EA;&#x5B9A;&#x4E49;&#x52A8;&#x753B;&#x6548;&#x679C;&#xFF08;left_in.xml,right_in.xml&#x2026;..&#xFF09;</p>
+</blockquote>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;set xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot; &gt;</span><br><span class="line">    &lt;translate</span><br><span class="line">        android:duration=&quot;2000&quot;</span><br><span class="line">        android:fromXDelta=&quot;-100%p&quot;</span><br><span class="line">        android:toXDelta=&quot;0&quot; /&gt;</span><br><span class="line">    &lt;alpha </span><br><span class="line">        android:fromAlpha=&quot;0.5&quot;</span><br><span class="line">        android:toAlpha=&quot;1&quot;</span><br><span class="line">        android:duration=&quot;2000&quot;</span><br><span class="line">        /&gt;</span><br><span class="line">&lt;/set&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="&#x6F14;&#x793A;&#x6548;&#x679C;"><a href="#&#x6F14;&#x793A;&#x6548;&#x679C;" class="headerlink" title="&#x6F14;&#x793A;&#x6548;&#x679C;"></a>&#x6F14;&#x793A;&#x6548;&#x679C;</h2><p><img src="http://o7dscdnip.bkt.clouddn.com/Android-viewflipper-viewflipper%E6%BC%94%E7%A4%BA.gif"></p>
+<h1 id="ViewFlipper&#x5B9E;&#x73B0;&#x624B;&#x52BF;&#x6ED1;&#x52A8;&#x5207;&#x6362;&#x56FE;&#x7247;"><a href="#ViewFlipper&#x5B9E;&#x73B0;&#x624B;&#x52BF;&#x6ED1;&#x52A8;&#x5207;&#x6362;&#x56FE;&#x7247;" class="headerlink" title="ViewFlipper&#x5B9E;&#x73B0;&#x624B;&#x52BF;&#x6ED1;&#x52A8;&#x5207;&#x6362;&#x56FE;&#x7247;"></a>ViewFlipper&#x5B9E;&#x73B0;&#x624B;&#x52BF;&#x6ED1;&#x52A8;&#x5207;&#x6362;&#x56FE;&#x7247;</h1><blockquote>
+<p>MainActivity.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>{</span><br><span class="line">    <span class="keyword">private</span> ViewFlipper mViewFlipper;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">float</span> startX;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span>[] resId = {R.drawable.pic1, R.drawable.pic2, R.drawable.pic3, R.drawable.pic4};</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>{</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        mViewFlipper = (ViewFlipper) findViewById(R.id.flipper);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i =<span class="number">0</span>; i&lt;resId.length; i++){</span><br><span class="line">            mViewFlipper.addView(getImageView(resId[i]));</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onTouchEvent</span><span class="params">(MotionEvent event)</span> </span>{</span><br><span class="line">        <span class="keyword">switch</span> (event.getAction())</span><br><span class="line">        {</span><br><span class="line">            <span class="keyword">case</span> MotionEvent.ACTION_DOWN:</span><br><span class="line">            {</span><br><span class="line">                startX = event.getX();</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">case</span> MotionEvent.ACTION_MOVE:</span><br><span class="line">            {</span><br><span class="line">                <span class="comment">//&#x5411;&#x5DE6;&#x6ED1;&#x52A8;&#x770B;&#x540E;&#x4E00;&#x9875;</span></span><br><span class="line">                <span class="keyword">if</span> (startX -event.getX() &gt; <span class="number">100</span>){</span><br><span class="line">                    mViewFlipper.setInAnimation(<span class="keyword">this</span>,R.anim.right_in);</span><br><span class="line">                    mViewFlipper.setOutAnimation(<span class="keyword">this</span>,R.anim.right_out);</span><br><span class="line">                    mViewFlipper.showNext();</span><br><span class="line">                }</span><br><span class="line">                <span class="comment">//&#x5411;&#x53F3;&#x6ED1;&#x52A8;&#x663E;&#x793A;&#x524D;&#x4E00;&#x9875;</span></span><br><span class="line">                <span class="keyword">if</span> (event.getX()-startX &gt; <span class="number">100</span>){</span><br><span class="line">                    mViewFlipper.setInAnimation(<span class="keyword">this</span>,R.anim.left_in);</span><br><span class="line">                    mViewFlipper.setOutAnimation(<span class="keyword">this</span>,R.anim.left_out);</span><br><span class="line">                    mViewFlipper.showPrevious();</span><br><span class="line">                }</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">case</span> MotionEvent.ACTION_UP:</span><br><span class="line">            {</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">super</span>.onTouchEvent(event);</span><br><span class="line">    }</span><br><span class="line">    <span class="function"><span class="keyword">private</span> ImageView <span class="title">getImageView</span><span class="params">(<span class="keyword">int</span> resId)</span></span>{</span><br><span class="line">        ImageView img = <span class="keyword">new</span> ImageView(<span class="keyword">this</span>);</span><br><span class="line">        <span class="comment">//img.setImageResource(resId);//&#x5BBD;&#x9AD8;&#x4E3A;&#x56FE;&#x7247;&#x5B9E;&#x9645;&#x5BBD;&#x9AD8;</span></span><br><span class="line">        img.setBackgroundResource(resId);</span><br><span class="line">        <span class="keyword">return</span> img;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<h2 id="&#x6F14;&#x793A;&#x6548;&#x679C;-1"><a href="#&#x6F14;&#x793A;&#x6548;&#x679C;-1" class="headerlink" title="&#x6F14;&#x793A;&#x6548;&#x679C;"></a>&#x6F14;&#x793A;&#x6548;&#x679C;</h2><p><img src="http://o7dscdnip.bkt.clouddn.com/Android-viewflipper-viewflipper%E6%BB%91%E5%8A%A8%E6%BC%94%E7%A4%BA.gif"></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag">#Android</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2016/08/Android控件学习-实现导航.html" rel="next" title="Android控件学习-实现导航">
+                <i class="fa fa-chevron-left"></i> Android控件学习-实现导航
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2016/08/Android控件学习-实现图片的缩放预览.html" rel="prev" title="Android控件学习-实现图片的缩放浏览器">
+                Android控件学习-实现图片的缩放浏览器 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="此处请替换为当前文章的thread-key" data-title="此处请替换为分享时显示的标题" data-images="此处请替换为分享时显示的图片的链接地址" data-content="此处请替换为分享时显示的内容" data-url="此处请替换为分享时显示的链接地址">
+    <div class="ds-share-aside-left">
+      <div class="ds-share-aside-inner">
+      </div>
+      <div class="ds-share-aside-toggle">分享到</div>
+    </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="/blog/2016/08/Android控件学习-实现图片的动画切换效果.html"
+           data-title="Android控件学习-实现图片的动画切换效果" data-url="http://leostones.cn/Blog/blog/2016/08/Android控件学习-实现图片的动画切换效果.html">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="LeoStones" />
+          <p class="site-author-name" itemprop="name">LeoStones</p>
+          <p class="site-description motion-element" itemprop="description">我本来就不是为了输赢，我就是因为任性啊</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/leostones" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/your-user-name" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/leostones" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.google.com/" title="Google" target="_blank">Google</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.ctguqmx.com/" title="启明星" target="_blank">启明星</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ViewFlipper-介绍"><span class="nav-number">1.</span> <span class="nav-text">ViewFlipper 介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#案例实现"><span class="nav-number">2.</span> <span class="nav-text">案例实现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#为ViewFlipper加入View"><span class="nav-number">3.</span> <span class="nav-text">为ViewFlipper加入View</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#静态导入：在layout布局文件中直接导入"><span class="nav-number">3.1.</span> <span class="nav-text">静态导入：在layout布局文件中直接导入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动态导入：addView-方法"><span class="nav-number">3.2.</span> <span class="nav-text">动态导入：addView()方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ViewFlipper常用方法"><span class="nav-number">4.</span> <span class="nav-text">ViewFlipper常用方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ViewFlipper实现自动动画切换图片"><span class="nav-number">5.</span> <span class="nav-text">ViewFlipper实现自动动画切换图片</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#演示效果"><span class="nav-number">5.1.</span> <span class="nav-text">演示效果</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ViewFlipper实现手势滑动切换图片"><span class="nav-number">6.</span> <span class="nav-text">ViewFlipper实现手势滑动切换图片</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#演示效果-1"><span class="nav-number">6.1.</span> <span class="nav-text">演示效果</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LeoStones</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">本站访客数<span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次</span>
+  
+
+  
+    <span class="site-pv">本站总访问量<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次</span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"LeoStones"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
