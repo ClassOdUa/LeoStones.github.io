@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://leostones.cn/Blog/about/index.html</loc>
+    <loc>http://leostones.cn/Blog/guestbook/index.html</loc>
     
-    <lastmod>2016-08-23T20:49:02.974Z</lastmod>
+    <lastmod>2016-08-24T01:10:09.600Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://leostones.cn/Blog/guestbook/index.html</loc>
+    <loc>http://leostones.cn/Blog/something/index.html</loc>
     
-    <lastmod>2016-08-23T20:40:09.349Z</lastmod>
+    <lastmod>2016-08-24T00:59:26.079Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://leostones.cn/Blog/about/index.html</loc>
+    
+    <lastmod>2016-08-23T20:49:02.974Z</lastmod>
     
   </url>
   
