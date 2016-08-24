@@ -4,9 +4,9 @@
   <subtitle>假装来过，偷偷看眼</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://leostones.cn/Blog/"/>
+  <link href="http://leostones.cn/"/>
   <updated>2016-08-23T17:09:06.641Z</updated>
-  <id>http://leostones.cn/Blog/</id>
+  <id>http://leostones.cn/</id>
   
   <author>
     <name>LeoStones</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>Android控件学习-实现图片的缩放浏览器</title>
-    <link href="http://leostones.cn/Blog//blog/2016/08/Android%E6%8E%A7%E4%BB%B6%E5%AD%A6%E4%B9%A0-%E5%AE%9E%E7%8E%B0%E5%9B%BE%E7%89%87%E7%9A%84%E7%BC%A9%E6%94%BE%E9%A2%84%E8%A7%88.html"/>
-    <id>http://leostones.cn/Blog//blog/2016/08/Android控件学习-实现图片的缩放预览.html</id>
+    <link href="http://leostones.cn//blog/2016/08/Android%E6%8E%A7%E4%BB%B6%E5%AD%A6%E4%B9%A0-%E5%AE%9E%E7%8E%B0%E5%9B%BE%E7%89%87%E7%9A%84%E7%BC%A9%E6%94%BE%E9%A2%84%E8%A7%88.html"/>
+    <id>http://leostones.cn//blog/2016/08/Android控件学习-实现图片的缩放预览.html</id>
     <published>2016-08-23T16:43:30.671Z</published>
     <updated>2016-08-23T17:09:06.641Z</updated>
     
@@ -47,17 +47,17 @@
     
     </summary>
     
-      <category term="Android学习之路" scheme="http://leostones.cn/Blog/categories/Android%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/"/>
+      <category term="Android学习之路" scheme="http://leostones.cn/categories/Android%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/"/>
     
     
-      <category term="Android" scheme="http://leostones.cn/Blog/tags/Android/"/>
+      <category term="Android" scheme="http://leostones.cn/tags/Android/"/>
     
   </entry>
   
   <entry>
     <title>Android控件学习-实现图片的动画切换效果</title>
-    <link href="http://leostones.cn/Blog//blog/2016/08/Android%E6%8E%A7%E4%BB%B6%E5%AD%A6%E4%B9%A0-%E5%AE%9E%E7%8E%B0%E5%9B%BE%E7%89%87%E7%9A%84%E5%8A%A8%E7%94%BB%E5%88%87%E6%8D%A2%E6%95%88%E6%9E%9C.html"/>
-    <id>http://leostones.cn/Blog//blog/2016/08/Android控件学习-实现图片的动画切换效果.html</id>
+    <link href="http://leostones.cn//blog/2016/08/Android%E6%8E%A7%E4%BB%B6%E5%AD%A6%E4%B9%A0-%E5%AE%9E%E7%8E%B0%E5%9B%BE%E7%89%87%E7%9A%84%E5%8A%A8%E7%94%BB%E5%88%87%E6%8D%A2%E6%95%88%E6%9E%9C.html"/>
+    <id>http://leostones.cn//blog/2016/08/Android控件学习-实现图片的动画切换效果.html</id>
     <published>2016-08-23T16:09:04.886Z</published>
     <updated>2016-08-23T18:36:30.203Z</updated>
     
@@ -94,17 +94,17 @@
     
     </summary>
     
-      <category term="Android学习之路" scheme="http://leostones.cn/Blog/categories/Android%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/"/>
+      <category term="Android学习之路" scheme="http://leostones.cn/categories/Android%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/"/>
     
     
-      <category term="Android" scheme="http://leostones.cn/Blog/tags/Android/"/>
+      <category term="Android" scheme="http://leostones.cn/tags/Android/"/>
     
   </entry>
   
   <entry>
     <title>Android控件学习-实现导航</title>
-    <link href="http://leostones.cn/Blog//blog/2016/08/Android%E6%8E%A7%E4%BB%B6%E5%AD%A6%E4%B9%A0-%E5%AE%9E%E7%8E%B0%E5%AF%BC%E8%88%AA.html"/>
-    <id>http://leostones.cn/Blog//blog/2016/08/Android控件学习-实现导航.html</id>
+    <link href="http://leostones.cn//blog/2016/08/Android%E6%8E%A7%E4%BB%B6%E5%AD%A6%E4%B9%A0-%E5%AE%9E%E7%8E%B0%E5%AF%BC%E8%88%AA.html"/>
+    <id>http://leostones.cn//blog/2016/08/Android控件学习-实现导航.html</id>
     <published>2016-08-23T15:36:11.436Z</published>
     <updated>2016-08-23T16:07:51.139Z</updated>
     
@@ -140,17 +140,17 @@
     
     </summary>
     
-      <category term="Android学习之路" scheme="http://leostones.cn/Blog/categories/Android%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/"/>
+      <category term="Android学习之路" scheme="http://leostones.cn/categories/Android%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/"/>
     
     
-      <category term="Android" scheme="http://leostones.cn/Blog/tags/Android/"/>
+      <category term="Android" scheme="http://leostones.cn/tags/Android/"/>
     
   </entry>
   
   <entry>
     <title>Android控件学习-显示网页</title>
-    <link href="http://leostones.cn/Blog//blog/2016/08/Android%E6%8E%A7%E4%BB%B6%E5%AD%A6%E4%B9%A0-.%E6%98%BE%E7%A4%BA%E7%BD%91%E9%A1%B5.html"/>
-    <id>http://leostones.cn/Blog//blog/2016/08/Android控件学习-.显示网页.html</id>
+    <link href="http://leostones.cn//blog/2016/08/Android%E6%8E%A7%E4%BB%B6%E5%AD%A6%E4%B9%A0-.%E6%98%BE%E7%A4%BA%E7%BD%91%E9%A1%B5.html"/>
+    <id>http://leostones.cn//blog/2016/08/Android控件学习-.显示网页.html</id>
     <published>2016-08-18T14:01:23.104Z</published>
     <updated>2016-08-21T09:03:27.717Z</updated>
     
@@ -183,17 +183,17 @@
     
     </summary>
     
-      <category term="Android学习之路" scheme="http://leostones.cn/Blog/categories/Android%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/"/>
+      <category term="Android学习之路" scheme="http://leostones.cn/categories/Android%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/"/>
     
     
-      <category term="Android" scheme="http://leostones.cn/Blog/tags/Android/"/>
+      <category term="Android" scheme="http://leostones.cn/tags/Android/"/>
     
   </entry>
   
   <entry>
     <title>Android控件学习-实现进度条</title>
-    <link href="http://leostones.cn/Blog//blog/2016/08/Android%E6%8E%A7%E4%BB%B6%E5%AD%A6%E4%B9%A0-%E5%AE%9E%E7%8E%B0%E8%BF%9B%E5%BA%A6%E6%9D%A1.html"/>
-    <id>http://leostones.cn/Blog//blog/2016/08/Android控件学习-实现进度条.html</id>
+    <link href="http://leostones.cn//blog/2016/08/Android%E6%8E%A7%E4%BB%B6%E5%AD%A6%E4%B9%A0-%E5%AE%9E%E7%8E%B0%E8%BF%9B%E5%BA%A6%E6%9D%A1.html"/>
+    <id>http://leostones.cn//blog/2016/08/Android控件学习-实现进度条.html</id>
     <published>2016-08-18T13:41:34.310Z</published>
     <updated>2016-08-23T17:12:46.769Z</updated>
     
@@ -230,17 +230,17 @@
     
     </summary>
     
-      <category term="Android学习之路" scheme="http://leostones.cn/Blog/categories/Android%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/"/>
+      <category term="Android学习之路" scheme="http://leostones.cn/categories/Android%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/"/>
     
     
-      <category term="Android" scheme="http://leostones.cn/Blog/tags/Android/"/>
+      <category term="Android" scheme="http://leostones.cn/tags/Android/"/>
     
   </entry>
   
   <entry>
     <title>Android控件学习-实现下拉列表</title>
-    <link href="http://leostones.cn/Blog//blog/2016/08/Android%E6%8E%A7%E4%BB%B6%E5%AD%A6%E4%B9%A0-%E5%AE%9E%E7%8E%B0%E4%B8%8B%E6%8B%89%E5%88%97%E8%A1%A8.html"/>
-    <id>http://leostones.cn/Blog//blog/2016/08/Android控件学习-实现下拉列表.html</id>
+    <link href="http://leostones.cn//blog/2016/08/Android%E6%8E%A7%E4%BB%B6%E5%AD%A6%E4%B9%A0-%E5%AE%9E%E7%8E%B0%E4%B8%8B%E6%8B%89%E5%88%97%E8%A1%A8.html"/>
+    <id>http://leostones.cn//blog/2016/08/Android控件学习-实现下拉列表.html</id>
     <published>2016-08-18T13:20:19.669Z</published>
     <updated>2016-08-18T16:27:36.672Z</updated>
     
@@ -301,17 +301,17 @@
     
     </summary>
     
-      <category term="Android学习之路" scheme="http://leostones.cn/Blog/categories/Android%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/"/>
+      <category term="Android学习之路" scheme="http://leostones.cn/categories/Android%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/"/>
     
     
-      <category term="Android" scheme="http://leostones.cn/Blog/tags/Android/"/>
+      <category term="Android" scheme="http://leostones.cn/tags/Android/"/>
     
   </entry>
   
   <entry>
     <title>Android控件学习-实现多张图片二维布局</title>
-    <link href="http://leostones.cn/Blog//blog/2016/08/Android%E6%8E%A7%E4%BB%B6%E5%AD%A6%E4%B9%A0-%E4%BD%BF%E7%94%A8GridView%E6%98%BE%E7%A4%BA%E5%A4%9A%E5%BC%A0%E5%9B%BE%E7%89%87.html"/>
-    <id>http://leostones.cn/Blog//blog/2016/08/Android控件学习-使用GridView显示多张图片.html</id>
+    <link href="http://leostones.cn//blog/2016/08/Android%E6%8E%A7%E4%BB%B6%E5%AD%A6%E4%B9%A0-%E4%BD%BF%E7%94%A8GridView%E6%98%BE%E7%A4%BA%E5%A4%9A%E5%BC%A0%E5%9B%BE%E7%89%87.html"/>
+    <id>http://leostones.cn//blog/2016/08/Android控件学习-使用GridView显示多张图片.html</id>
     <published>2016-08-17T11:31:56.014Z</published>
     <updated>2016-08-17T11:42:20.030Z</updated>
     
@@ -339,17 +339,17 @@
     
     </summary>
     
-      <category term="Android学习之路" scheme="http://leostones.cn/Blog/categories/Android%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/"/>
+      <category term="Android学习之路" scheme="http://leostones.cn/categories/Android%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/"/>
     
     
-      <category term="Android" scheme="http://leostones.cn/Blog/tags/Android/"/>
+      <category term="Android" scheme="http://leostones.cn/tags/Android/"/>
     
   </entry>
   
   <entry>
     <title>Android控件学习-显示当前日历及时间</title>
-    <link href="http://leostones.cn/Blog//blog/2016/08/Android%E6%8E%A7%E4%BB%B6%E5%AD%A6%E4%B9%A0-%E6%98%BE%E7%A4%BA%E5%BD%93%E5%89%8D%E6%97%A5%E5%8E%86%E5%8F%8A%E6%97%B6%E9%97%B4.html"/>
-    <id>http://leostones.cn/Blog//blog/2016/08/Android控件学习-显示当前日历及时间.html</id>
+    <link href="http://leostones.cn//blog/2016/08/Android%E6%8E%A7%E4%BB%B6%E5%AD%A6%E4%B9%A0-%E6%98%BE%E7%A4%BA%E5%BD%93%E5%89%8D%E6%97%A5%E5%8E%86%E5%8F%8A%E6%97%B6%E9%97%B4.html"/>
+    <id>http://leostones.cn//blog/2016/08/Android控件学习-显示当前日历及时间.html</id>
     <published>2016-08-16T22:52:35.741Z</published>
     <updated>2016-08-17T11:31:10.668Z</updated>
     
@@ -388,17 +388,17 @@
     
     </summary>
     
-      <category term="Android学习之路" scheme="http://leostones.cn/Blog/categories/Android%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/"/>
+      <category term="Android学习之路" scheme="http://leostones.cn/categories/Android%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/"/>
     
     
-      <category term="Android" scheme="http://leostones.cn/Blog/tags/Android/"/>
+      <category term="Android" scheme="http://leostones.cn/tags/Android/"/>
     
   </entry>
   
   <entry>
     <title>Android控件学习-显示信息列表</title>
-    <link href="http://leostones.cn/Blog//blog/2016/08/Android%E6%8E%A7%E4%BB%B6%E5%AD%A6%E4%B9%A0-%E4%BD%BF%E7%94%A8ListView%E6%98%BE%E7%A4%BA%E4%BF%A1%E6%81%AF%E5%88%97%E8%A1%A8.html"/>
-    <id>http://leostones.cn/Blog//blog/2016/08/Android控件学习-使用ListView显示信息列表.html</id>
+    <link href="http://leostones.cn//blog/2016/08/Android%E6%8E%A7%E4%BB%B6%E5%AD%A6%E4%B9%A0-%E4%BD%BF%E7%94%A8ListView%E6%98%BE%E7%A4%BA%E4%BF%A1%E6%81%AF%E5%88%97%E8%A1%A8.html"/>
+    <id>http://leostones.cn//blog/2016/08/Android控件学习-使用ListView显示信息列表.html</id>
     <published>2016-08-15T19:14:52.552Z</published>
     <updated>2016-08-17T11:42:16.034Z</updated>
     
@@ -472,17 +472,17 @@
     
     </summary>
     
-      <category term="Android学习之路" scheme="http://leostones.cn/Blog/categories/Android%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/"/>
+      <category term="Android学习之路" scheme="http://leostones.cn/categories/Android%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/"/>
     
     
-      <category term="Android" scheme="http://leostones.cn/Blog/tags/Android/"/>
+      <category term="Android" scheme="http://leostones.cn/tags/Android/"/>
     
   </entry>
   
   <entry>
     <title>Android控件学习-页面间的跳转</title>
-    <link href="http://leostones.cn/Blog//blog/2016/08/Android%E6%8E%A7%E4%BB%B6%E5%AD%A6%E4%B9%A0-Intent%E9%A1%B5%E9%9D%A2%E9%97%B4%E7%9A%84%E8%B7%B3%E8%BD%AC.html"/>
-    <id>http://leostones.cn/Blog//blog/2016/08/Android控件学习-Intent页面间的跳转.html</id>
+    <link href="http://leostones.cn//blog/2016/08/Android%E6%8E%A7%E4%BB%B6%E5%AD%A6%E4%B9%A0-Intent%E9%A1%B5%E9%9D%A2%E9%97%B4%E7%9A%84%E8%B7%B3%E8%BD%AC.html"/>
+    <id>http://leostones.cn//blog/2016/08/Android控件学习-Intent页面间的跳转.html</id>
     <published>2016-08-14T02:00:19.740Z</published>
     <updated>2016-08-17T11:42:08.393Z</updated>
     
@@ -519,10 +519,10 @@
     
     </summary>
     
-      <category term="Android学习之路" scheme="http://leostones.cn/Blog/categories/Android%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/"/>
+      <category term="Android学习之路" scheme="http://leostones.cn/categories/Android%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/"/>
     
     
-      <category term="Android" scheme="http://leostones.cn/Blog/tags/Android/"/>
+      <category term="Android" scheme="http://leostones.cn/tags/Android/"/>
     
   </entry>
   
